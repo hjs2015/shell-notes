@@ -16,6 +16,7 @@
 - [文本处理](#文本处理)
 - [系统命令](#系统命令)
 - [调试技巧](#调试技巧)
+- [目录文档](#目录文档) 🆕
 
 ---
 
@@ -612,14 +613,36 @@ echo -e "\033[33m黄色\033[0m"
 
 ---
 
+## 📚 目录文档 🆕
+
+每个目录都有独立的 README.md 文档，包含详细说明：
+
+| 目录 | README | 内容 |
+|------|--------|------|
+| 01_basic | `01_basic/README.md` | 基础输出（echo、变量） |
+| 02_input | `02_input/README.md` | 交互式输入（read、验证） |
+| 03_condition | `03_condition/README.md` | 条件判断（if、测试） |
+| 04_loop | `04_loop/README.md` | 循环结构（for、while） |
+| 05_case | `05_case/README.md` | 选择结构（case、菜单） |
+| 06_text | `06_text/README.md` | 文本处理（AWK、grep） |
+| 07_system | `07_system/README.md` | 系统管理（监控、信息） |
+| 08_practice | `08_practice/README.md` | 综合练习（游戏、应用） |
+| 09_devops | `09_devops/README.md` | DevOps 实战（运维自动化） |
+
+**建议**: 学习新目录前，先阅读该目录的 README.md
+
+---
+
 ## 📚 更多资源
 
 - [Bash 官方手册](https://www.gnu.org/software/bash/manual/)
 - [Shell 脚本编程指南](https://bashguide.readthedocs.io/)
 - [Linux Command](https://linuxcommand.org/)
 - [本仓库脚本示例](../CATALOG.md)
+- [目录 README 文档](../01_basic/README.md)
 
 ---
 
 **最后更新**: 2026-03-18  
+**最新提交**: a7910c8 - docs: 为所有目录添加 README 说明文档
 [返回顶部](#-shell-编程快速参考)

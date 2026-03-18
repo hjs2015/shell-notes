@@ -11,6 +11,7 @@
 - [调试问题](#调试问题)
 - [实战问题](#实战问题)
 - [最佳实践](#最佳实践)
+- [文档使用](#文档使用) 🆕
 
 ---
 
@@ -432,13 +433,57 @@ done
 
 ---
 
+## 📖 文档使用 🆕
+
+### Q: 如何开始学习这个仓库？
+
+**A:** 推荐步骤：
+1. 阅读主 `README.md` 了解仓库概览
+2. 查看 `LEARNING_GUIDE.md` 制定学习计划
+3. 从 `01_basic/` 开始，先读该目录的 `README.md`
+4. 按顺序学习脚本，完成练习任务
+5. 遇到问题查阅 `CHEATSHEET.md` 和 `FAQ.md`
+
+### Q: 每个目录的 README.md 有什么用？
+
+**A:** 每个目录的 README.md 包含：
+- 📋 脚本清单表格
+- 🎯 学习目标
+- 📚 知识点详解
+- 💻 示例代码
+- 🔧 练习任务
+- ⚠️ 常见错误
+- 📖 扩展阅读
+
+**建议**: 学习新目录前，先阅读该目录的 README.md
+
+### Q: 如何查找特定知识点的脚本？
+
+**A:** 使用以下文档：
+- `CATALOG.md` - 按目录查找脚本
+- `scripts_index.md` - 按知识点查找脚本
+- `CHEATSHEET.md` - 语法速查
+
+### Q: 文档太多，应该看哪个？
+
+**A:** 根据需求选择：
+- **新手入门**: README.md → LEARNING_GUIDE.md → 目录 README
+- **查找脚本**: CATALOG.md 或 scripts_index.md
+- **写脚本时**: CHEATSHEET.md（速查表）
+- **遇到问题**: FAQ.md（常见问题）
+- **想要贡献**: CONTRIBUTING.md（贡献指南）
+
+---
+
 ## 📚 更多资源
 
 - [Bash 常见问题](https://mywiki.wooledge.org/BashFAQ)
 - [Shell 编程最佳实践](https://google.github.io/styleguide/shellguide.html)
 - [本仓库示例](../CATALOG.md)
+- [目录 README 文档](../01_basic/README.md)
 
 ---
 
 **最后更新**: 2026-03-18  
+**最新提交**: a7910c8 - docs: 为所有目录添加 README 说明文档
 [返回顶部](#-常见问题解答-faq)

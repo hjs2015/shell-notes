@@ -4,27 +4,27 @@
 
 | 指标 | 数值 |
 |------|------|
-| 总文件数 | 78 |
+| 总文件数 | 85 |
 | Shell 脚本数 | 52 |
-| 教程文件 | 5 |
 | AWK 脚本 | 3 |
-| 文档文件 | 11 |
-| 总代码行数 | ~8,191 |
-| DevOps 实战脚本 | 5 |
+| 目录 README | 9 🆕 |
+| 项目文档 | 8 |
+| 配置文件 | 13 |
+| 总代码行数 | ~11,325 |
 
 ## 📁 目录分布
 
-| 目录 | 脚本数 | 说明 |
-|------|--------|------|
-| 01_basic | 2 | 基础输出 ⭐ |
-| 02_input | 5 | 交互式输入 ⭐⭐ |
-| 03_condition | 4 | 条件判断 ⭐⭐ |
-| 04_loop | 20 | 循环结构 ⭐⭐⭐ |
-| 05_case | 12 | 选择结构 ⭐⭐⭐ |
-| 06_text | 3(AWK) | 文本处理 ⭐⭐⭐⭐ |
-| 07_system | 1 | 系统管理 ⭐⭐⭐⭐ |
-| 08_practice | 3 | 综合练习 ⭐⭐⭐⭐⭐ |
-| 09_devops | 5 | DevOps 实战 ⭐⭐⭐⭐⭐ 🆕 |
+| 目录 | 脚本数 | README | 说明 |
+|------|--------|--------|------|
+| 01_basic | 2 | ✅ | 基础输出 ⭐ |
+| 02_input | 5 | ✅ | 交互式输入 ⭐⭐ |
+| 03_condition | 4 | ✅ | 条件判断 ⭐⭐ |
+| 04_loop | 20 | ✅ | 循环结构 ⭐⭐⭐ |
+| 05_case | 12 | ✅ | 选择结构 ⭐⭐⭐ |
+| 06_text | 3(AWK) | ✅ | 文本处理 ⭐⭐⭐⭐ |
+| 07_system | 1 | ✅ | 系统管理 ⭐⭐⭐⭐ |
+| 08_practice | 3 | ✅ | 综合练习 ⭐⭐⭐⭐⭐ |
+| 09_devops | 5 | ✅ | DevOps 实战 ⭐⭐⭐⭐⭐ |
 
 ## 📈 难度分布
 
@@ -36,41 +36,61 @@
 | ⭐⭐⭐⭐ | 17 | 31% |
 | ⭐⭐⭐⭐⭐ | 7 | 13% |
 
-## 📝 文档列表
+## 📝 文档体系
 
-| 文件 | 大小 | 说明 |
+### 目录级文档（9 个）🆕
+
+| 文件 | 行数 | 说明 |
 |------|------|------|
-| README.md | 4.9KB | 仓库介绍 |
-| CATALOG.md | 5.2KB | 脚本清单 |
-| scripts_index.md | 2.8KB | 分类索引 |
-| LEARNING_GUIDE.md | ~8KB | 学习指南 |
-| STATS.md | 本文件 | 统计报告 |
+| 01_basic/README.md | 120 | 基础输出说明 |
+| 02_input/README.md | 165 | 交互式输入说明 |
+| 03_condition/README.md | 178 | 条件判断说明 |
+| 04_loop/README.md | 245 | 循环结构说明 |
+| 05_case/README.md | 258 | 选择结构说明 |
+| 06_text/README.md | 185 | AWK 文本处理说明 |
+| 07_system/README.md | 172 | 系统管理说明 |
+| 08_practice/README.md | 295 | 综合练习说明 |
+| 09_devops/README.md | 320 | DevOps 实战说明 |
+
+### 项目级文档（8 个）
+
+| 文件 | 行数 | 说明 |
+|------|------|------|
+| README.md | 376 | 仓库介绍 |
+| CATALOG.md | 126 | 脚本清单 |
+| LEARNING_GUIDE.md | 442 | 学习指南 |
+| CHEATSHEET.md | 626 | 快速参考 |
+| FAQ.md | 445 | 常见问题 |
+| CONTRIBUTING.md | 337 | 贡献指南 |
+| STATS.md | 74 | 统计报告 |
+| scripts_index.md | 95 | 分类索引 |
 
 ## 🎯 知识点覆盖
 
 | 知识点 | 脚本数 | 示例文件 |
 |--------|--------|----------|
 | echo | 10+ | 01_basic/01_hello_world.sh |
-| read | 15+ | 02_input/02_interactive_input.sh |
-| if/else | 20+ | 03_condition/03_grade_evaluator.sh |
+| read | 15+ | 02_input/01_name_phone_age.sh |
+| if/else | 20+ | 03_condition/01_logic_operation.sh |
 | for 循环 | 20 | 04_loop/* |
 | while 循环 | 10+ | 04_loop/* |
 | case | 12 | 05_case/* |
 | awk | 3+ | 06_text/* |
 | 系统管理 | 1 | 07_system/01_system_info.sh |
 | 综合应用 | 3 | 08_practice/* |
-| DevOps 实战 | 5 | 09_devops/* 🆕 |
+| DevOps 实战 | 5 | 09_devops/* |
 
 ## 📅 更新历史
 
 | 日期 | 事件 |
 |------|------|
+| 2026-03-18 | 为所有 9 个目录添加 README 说明文档 |
 | 2026-03-18 | 添加 DevOps 运维实战脚本（5 个） |
 | 2026-03-18 | 重新整理仓库，添加详细分类和文档 |
 | 2026-03-17 | 初始版本，51 个脚本案例 |
 
 ---
 
-**生成时间**: 2026-03-18 19:45:00  
-**最新提交**: 1f8e3c2 - feat: 添加 DevOps 运维实战脚本（5 个）  
+**生成时间**: 2026-03-18 20:15:00  
+**最新提交**: a7910c8 - docs: 为所有目录添加 README 说明文档  
 **生成工具**: shell-stats.sh
