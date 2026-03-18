@@ -1,44 +1,42 @@
 #!/bin/bash
+# =============================================================================
+# 脚本名称：01_name_phone_age.sh
+# 功能描述：演示 read 命令的各种用法
+# 难度等级：⭐⭐ 入门
+# 知识点：
+#   - read -p "提示语" 变量 - 带提示的输入
+#   - read -s 变量 - 隐藏输入（不显示字符，用于密码）
+#   - read -n 2 变量 - 读取指定字符数（2 个字符）
+#   - read -t 3 变量 - 设置超时时间（3 秒）
+#   - ${变量：起始：长度} - 字符串切片
+# 使用方法：
+#   chmod +x 01_name_phone_age.sh
+#   ./01_name_phone_age.sh
+# =============================================================================
 
-read -p "输入你的名字:" name
+# 使用 -p 参数显示提示语，读取用户名字
+read -p "输入你的名字：" name
 
-echo "你好,$name"
+# 输出问候语
+echo "你好，$name"
 
-#getchar() {
-#stty cbreak -echo
-#dd if=/dev/tty bs=1 count=1 2> /dev/null
-#stty -cbreak echo
-#}
+# 使用 -s 参数隐藏输入（不显示字符），读取手机号
+# 注意：-s 不会自动换行，需要手动 echo
+read -s -p "输入你的手机号：" num
+echo  # 换行
+echo "你的手机号尾数为${num:7:4}"  # 显示手机号后 4 位（从第 7 位开始取 4 位）
 
-
-#echo -n "请输入你的手机号:"
-
-#while true
-#do
-#        char=`getchar`
-#        if [ -z $char ]; then
-#                echo
-#                break
-#        fi
-#        num="$num$char"
-#        echo -n "*"
-#done
-
-
-read -s -p "输入你的手机号:" num
-echo
-echo "你的手机号尾数为${num:7:4}" 
-
-
-read -n 2 -p "输入你的年龄:" age
-echo
+# 使用 -n 参数限制输入字符数（2 个字符），读取年龄
+read -n 2 -p "输入你的年龄：" age
+echo  # 换行
 echo "你$age岁了"
 
-
+# 使用 -t 参数设置超时时间（3 秒），读取计算结果
 read -t 3 -p "214＋234＋46-12=?" result
-echo
-echo "@_@"
+echo  # 换行
+echo "@_@"  # 不管用户有没有输入，都继续执行
 
-
-
-
+# 说明：
+# 1. read 命令用于从标准输入读取数据
+# 2. 如果不指定变量名，默认读取到 REPLY 变量
+# 3. 可以组合使用多个参数，如：read -s -t 10 -p "密码：" pass
