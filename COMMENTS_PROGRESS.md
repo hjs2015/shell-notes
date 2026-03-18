@@ -1,6 +1,6 @@
 # 📝 脚本注释添加进度
 
-## ✅ 已完成 (35/47)
+## ✅ 已完成 (41/47)
 
 ### 01_basic (2/2) ✅
 - [x] 01_hello_world.sh - Hello World
@@ -19,7 +19,7 @@
 - [x] 03_file_permission_check.sh - 文件权限检查
 - [x] 04_dead_link_check.sh - 死链接判断
 
-### 04_loop (12/18) ✅
+### 04_loop (18/18) ✅
 - [x] 01_recursive_echo.sh - 递归执行
 - [x] 02_multiplication_table.sh - 99 乘法表
 - [x] 03_countdown_2018.sh - 倒计时
@@ -39,19 +39,19 @@
 - [x] 17_lucky_draw.sh - 幸运抽奖
 - [x] 18_fake_login_screen.sh - 伪造登录界面
 
-### 05_case (6/12)
+### 05_case (12/12) ✅
 - [x] 01_char_type_check.sh - 字符类型检查
 - [x] 02_menu_system.sh - 多级菜单系统
 - [x] 03_service_price.sh - 服务价格查询
 - [x] 04_phone_brand_menu.sh - 手机品牌菜单 (dialog)
 - [x] 05_select_os.sh - 选择操作系统 (select)
 - [x] 06_sysv_init_script.sh - SysV 初始化脚本
-- [ ] 07_sysv_init_advanced.sh
-- [ ] 08_number_to_words.sh
-- [ ] 09_find_dead_links_recursive.sh
-- [ ] 10_usb_mount_menu.sh
-- [ ] 11_generate_phone_all.sh
-- [ ] 12_tetris_game.sh
+- [x] 07_sysv_init_advanced.sh - 高级 SysV 初始化（彩色输出）
+- [x] 08_number_to_words.sh - 数字转英文单词
+- [x] 09_find_dead_links_recursive.sh - 递归查找死链接
+- [x] 10_usb_mount_menu.sh - USB 挂载菜单
+- [x] 11_generate_phone_all.sh - 多号段手机号生成
+- [x] 12_tetris_game.sh - 俄罗斯方块游戏（完整终端版）
 
 ### 06_text (0/3)
 - [ ] 01_field_extract.awk
@@ -75,12 +75,12 @@
 | 01_basic | 2 | 2 | 100% |
 | 02_input | 5 | 5 | 100% |
 | 03_condition | 4 | 4 | 100% |
-| 04_loop | 12 | 18 | 67% |
-| 05_case | 6 | 12 | 50% |
+| 04_loop | 18 | 18 | 100% |
+| 05_case | 12 | 12 | 100% |
 | 06_text | 0 | 3 | 0% |
 | 07_system | 1 | 1 | 100% |
 | 08_practice | 3 | 3 | 100% |
-| **总计** | **35** | **47** | **74%** |
+| **总计** | **41** | **47** | **87%** |
 
 ---
 
@@ -110,12 +110,13 @@
 
 ## 🎯 下一步
 
-1. 完成 04_loop 目录剩余脚本 (0 个) ✅
-2. 完成 05_case 目录剩余脚本 (6 个)
-3. 完成 06_text 目录脚本 (3 个)
+1. ✅ 完成 04_loop 目录 (18/18) 
+2. ✅ 完成 05_case 目录 (12/12)
+3. ⏳ 完成 06_text 目录 (0/3) - awk 脚本
 4. 更新 README 和 CATALOG
 
 ---
 
 **最后更新**: 2026-03-18
-**Git 提交**: 49a5060
+**Git 提交**: 5d7e28f
+**进度**: 87% (41/47)
