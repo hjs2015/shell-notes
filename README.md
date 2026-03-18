@@ -41,9 +41,13 @@ shell-notes/
 ├── 06_text/            # 文本处理 (3 个 AWK 脚本) ⭐⭐⭐⭐
 ├── 07_system/          # 系统管理 (1 个脚本) ⭐⭐⭐⭐
 ├── 08_practice/        # 综合练习 (3 个脚本) ⭐⭐⭐⭐⭐
+├── 09_devops/          # DevOps 实战 (5 个脚本) ⭐⭐⭐⭐⭐
 ├── README.md           # 本文件
 ├── CATALOG.md          # 脚本详细清单
 ├── LEARNING_GUIDE.md   # 学习指南
+├── CHEATSHEET.md       # 快速参考
+├── FAQ.md              # 常见问题
+├── CONTRIBUTING.md     # 贡献指南
 ├── STATS.md            # 统计报告
 ├── LICENSE             # MIT 许可证
 └── .gitignore          # Git 忽略规则
