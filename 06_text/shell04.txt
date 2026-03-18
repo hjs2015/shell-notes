@@ -1,0 +1,523 @@
+--
+
+
+awk 
+
+
+调用有二种方式：
+
+1,awk   -F"分隔符"  "command" filename
+2，是将所有的awk命令插入一个单独文件，然后调用
+  awk -f awk-script-file  filename
+
+
+字段的引用
+$字段操作符
+$1代表第一列，$2代表第二列。。。n以此类推
+$0代表整个输入记录
+
+
+比较：
+cut -d" "  -f1
+sort -t" " -k1
+awk -F" " '{print $1}'
+
+
+先用awk和cut做截取,来进行几个比较
+
+比较一:用cut和awk截取IP
+
+ifconfig eth0 |grep Bcast |cut -d ":" -f2|cut -d" " -f1
+
+ifconfig eth0 |grep Bcast |awk -F: '{print $2}'|awk  '{print $1}'
+
+ifconfig eth0 |grep Bcast | awk -F" " '{print $2}'|awk -F":" '{print $2}'
+--awk默认以N个空格为分隔符
+
+
+比较二:
+cut不能以多个字符为分隔符,而awk 可以
+下面都是以ab为分隔符,截取第二列的做法,cut报错,awk成功
+# echo 123ab456ab789 |cut -d"ab" -f2
+cut: the delimiter must be a single character
+Try `cut --help' for more information.
+# echo 123ab456ab789 |awk -F"ab" '{print $2}'
+456
+
+
+
+比较三:
+打印所有列    awk '{print $0}' /etc/passwd
+打印第一列	 awk -F: '{print $1}' /etc/passwd
+打印第一，三列  awk -F: '{print $1"\thaha\t"$3}' /etc/passwd
+
+
+
+# awk -F":" '{print $1" 的uid是 "$3}' /etc/passwd
+
+--上面这条如果要用cut来实现，得写下面的脚本
+#!/bin/bash
+
+cat /etc/passwd | cut -d: -f1,3 |while read a
+do
+        head=`echo $a|cut -d: -f1`
+        tail=`echo $a|cut -d: -f2`
+        echo  "$head的uid是$tail"
+done
+
+# awk -F":" '{print $1"的uid是"$3",登录shell是"$7}' /etc/passwd
+
+
+
+比较四:
+# who |tail -1
+root     pts/0        2013-08-25 10:11 (:0.0)
+# who |tail -1 |awk -F":|)" '{print $3}' 	--以:或)为分隔符
+0.0
+
+# who |tail -1
+root     pts/3        2014-08-14 09:46 (10.1.1.111)
+who |tail -1 |awk -F[\(\)] '{print $2}'		--以(或)为分隔符，加转义符
+10.1.1.111
+
+
+awk -F"[:)]"   --以:或)为分隔符
+awk -F"[:)]*"	--以多个连续的:或多个连续的)为分隔符
+
+
+[root@li ~]# echo "haha,hehe.heihei" |awk -F"[,.]" '{print $1}'
+haha
+[root@li ~]# echo "haha,hehe.heihei" |awk -F"[,.]" '{print $2}'
+hehe
+[root@li ~]# echo "haha,hehe.heihei" |awk -F"[,.]" '{print $3}'
+heihei
+
+--象下面这样的字符串,以点为分隔符可以做,但是点号太多,不好数.所以可以用正则表达式,以连续的多个点来为分隔符
+# echo "haha,hehe.......................................heihei........." |awk -F"[.]*" '{print $2}'
+heihei
+
+
+
+
+=====================================================================================================
+
+
+
+
+$n    n不一定要用整数，也可以用变量值代替
+echo a b c |awk 'BEGIN {one=1;two=2} {print $(one+two)}'
+
+
+awk  -F:  'BEGIN {处理文件前执行的代码块} ｛处理文件过程中执行的代码块} END {处理文件后执行的代码块}'   filename
+
+
+BEGIN	｛
+
+
+｝
+	｛
+
+
+｝
+END	｛
+
+｝
+
+
+把上面的结构可以与下面的一个基本循环结构做对比
+
+sum=0
+for i in `seq 100`
+do
+	sum=$[$sum+$i]
+done
+echo sum
+
+
+
+# cat /etc/fstab |wc -l
+10
+
+# awk -F: 'BEGIN {print "这是第一行"} {print "这是第二行"} {print "这是第三行"} {print "这是第四行"} END {print "这是最后一行"}'  /etc/fstab |wc -l
+32
+--这个打印了32行，第一行一次，最后一行一次，中间的三行打了十次；3*10+2=32，正好对应fstab的行数；也就是说中间的代码循环的次数等同于后面的文件的行数
+
+
+
+比较下面这两句
+awk -F: '{print "用户名\t\tUID"}{print $1"\t"$3}' /etc/passwd
+awk -F: 'BEGIN{print "用户名\t\tUID"}{print $1"\t"$3}' /etc/passwd
+
+用户名  UID
+root   0
+用户名  UID
+bin    1
+
+
+
+用户名 UID
+root   0
+bin    1
+
+
+--下面两种结果相同，都是把列转成行
+# head -1 /etc/passwd |awk -F":" '{print $1"\n"$2"\n"$3"\n"$4"\n"$5"\n"$6"\n"$7}'
+# head -1 /etc/passwd |awk -F":" '{print $1} {print $2} {print $3} {print $4} {print $5} {print $6}{print $7}'
+
+
+
+
+# head -1 /etc/passwd |awk -F: 'BEGIN {print "*************************"} {print "*\t"$1"\t\t*"} {print "*\t"$2"\t\t*"} {print "*\t"$3"\t\t*"} {print "*\t"$4"\t\t*"} {print "*\t"$5"\t\t*"} {print "*\t"$6"\t\t*"} {print "*\t"$7"\t*"} END {print "*************************"}'
+*************************
+*       root            *
+*       x               *
+*       0               *
+*       0               *
+*       root            *
+*       /root           *
+*       /bin/bash       *
+*************************
+
+
+
+# head -1 /etc/passwd |awk -F: 'BEGIN {print "*************************"} {print "*\t"$1"\t\t*\n*\t"$2"\t\t*\n*\t"$3"\t\t*\n*\t"$4"\t\t*\n*\t"$5"\t\t*\n*\t"$6"\t\t*\n*\t"$7"\t*"} END {print "*************************"}'
+*************************
+*	root		*
+*	x		*
+*	0		*
+*	0		*
+*	root		*
+*	/root		*
+*	/bin/bash	*
+*************************
+
+===========================================================================================================
+
+
+
+
+awk可以用做小数（浮点数)的运算
+echo $[1.23*2]		--错误做法
+echo |awk '{print 1.23*2}'	--正确做法
+echo 1.23*2 | bc	--正确做法
+
+
+=====================================================================
+
+
+
+
+例
+把/etc/passwd的第一行，按照:分为7列，左右倒序排列
+# head -1 /etc/passwd |cut -d":" -f7,6,5,4,3,2,1
+root:x:0:0:root:/root:/bin/bash
+--用cut，列数反着写，还是没有倒序，所以应该写一个循环，然后使用echo -n去再排列出来 
+
+
+例：
+换成awk来做
+
+# head -1 /etc/passwd |awk -F: '{print $7":"$6":"$5":"$4":"$3":"$2":"$1}'
+# head -1 /etc/passwd |awk -F: 'BEGIN {OFS=":"}{print $7,$6,$5,$4,$3,$2,$1}'
+
+
+
+--OFS是一个内置的变量，表示定义输出的分隔符
+
+--上面这可能会有一个问题,就是上面做的只有7列,如果我有700列,我不可能手动从$700写到$1吧;所以可以用awk的for循环来做.(后面有一个例子会讲到)
+
+
+
+--awk  内置变量
+
+FS   代表输入的分隔符，等同于-F ；  OFS代表输出的分隔符
+NF   代表字段数	因为NF是列数，所以$NF就是代表最后一个列
+NR   代表当前处理第几行
+
+
+awk关系操作符
+==   等于
+!=    不等于
+>    大于
+<    小于
+>=   大于等于
+<=   小于等于
+
+awk逻辑操作符
+&&	逻辑与   类似shell里的[ 条件1 -a  条件2 ]
+||	逻辑或	 类似shell里的[ 条件1 -o  条件2 ] 
+！	非
+
+
+awk运算操作符
++ - * / %
+^或**  幂   比如：2的三次方  2^3 或2**3   --shell里面求幂只能为2**3
+
+
+
+==================================================================================================
+
+练习：用netstat -ntl 截取所有开放监听的TCP协议端口号
+
+# netstat -ntl |awk '{print $4}' |awk -F: '{print $NF}' |grep [0-9]$
+# netstat -ntl |grep -vE "Active|Proto" |awk '{print $4}' |awk -F: '{print $NF}'
+# netstat -ntl |awk  'NR>2 {print $0}' |awk '{print $4}' |awk -F: '{print $NF}'
+
+
+练习：用netstat -ntl 截取所有开放监听的TCP协议端口号（只要IPv4的监听所有的开放端口）
+
+# netstat -ntl |grep ^"tcp " |awk -F[\ :]* '{print $5}'
+
+# netstat -ntl |awk -F[\ :]* '$1=="tcp" {print $5}'
+
+
+练习:截取/etc/passwd前五行的倒数第二列
+
+# head -5 /etc/passwd |awk -F: '{print $(NF-1)}'
+
+# awk -F: 'NR<=5 {print $(NF-1)}' /etc/passwd
+
+
+练习：
+cat 1.txt
+1	2	3
+1	2	3
+
+cat 2.txt
+a	b	c
+a	b	c
+
+
+要求得到结果
+2	a	c
+2	a	c
+
+# paste  1.txt 2.txt | awk '{print $2"\t"$4"\t"$6}'
+
+
+
+打印第五行
+head -5 /etc/passwd |tail -1
+awk 'NR==5  {print $0}' /etc/passwd
+awk '{if (NR==5) print $0}' /etc/passwd
+
+
+
+打印第五行的第五列
+# awk -F: 'NR==5 {print $5}' /etc/passwd
+
+
+打印第五行和第六行
+
+# awk -F: 'NR==5 || NR==6 {print $0}' /etc/passwd
+
+
+练习：
+找出/etc/以.conf结尾的文件的名字(如：kernelcap-2.6.18-164.el5.conf，只需要得到kernelcap-2.6.18-164.el5就可以了）
+# find /etc/ -name "*.conf" |awk -F/ '{print $NF}' |awk -F"[.]conf" '{print $1}'
+
+
+问题:分隔符里的.需要加[]来转义，否则会出现问题，比如下面的命令会出问题，但用[.]conf为分隔符就ok
+# echo 30-0-google-crosextra-carlito-fontconfig.conf | awk -F".conf" '{print $1}'	--有问题
+30-0-google-crosextra-carlito-fon
+# echo 30-0-google-crosextra-carlito-fontconfig.conf | awk -F"[.]conf" '{print $1}'	--没问题
+30-0-google-crosextra-carlito-fontconfig
+
+
+--扩展问题:怎么找出上题里文件名有多个.号的？
+# find /etc/ -name "*.conf" |awk -F/ '{print $NF}' |awk -F"[.]conf" '{print $1}' |grep "\."
+
+--扩展问题:怎么找出上题里文件名有多个.conf的？
+# find /etc/ -name "*.conf" |awk -F/ '{print $NF}' |awk -F"[.]conf" 'NF>2 {print $0}' 
+
+
+
+打印每行的字段数
+# awk -F: '{print NF}' /etc/passwd
+
+
+打印第五行的字段数
+# awk -F: 'NR==5 {print NF}' /etc/passwd
+
+
+打印字段数大于6的行
+# awk -F: 'NF>6 {print $0}' /etc/passwd
+
+
+打印最后一行
+# tail -1 /etc/passwd
+# awk 'END {print $0}' /etc/passwd
+
+打印倒数第二行
+# tail -2 /etc/passwd |head -1
+# tac /etc/passwd |awk 'NR==2 {print $0}'
+
+
+
+打印最后一行的最后一列
+# tail -1 /etc/passwd |rev |cut -d":" -f1 |rev
+# awk -F: 'END {print $NF}' /etc/passwd
+
+
+
+打印五到十行，并在前面加上行号
+# awk 'NR>=5 &&  NR<=10 {print NR,$0}' /etc/passwd
+
+
+
+打印奇数行 (删除偶数行)
+# awk 'NR%2==1 {print NR,$0}' /etc/passwd
+
+
+打印偶数行 (删除奇数行)
+# awk 'NR%2==0 {print NR,$0}' /etc/passwd
+
+
+
+对/etc/passwd里的用户做分类，分成管理员，系统用户，普通用户（只显示用户名，用awk)
+
+# awk -F: '$3==0 {print $1}' /etc/passwd
+
+
+# awk -F: '$3<500 && $3>0 || $3==65534  {print $1}' /etc/passwd
+
+
+# awk -F: '$3>499 && $3!=65534 {print $1}' /etc/passwd
+
+
+
+
+
+找出每天18：30之前下班的打卡记录
+张三  2013-7-01 18:19:28
+张三  2013-7-02 17:58:45
+张三  2013-7-03 22:41:47
+张三  2013-7-04 22:15:23
+张三  2013-7-05 19:12:27
+张三  2013-7-06 19:03:09
+张三  2013-7-07 19:09:44
+张三  2013-7-08 19:04:45
+张三  2013-7-09 18:39:28
+张三  2013-7-10 18:24:48
+张三  2013-7-11 18:58:21
+张三  2013-7-12 18:36:22
+张三  2013-7-13 19:23:46
+张三  2013-7-14 19:02:41
+张三  2013-7-15 19:00:09
+张三  2013-7-16 18:36:13
+张三  2013-7-17 18:36:40
+张三  2013-7-18 19:00:00
+张三  2013-7-19 18:31:18
+张三  2013-7-20 18:44:01
+张三  2013-7-21 18:37:12
+张三  2013-7-22 18:29:33
+
+# cat 1.txt |awk -F"[ :]*" '$3==18 && $4<30 ||$3< 18 {print $0}'
+
+# cat 1.txt |awk -F"[ :]*" '$3$4<1830 {print $0}'
+
+# cat 1.txt |awk '$3<"18:30:00" {print $0}'  --时间直接比较是可以的，但是如果你小时为个位数（比如9:00:00，你应该要写成09:00:00才可以直接比)
+
+
+
+扩展:
+# echo haha | awk '"18:00:00">"9:00:00" {print $0}'	--没有结果显示，说明条件不成立
+# echo haha | awk '"18:00:00">"09:00:00" {print $0}'	--有结果显示，说明条件成立
+haha
+
+
+
+假设9点整上班，算出下面这几天这几个人分别迟到多少次，和扣多少钱（一次扣10块)
+张三 2013-8-25 09:19:28
+李四 2013-8-25 08:58:45
+王五 2013-8-25 08:41:47
+马六 2013-8-25 09:12:52
+田七 2013-8-25 09:01:47
+张三 2013-8-24 08:49:28
+李四 2013-8-24 08:54:45
+王五 2013-8-24 09:11:47
+马六 2013-8-24 09:02:52
+田七 2013-8-24 09:04:47
+张三 2013-8-23 09:29:28
+李四 2013-8-23 08:57:45
+王五 2013-8-23 08:41:47
+马六 2013-8-23 09:08:52
+田七 2013-8-23 09:09:47
+张三 2013-8-22 09:24:28
+李四 2013-8-22 09:16:45
+王五 2013-8-22 09:11:47
+马六 2013-8-22 08:52:52
+田七 2013-8-22 08:44:47
+
+# awk '$3>"09:00:00" {print $1}' 2.txt  |sort |uniq -c |awk 'BEGIN{print "迟到员工姓名\t罚款金额"}{print $2"\t\t"$1*10"元"}'
+迟到员工姓名	罚款金额
+张三		30元
+李四		10元
+王五		20元
+田七		30元
+马六		30元
+
+
+
+
+计算一个文件以一个分隔符分隔后的所有的列数的总和，并打印出来
+--提示：awk是由上往下一行一行的扫描，类似写shell脚本时的循环语句，在这里是自动循环
+--思路：先定义一个变量值为0，每扫一行，就加上那一行的列数(NF),最后打印出结果
+
+
+sum=0
+for i in 行数
+do
+	sum=sum+每一行的列数
+done
+echo 总列数
+
+
+# awk -F: 'BEGIN {sum=0} {sum=sum+NF} END {print sum}' /etc/passwd
+
+
+
+打印列数大于5的总行数
+
+sum=0
+for i in 行数
+do
+	if [ NF -gt 5] && sum=sum+每一行的行数
+done
+echo 总行数
+
+
+awk -F: 'BEGIN {sum=0} NF>5 {sum=sum+1} END {print sum} ' /etc/passwd
+awk -F: 'BEGIN {sum=0} { if (NF>5) sum=sum+1} END {print sum} ' /etc/passwd
+awk -F: 'BEGIN {sum=0} {NF>5 && sum=sum+1} END {print sum} ' /etc/passwd
+
+
+打印列数大于5的总行数和总列数
+awk -F: 'BEGIN {line=0;field=0} NF>5 { line=line+1;field=field+NF} END {print "大于5的总行数为"line"\n大于5的总列数为"field}' /etc/passwd		--正确的写法
+
+awk -F: 'BEGIN {line=0;field=0}{ NF>5 && line=line+1;field=field+NF} END {print "大于5的总行数为"line"\n大于5的总列数为"field}' /etc/passwd	--错误的写法，因为这里NF>5的条件只影响到了line没有影响到field
+
+awk -F: 'BEGIN {line=0;field=0} { if (NF>5)  line=line+1; field=field+NF} END {print "大于5的总行数为"line"\n大于5的总列数为"field}' /etc/passwd	--错误的写法,因为这里NF>5的条件只影响到了line没有影响到field
+
+awk -F: 'BEGIN {line=0;field=0}{ NF>5 && line=line+1;NF>5 &&field=field+NF} END {print "大于5的总行数为"line"\n大于5的总列数为"field}' /etc/passwd	--正确写法
+
+awk -F: 'BEGIN {line=0;field=0} { if (NF>5)  line=line+1; if (NF>5) field=field+NF} END {print "大于5的总行数为"line"\n大于5的总列数为"field}' /etc/passwd	--正确写法
+
+
+
+
+打印列数大于5小于8,并且行数为奇数行的总行数和总列数
+awk -F: 'BEGIN {line=0;field=0} NF>5 && NF<8 && NR%2==1 { line=line+1 ;field=field+NF } END {print "符合的总行数为:"line"\n符合的总列数为:"field}' /etc/passwd
+
+
+
+统计/etc/passwd一共出现了多少次bash字符 (要求用awk)
+
+# grep -c bash /etc/passwd
+# grep -o bash /etc/passwd |wc -l
+# awk -F"bash" 'BEGIN{sum=0} {sum=sum+NF-1} END {print sum}' /etc/passwd
+
+
+
+
+
