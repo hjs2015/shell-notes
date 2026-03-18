@@ -1,9 +1,9 @@
 # 📚 Shell 编程笔记与实战案例
 
-> 从零基础到实战的完整 Shell 脚本学习资源 | 47 个经典案例 + 详细中文注释
+> 从零基础到实战的完整 Shell 脚本学习资源 | 55 个脚本案例 + 详细中文注释 + DevOps 实战
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Shell Scripts](https://img.shields.io/badge/scripts-47-green.svg)](CATALOG.md)
+[![Shell Scripts](https://img.shields.io/badge/scripts-55-green.svg)](CATALOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/hjs2015/shell-notes/main.svg)](../../commits/main)
 [![Issues](https://img.shields.io/github/issues/hjs2015/shell-notes.svg)](../../issues)
 
@@ -11,7 +11,7 @@
 
 ## 🎯 简介
 
-本仓库包含 **47 个经典 Shell 脚本案例** 和 **3 个 AWK 脚本**，涵盖从基础语法到综合实战的完整学习路径。所有案例都来自实际运维场景，适合：
+本仓库包含 **55 个经典脚本案例**（52 个 Shell + 3 个 AWK），涵盖从基础语法到 DevOps 实战的完整学习路径。所有案例都来自实际运维场景，适合：
 
 - ✅ Shell 编程初学者
 - ✅ 需要提升脚本能力的开发者
@@ -26,6 +26,7 @@
 - 💼 **实战导向** - 所有案例来自真实运维场景
 - 📊 **难度分级** - ⭐ 入门 到 ⭐⭐⭐⭐⭐ 专家
 - 🔧 **开箱即用** - 克隆即可运行，无需配置
+- 🚀 **DevOps 实战** - 新增 5 个生产级运维脚本（系统检查/用户管理/服务监控/日志清理/备份自动化）
 
 ---
 
