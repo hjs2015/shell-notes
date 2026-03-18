@@ -21,27 +21,27 @@
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `1.shell` | 基础 echo 输出 | echo |
-| `5.shell` | Shell 特殊变量 ($0, $1, $$, $#, $*, $@) | 变量 |
+| `1.sh` | 基础 echo 输出 | echo |
+| `5.sh` | Shell 特殊变量 ($0, $1, $$, $#, $*, $@) | 变量 |
 
 ### 02_input - 交互式输入
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `2.shell` | read 输入 (名字、手机号、年龄) | read -p, -s, -n, -t |
-| `4.shell` | 笔记查找工具 | read, cd, grep |
-| `6.shell` | 文件存在性检查 | read, if -e |
-| `8.shell` | IP 连通性检查 | read, ping |
-| `12.shell` | 用户信息输入 (姓名、性别、年龄) | read, while, if |
+| `2.sh` | read 输入 (名字、手机号、年龄) | read -p, -s, -n, -t |
+| `4.sh` | 笔记查找工具 | read, cd, grep |
+| `6.sh` | 文件存在性检查 | read, if -e |
+| `8.sh` | IP 连通性检查 | read, ping |
+| `12.sh` | 用户信息输入 (姓名、性别、年龄) | read, while, if |
 
 ### 03_condition - 条件判断
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `7.shell` | 逻辑运算 (-o, !) | if, -o, ! |
-| `9.shell` | 文件类型判断 | if, -L, -d, -S, -p, -c, -b |
-| `10.shell` | 文件权限判断 | if, -r, -w, -x |
-| `11.shell` | 死链接判断 | if, -L, -e |
+| `7.sh` | 逻辑运算 (-o, !) | if, -o, ! |
+| `9.sh` | 文件类型判断 | if, -L, -d, -S, -p, -c, -b |
+| `10.sh` | 文件权限判断 | if, -r, -w, -x |
+| `11.sh` | 死链接判断 | if, -L, -e |
 
 ### 04_loop - 循环结构
 
@@ -55,41 +55,41 @@
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `13.shell` | 网络检查脚本 | grep, cut, awk |
-| `14.shell` | 笔记查找工具 (参数版) | if, case, grep |
+| `13.sh` | 网络检查脚本 | grep, cut, awk |
+| `14.sh` | 笔记查找工具 (参数版) | if, case, grep |
 
 ### 07_system - 系统管理
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `3.shell` | 日志轮转脚本 | date, mkdir, mv, mail, logger |
+| `3.sh` | 日志轮转脚本 | date, mkdir, mv, mail, logger |
 
 ### 08_practice - 综合练习
 
 | 文件 | 描述 | 知识点 |
 |------|------|--------|
-| `17.shell` | 用户注册系统 | read, if, 密码验证 |
-| `18.shell` | 完整用户登录系统 | 函数，验证码，登录 |
-| `19.shell` | 用户注册与登录 | 综合应用 |
+| `17.sh` | 用户注册系统 | read, if, 密码验证 |
+| `18.sh` | 完整用户登录系统 | 函数，验证码，登录 |
+| `19.sh` | 用户注册与登录 | 综合应用 |
 
 ---
 
 ## 🎯 学习路径
 
 ### 初级 (⭐)
-1. `01_basic/1.shell` - Hello World
-2. `01_basic/5.shell` - 特殊变量
-3. `02_input/2.shell` - read 输入
+1. `01_basic/1.sh` - Hello World
+2. `01_basic/5.sh` - 特殊变量
+3. `02_input/2.sh` - read 输入
 
 ### 中级 (⭐⭐)
-1. `03_condition/7.shell` - 逻辑运算
-2. `03_condition/9.shell` - 文件类型判断
-3. `03_condition/10.shell` - 文件权限判断
+1. `03_condition/7.sh` - 逻辑运算
+2. `03_condition/9.sh` - 文件类型判断
+3. `03_condition/10.sh` - 文件权限判断
 
 ### 高级 (⭐⭐⭐)
-1. `07_system/3.shell` - 日志轮转
-2. `08_practice/17.shell` - 用户注册
-3. `08_practice/18.shell` - 登录系统
+1. `07_system/3.sh` - 日志轮转
+2. `08_practice/17.sh` - 用户注册
+3. `08_practice/18.sh` - 登录系统
 
 ---
 

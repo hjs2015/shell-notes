@@ -5,8 +5,8 @@
 ### 第 1 阶段：基础入门 (2-3 天)
 
 #### Day 1 - Hello World 和变量
-- ✅ `01_basic/1.shell` - 第一个脚本
-- ✅ `01_basic/5.shell` - 特殊变量
+- ✅ `01_basic/01_hello_world.sh` - 第一个脚本
+- ✅ `01_basic/02_special_variables.sh` - 特殊变量
 - 📚 知识点：
   - shebang (`#!/bin/bash`)
   - echo 命令
@@ -27,9 +27,9 @@ bash script.sh arg1 arg2 arg3
 ```
 
 #### Day 2 - 用户交互
-- ✅ `02_input/2.shell` - read 命令
-- ✅ `02_input/6.shell` - 文件存在性检查
-- ✅ `02_input/8.shell` - IP 连通性检查
+- ✅ `02_input/01_name_phone_age.sh` - read 命令
+- ✅ `02_input/03_file_exist_check.sh` - 文件存在性检查
+- ✅ `02_input/04_ping_check.sh` - IP 连通性检查
 - 📚 知识点：
   - read -p (提示语)
   - read -s (隐藏输入)
@@ -52,9 +52,9 @@ fi
 ```
 
 #### Day 3 - 条件判断
-- ✅ `03_condition/7.shell` - 逻辑运算
-- ✅ `03_condition/9.shell` - 文件类型判断
-- ✅ `03_condition/10.shell` - 文件权限判断
+- ✅ `03_condition/01_logic_operation.sh` - 逻辑运算
+- ✅ `03_condition/02_file_type_check.sh` - 文件类型判断
+- ✅ `03_condition/03_file_permission_check.sh` - 文件权限判断
 - 📚 知识点：
   - if/else/elif
   - 逻辑运算符：-o (或), -a (与), ! (非)
@@ -81,8 +81,8 @@ fi
 ### 第 2 阶段：流程控制 (3-5 天)
 
 #### Day 4-5 - for 循环
-- ✅ `04_loop/1.shell` ~ `04_loop/5.shell` - for 循环基础
-- ✅ `04_loop/11.shell` - 99 乘法表
+- ✅ `04_loop/01_for_basic.sh` ~ `04_loop/5.shell` - for 循环基础
+- ✅ `04_loop/11_multiplication_table.sh` - 99 乘法表
 - 📚 知识点：
   - for in 列表
   - for seq 序列
@@ -100,9 +100,9 @@ done
 ```
 
 #### Day 6-7 - while 和 until 循环
-- ✅ `04_loop/6.shell` - while 循环
-- ✅ `04_loop/7.shell` - until 循环
-- ✅ `04_loop/17.shell` - 猜数字游戏
+- ✅ `04_loop/06_while_basic.sh` - while 循环
+- ✅ `04_loop/07_until_basic.sh` - until 循环
+- ✅ `04_loop/17_guess_number.sh` - 猜数字游戏
 - 📚 知识点：
   - while 条件
   - until 条件
@@ -127,9 +127,9 @@ done
 ```
 
 #### Day 8-9 - case 选择结构
-- ✅ `05_case/1.shell` - 基础 case
-- ✅ `05_case/3.shell` - 服务菜单
-- ✅ `05_case/7.shell` - select 菜单
+- ✅ `05_case/01_case_basic.sh` - 基础 case
+- ✅ `05_case/03_service_menu.sh` - 服务菜单
+- ✅ `05_case/07_select_menu.sh` - select 菜单
 - 📚 知识点：
   - case 模式匹配
   - 字符范围：[a-z], [A-Z], [0-9]
@@ -188,7 +188,7 @@ sed 's/old/new/g' file.txt
 ### 第 4 阶段：系统管理 (1-2 天)
 
 #### Day 12 - 日志和邮件
-- ✅ `07_system/3.shell` - 日志轮转
+- ✅ `07_system/01_log_rotation.sh` - 日志轮转
 - 📚 知识点：
   - date 日期操作
   - mkdir 创建目录
@@ -211,9 +211,9 @@ echo "备份完成" | mail -s "每日备份" admin@example.com
 ### 第 5 阶段：综合实战 (2-3 天)
 
 #### Day 13-15 - 完整项目
-- ✅ `08_practice/17.shell` - 用户注册
-- ✅ `08_practice/18.shell` - 用户登录
-- ✅ `08_practice/19.shell` - 注册登录系统
+- ✅ `08_practice/01_user_register.sh` - 用户注册
+- ✅ `08_practice/02_user_login.sh` - 用户登录
+- ✅ `08_practice/03_register_login_system.sh` - 注册登录系统
 
 **毕业项目**: 创建一个完整的用户管理系统
 - 用户注册 (带密码验证)
