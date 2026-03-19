@@ -1,9 +1,0 @@
-01:59:05 2015 [pid 4031] [ftp] OK LOGIN: Client 
-03:59:05 2015 [pid 4033] [ftp] OK DOWNLOAD: Client 
-09:59:07 2015 [pid 4033] [ftp] OK DOWNLOAD: Client 
-11:59:08 2015 [pid 4033] [ftp] OK DOWNLOAD: Client
-13:59:09 2015 [pid 4033] [ftp] OK DOWNLOAD: Client 
-16:59:10 2015 [pid 4033] [ftp] OK DOWNLOAD: Client
-18:59:11 2015 [pid 4033] [ftp] OK DOWNLOAD: Client 
-20:59:12 2015 [pid 4033] [ftp] OK DOWNLOAD: Client
-23:59:13 2015 [pid 4033] [ftp] OK DOWNLOAD: Client
