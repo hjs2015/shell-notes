@@ -12,10 +12,13 @@
 - [日志清理](#04_log_cleanersh-日志清理)
 - [备份自动化](#05_backup_automationsh-备份自动化)
 - [服务器巡检](#06_server_inspectionsh-服务器全面巡检)
-- [项目文件巡检](#07_project_checksh-项目文件巡检) 🆕
-- [安全审计](#08_security_auditsh-服务器安全审计) 🆕
-- [网络诊断](#09_network_diagnosissh-网络诊断) 🆕
-- [性能监控](#10_performance_monitorsh-性能监控) 🆕
+- [项目文件巡检](#07_project_checksh-项目文件巡检)
+- [安全审计](#08_security_auditsh-服务器安全审计)
+- [网络诊断](#09_network_diagnosissh-网络诊断)
+- [性能监控](#10_performance_monitorsh-性能监控)
+- [每日巡检](#11_daily_inspectionsh-每日自动巡检) 🆕
+- [自动化部署](#12_auto_deploysh-自动化部署) 🆕
+- [安全加固](#13_security_hardening.sh-服务器安全加固) 🆕
 
 ---
 
@@ -881,6 +884,278 @@ crontab -e
 
 # 每分钟性能监控记录
 * * * * * /path/to/10_performance_monitor.sh -o -l
+```
+
+---
+
+## 11_daily_inspection.sh - 每日自动巡检 🆕
+
+**难度**: ⭐⭐⭐⭐⭐  
+**用途**: 组合多个检查脚本，生成综合巡检报告
+
+### 功能特点
+
+- ✅ **系统信息摘要** - 负载、内存、磁盘快速概览
+- ✅ **服务状态检查** - 关键服务运行状态
+- ✅ **安全状态检查** - 失败登录、异常端口、危险权限
+- ✅ **备份状态检查** - 备份目录、文件大小、更新情况
+- ✅ **日志状态检查** - 日志大小、错误日志统计
+- ✅ **性能摘要** - CPU、内存、磁盘 IO、网络连接
+- ✅ **生成综合报告** - 自动汇总所有检查结果
+- ✅ **支持邮件发送** - 可配置邮件通知
+
+### 使用方法
+
+```bash
+# 生成巡检报告
+./11_daily_inspection.sh
+
+# 保存到文件
+./11_daily_inspection.sh -o /var/log/inspection/daily_$(date +%Y%m%d).txt
+
+# 发送邮件
+./11_daily_inspection.sh -e admin@example.com
+
+# 组合使用
+./11_daily_inspection.sh -o report.txt -e admin@example.com
+```
+
+### 配置定时任务
+
+```bash
+crontab -e
+
+# 每天早上 8 点执行巡检
+0 8 * * * /path/to/11_daily_inspection.sh -o /var/log/inspection/daily_$(date +\%Y\%m\%d).txt
+```
+
+### 应用场景
+
+- ✅ 每日自动巡检
+- ✅ 交接班报告
+- ✅ 运维日报
+- ✅ 系统健康检查
+
+---
+
+## 12_auto_deploy.sh - 自动化部署 🆕
+
+**难度**: ⭐⭐⭐⭐⭐  
+**用途**: 支持多环境、版本回滚、健康检查的自动化部署
+
+### 功能特点
+
+- ✅ **多环境支持** - dev/staging/production
+- ✅ **Git 集成** - 自动拉取指定分支
+- ✅ **版本备份** - 部署前自动备份当前版本
+- ✅ **版本回滚** - 一键回滚到上一版本
+- ✅ **智能构建** - 自动检测并执行构建脚本
+- ✅ **数据库迁移** - Laravel/Django自动迁移
+- ✅ **服务重启** - 自动重启相关服务
+- ✅ **健康检查** - 部署后自动健康检查
+- ✅ **零停机部署** - 支持滚动更新
+
+### 使用方法
+
+```bash
+# 部署到生产环境
+sudo ./12_auto_deploy.sh -e production
+
+# 部署指定分支到测试环境
+sudo ./12_auto_deploy.sh -e staging -b develop
+
+# 回滚生产环境
+sudo ./12_auto_deploy.sh --rollback -e production
+
+# 查看部署状态
+sudo ./12_auto_deploy.sh --status
+
+# 执行健康检查
+sudo ./12_auto_deploy.sh --health-check -e production
+```
+
+### 部署流程
+
+1. 检查依赖和 Git 仓库
+2. 拉取最新代码
+3. 备份当前版本
+4. 同步文件到部署目录
+5. 设置文件权限
+6. 执行构建（npm/composer/pip）
+7. 数据库迁移
+8. 重启服务
+9. 健康检查
+
+### 配置示例
+
+```bash
+# 编辑脚本配置区域
+DEPLOY_USER="www-data"
+DEPLOY_GROUP="www-data"
+DEPLOY_BASE="/var/www"
+BACKUP_BASE="/backup/deploy"
+```
+
+### 应用场景
+
+- ✅ 生产环境部署
+- ✅ 测试环境部署
+- ✅ 紧急回滚
+- ✅ CI/CD 集成
+
+---
+
+## 13_security_hardening.sh - 服务器安全加固 🆕
+
+**难度**: ⭐⭐⭐⭐⭐  
+**用途**: 自动化安全配置，提升服务器安全性
+
+### 功能特点
+
+- ✅ **SSH 安全加固** - 禁止 root、禁用密码、修改端口
+- ✅ **防火墙配置** - firewalld/ufw/iptables自动配置
+- ✅ **用户安全加固** - 空密码检查、UID 0 检查、密码策略
+- ✅ **文件系统安全** - 777 权限修复、SUID/SGID 检查
+- ✅ **系统参数优化** - 网络安全、内核参数
+- ✅ **日志配置** - 日志服务、日志轮转、日志保护
+- ✅ **安全检查报告** - 生成详细安全报告
+- ✅ **配置备份** - 加固前自动备份配置
+- ✅ **可逆操作** - 支持从备份恢复
+
+### 使用方法
+
+```bash
+# 交互式加固
+sudo ./13_security_hardening.sh
+
+# 自动加固（无需确认）
+sudo ./13_security_hardening.sh --auto
+
+# 检查当前配置
+sudo ./13_security_hardening.sh --check
+```
+
+### 加固项目
+
+**SSH 加固**:
+- 禁止 root 登录
+- 禁用密码认证（使用密钥）
+- 启用公钥认证
+- 修改 SSH 端口
+- 限制允许登录的用户
+- 设置空闲超时
+- 禁用 X11 转发
+
+**防火墙配置**:
+- 启用防火墙
+- 设置默认策略
+- 开放必要端口（22/80/443）
+
+**用户安全**:
+- 检查空密码用户
+- 检查 UID 0 用户
+- 设置密码策略（90 天过期）
+- 锁定系统账户
+
+**文件系统**:
+- 修复 777 权限文件
+- 检查 SUID/SGID 文件
+- 设置关键文件权限
+- 配置 umask
+
+**系统参数**:
+- TCP SYN cookies
+- ICMP 配置
+- 反向路径过滤
+- 日志记录可疑数据包
+
+### 安全建议
+
+加固后建议：
+1. 测试 SSH 连接（不要关闭当前会话）
+2. 验证防火墙规则
+3. 检查服务正常运行
+4. 保存备份配置
+5. 定期运行安全检查
+
+### 应用场景
+
+- ✅ 新服务器初始化
+- ✅ 安全合规检查
+- ✅ 安全加固审计
+- ✅ 渗透测试前准备
+
+---
+
+## 📊 脚本对比
+
+| 脚本 | 难度 | 执行时间 | 风险等级 | 推荐频率 |
+|------|------|----------|----------|----------|
+| 01_system_info_check | ⭐⭐⭐ | < 1 秒 | 无风险 | 每天 |
+| 02_batch_user_manager | ⭐⭐⭐⭐ | 视数量 | 中风险 | 按需 |
+| 03_service_monitor | ⭐⭐⭐⭐ | < 5 秒 | 低风险 | 每 5 分钟 |
+| 04_log_cleaner | ⭐⭐⭐ | 视大小 | 中风险 | 每周 |
+| 05_backup_automation | ⭐⭐⭐⭐⭐ | 视数据量 | 低风险 | 每天 |
+| 06_server_inspection | ⭐⭐⭐⭐⭐ | < 10 秒 | 无风险 | 每天 |
+| 07_project_check | ⭐⭐⭐⭐ | 视大小 | 无风险 | 每周 |
+| 08_security_audit | ⭐⭐⭐⭐⭐ | < 30 秒 | 无风险 | 每周 |
+| 09_network_diagnosis | ⭐⭐⭐⭐⭐ | < 60 秒 | 无风险 | 按需 |
+| 10_performance_monitor | ⭐⭐⭐⭐⭐ | 持续 | 无风险 | 持续 |
+| 11_daily_inspection | ⭐⭐⭐⭐⭐ | < 30 秒 | 无风险 | 每天 |
+| 12_auto_deploy | ⭐⭐⭐⭐⭐ | 视项目 | 中风险 | 按需 |
+| 13_security_hardening | ⭐⭐⭐⭐⭐ | < 5 分钟 | 中风险 | 按需 |
+
+---
+
+## 🔧 最佳实践
+
+### 1. 测试环境先行
+
+所有脚本在生产环境使用前，先在测试环境验证。
+
+### 2. 备份重要数据
+
+执行删除、修改操作前，先备份重要数据。
+
+### 3. 记录操作日志
+
+所有脚本都有日志记录功能，便于问题追溯。
+
+### 4. 定期演练恢复
+
+备份脚本要定期测试恢复流程，确保备份可用。
+
+### 5. 权限最小化
+
+使用最小必要权限运行脚本，避免使用 root（如可能）。
+
+### 6. 组合使用脚本
+
+日常巡检可以组合使用：
+
+```bash
+# 每日巡检脚本
+#!/bin/bash
+./11_daily_inspection.sh -o /var/log/inspection/daily_$(date +%Y%m%d).txt
+```
+
+### 7. 自动化定时任务
+
+```bash
+crontab -e
+
+# 每天早上 8 点服务器巡检
+0 8 * * * /path/to/11_daily_inspection.sh -o /var/log/inspection/daily_$(date +\%Y\%m\%d).txt
+
+# 每周日凌晨 2 点安全审计
+0 2 * * 0 /path/to/08_security_audit.sh > /var/log/security/weekly_$(date +\%Y\%m\%d).txt
+
+# 每分钟性能监控记录
+* * * * * /path/to/10_performance_monitor.sh -o -l
+
+# 安全加固（新服务器）
+# 手动执行一次即可
+sudo /path/to/13_security_hardening.sh --auto
 ```
 
 ---
