@@ -549,7 +549,7 @@ abcd  # 红色显示
 
 | 作用 | 样例 |
 |------|------|
-| 定义变量 | `变量名=变量值` 变量名必须以字母或下划线开头，区分大小写 `ip1=192.168.2.115` |
+| 定义变量 | `变量名=变量值` 变量名必须以字母或下划线开头，区分大小写 `ip1=192.168.1.100` |
 | 引用变量 | `$变量名` 或 `${变量名}` |
 | 查看变量 | `echo $变量名` `set`(所有变量：包括自定义变量和环境变量) |
 | 取消变量 | `unset 变量名` |
@@ -593,7 +593,7 @@ abcd  # 红色显示
 变量名=变量值
 
 # 示例：
-ip1=192.168.1.251
+ip1=192.168.1.100
 school="BeiJing 1000phone"
 today1=`date +%F`
 today2=$(date +%F)
@@ -1081,7 +1081,7 @@ done
 #!/usr/bin/bash
 for i in {2..254}; do
     {
-        ip=192.168.122.$i
+        ip=10.0.0.$i
         ping -c1 -W1 $ip &>/dev/null
         if [ $? -eq 0 ]; then
             echo "$ip up."
@@ -1110,7 +1110,7 @@ fi
 
 for i in {2..254}; do
     {
-        ip=192.168.122.$i
+        ip=10.0.0.$i
         ping -c1 -W1 $ip &>/dev/null
         if [ $? -eq 0 ]; then
             echo "$ip" >> ip.txt
@@ -1249,7 +1249,7 @@ done
 for i in {1..254}; do
     read -u 8  # 管道取数，进行管道消费
     {
-        ip=192.168.122.$i
+        ip=10.0.0.$i
         ping -c1 -W1 $ip &>/dev/null
         if [ $? -eq 0 ]; then
             echo "$ip is up."
@@ -1755,7 +1755,7 @@ source /etc/profile
 local_path="/data/gitlab-config-backups /data/gitlab-backups"
 
 # 备份路径 (备份的目标路径)
-backup_path="/logs-nfs/archive/gitlab-test.dianmi365.com"
+backup_path="/backup/archive/gitlab.example.com"
 
 # 备份的保留天数 - 本地 n 天
 # 3 ==> 保留 1 个备份
