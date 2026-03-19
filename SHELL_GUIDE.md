@@ -1976,6 +1976,16 @@ echo "操作完成。/etc/hosts 文件已更新。"
 | GitHub | https://github.com/topics/shell-script | 开源 Shell 脚本项目和示例 |
 | Stack Overflow | https://stackoverflow.com/questions/tagged/bash | Shell 编程问题解答 |
 
+### 在线练习平台
+
+| 平台名称 | 网址 | 说明 |
+|---------|------|------|
+| OnlineGDB | https://www.onlinegdb.com/online_bash_shell | 在线编写和运行 Shell 脚本，无需安装环境 |
+| Repl.it | https://replit.com/languages/bash | 在线 Bash 编辑器，支持保存和分享代码 |
+| ShellCheck | https://www.shellcheck.net/ | 在线检查 Shell 脚本语法错误，给出改进建议 |
+| Exonum Bash Playground | https://exonum.com/bash-playground/ | 交互式 Bash 练习环境 |
+| Katacoda | https://www.katacoda.com/courses/linux | 基于浏览器的 Linux 和 Shell 实战场景 |
+
 ### 推荐书籍
 
 - 《Linux 命令行与 shell 脚本编程大全》- 经典入门书籍
