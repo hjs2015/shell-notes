@@ -23,6 +23,11 @@
   - [2.10 sed 流编辑器](#210-sed 流编辑器)
   - [2.11 awk 文本处理](#211-awk 文本处理)
 - [第 3 章 实战脚本](#第 3 章-实战脚本)
+  - [3.1 GitLab 备份转存脚本](#31-gitlab-备份转存脚本)
+  - [3.2 求某年的某月有多少天](#32-求某年的某月有多少天)
+  - [3.3 添加公网域名解析到本地 hosts](#33-添加公网域名解析到本地-hosts)
+- [附录：常用命令速查](#附录常用命令速查)
+- [学习资源](#学习资源)
 
 ---
 
@@ -1961,6 +1966,29 @@ echo "操作完成。/etc/hosts 文件已更新。"
 
 ## 学习资源
 
+### 在线学习网站
+
+| 网站名称 | 网址 | 说明 |
+|---------|------|------|
+| 菜鸟教程 | https://www.runoob.com/linux/linux-shell.html | 适合初学者的 Shell 入门教程 |
+| Linux 中国 | https://linux.cn/ | Linux 技术社区，大量 Shell 实战文章 |
+| 博客园 | https://www.cnblogs.com/ | 搜索"Shell 编程"有很多优质博文 |
+| GitHub | https://github.com/topics/shell-script | 开源 Shell 脚本项目和示例 |
+| Stack Overflow | https://stackoverflow.com/questions/tagged/bash | Shell 编程问题解答 |
+
+### 推荐书籍
+
+- 《Linux 命令行与 shell 脚本编程大全》- 经典入门书籍
+- 《UNIX Shell 编程》- 系统学习 Shell 编程
+- 《Advanced Bash-Scripting Guide》- 免费在线教程（英文）
+
+### 官方文档
+
+- GNU Bash 手册：`man bash` 或 https://www.gnu.org/software/bash/manual/
+- Linux 命令大全：`man [command]` 或 https://man7.org/linux/man-pages/
+
+### 实践建议
+
 - 本教程基于实际工作经验总结
 - 建议配合实践练习，边学边做
 - 参考官方文档：`man bash`, `man test`, `man sed`, `man awk`
@@ -1969,6 +1997,5 @@ echo "操作完成。/etc/hosts 文件已更新。"
 ---
 
 **版本：** 1.0  
-**最后更新：** 2026-03-21  
 **作者：** hjs2015  
 **GitHub：** https://github.com/hjs2015/shell-notes
