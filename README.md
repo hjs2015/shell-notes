@@ -306,10 +306,16 @@ grep -n "RANDOM" 04_loop/08_guess_number_game.sh
 - 《Bash 编程入门》
 - 《UNIX Shell 程序设计》
 
+### 在线教程
+
+- [Bash 脚本教程 - 菜鸟教程](https://www.runoob.com/linux/linux-shell.html) - 图文教程
+- [Linux Shell 编程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/1091001693819296/1091001792850048) - 图文教程
+
 ### 视频教程
 
-- [Bash 脚本教程 - 菜鸟教程](https://www.runoob.com/linux/linux-shell.html)
-- [Shell 编程基础 - 慕课网](https://www.imooc.com/)
+- [Shell 编程基础 - 慕课网](https://www.imooc.com/) - 搜索 "Shell"
+- [Bash 脚本编程 - YouTube](https://www.youtube.com/results?search_query=bash+scripting+tutorial) - 英文教程
+- [Linux Shell 编程 - B 站](https://search.bilibili.com/all?keyword=shell 编程) - 中文视频
 
 ---
 
