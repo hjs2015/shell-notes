@@ -1074,6 +1074,8 @@ alias ..='cd ..'
 [ -s file ]   # 是否非空
 [ -u file ]   # 是否设置了 SUID 位
 [ -g file ]   # 是否设置了 SGID 位
+[ file1 -nt file2 ]   # file1 是否比 file2 新
+[ file1 -ot file2 ]   # file1 是否比 file2 旧
 ```
 
 ### 数值比较
@@ -1108,6 +1110,8 @@ alias ..='cd ..'
 ! 条件                  # 非 (not)
 ```
 
+---
+
 ### 文件操作
 
 ```bash
@@ -1119,7 +1123,22 @@ rmdir dir             # 删除空目录
 ln -s source link     # 创建符号链接
 chmod 755 file        # 修改权限
 chown user:group file # 修改所有者
+touch file            # 创建空文件或更新时间戳
+find /path -name "*.txt"  # 查找文件
 ```
+
+**高级文件操作：**
+```bash
+cp -r dir1 dir2           # 递归复制目录
+mv -i file1 file2         # 覆盖前询问
+rm -rf dir/               # 强制删除目录
+mkdir -p a/b/c            # 创建多级目录
+chmod -R 755 dir/         # 递归修改权限
+find . -type f -name "*.log" -mtime +7  # 查找 7 天前的日志
+find . -type f -size +100M  # 查找大于 100M 的文件
+```
+
+---
 
 ### 文本处理
 
@@ -1134,6 +1153,38 @@ head -n 10 file               # 查看前 10 行
 tail -n 10 file               # 查看后 10 行
 ```
 
+**Grep 高级用法：**
+```bash
+grep -i "pattern" file        # 忽略大小写
+grep -v "pattern" file        # 反向匹配
+grep -n "pattern" file        # 显示行号
+grep -r "pattern" dir/        # 递归搜索
+grep -E "pat1|pat2" file      # 扩展正则
+grep -c "pattern" file        # 统计匹配行数
+grep -l "pattern" *.txt       # 只显示文件名
+```
+
+**Sed 高级用法：**
+```bash
+sed -i 's/old/new/g' file     # 就地修改
+sed -n '5,10p' file           # 打印 5-10 行
+sed '/pattern/d' file         # 删除匹配行
+sed '2d' file                 # 删除第 2 行
+sed '$d' file                 # 删除最后一行
+sed 's/old/new/2' file        # 替换第 2 个匹配
+```
+
+**Awk 高级用法：**
+```bash
+awk -F: '{print $1}' /etc/passwd    # 指定分隔符
+awk '$3 > 1000 {print $1, $3}' file # 条件过滤
+awk '{sum+=$1} END {print sum}' file # 求和
+awk '{print NR, $0}' file           # 显示行号
+awk 'length > 80' file              # 打印长度>80 的行
+```
+
+---
+
 ### 系统信息
 
 ```bash
@@ -1145,6 +1196,242 @@ df -h             # 磁盘信息
 top               # 进程监控
 ps aux            # 进程列表
 netstat -tlnp     # 网络端口
+```
+
+**系统信息详情：**
+```bash
+cat /etc/os-release           # 操作系统版本
+cat /proc/cpuinfo             # CPU 信息
+cat /proc/meminfo             # 内存详情
+lsblk                         # 块设备信息
+fdisk -l                      # 磁盘分区
+du -sh dir/                   # 目录大小
+whoami                        # 当前用户
+id                            # 用户 ID 和组
+last                          # 最近登录记录
+history                       # 命令历史
+```
+
+---
+
+### 压缩与归档
+
+```bash
+tar -czvf archive.tar.gz dir/     # 创建 gzip 压缩包
+tar -xzvf archive.tar.gz          # 解压 gzip 压缩包
+tar -cjvf archive.tar.bz2 dir/    # 创建 bzip2 压缩包
+tar -xjvf archive.tar.bz2         # 解压 bzip2 压缩包
+zip -r archive.zip dir/           # 创建 zip 压缩包
+unzip archive.zip                 # 解压 zip 压缩包
+gzip file                         # 压缩文件
+gunzip file.gz                    # 解压 gz 文件
+```
+
+---
+
+### 网络命令
+
+```bash
+ping host             # 测试连通性
+curl url              # 发送 HTTP 请求
+wget url              # 下载文件
+ssh user@host         # SSH 远程登录
+scp file user@host:path  # 复制文件到远程
+rsync -av src/ dest/  # 同步文件
+traceroute host       # 路由追踪
+dig domain            # DNS 查询
+nslookup domain       # DNS 查询
+```
+
+**网络诊断：**
+```bash
+ip addr show                  # 查看 IP 地址
+ip route show                 # 查看路由表
+ss -tlnp                      # 查看监听端口
+iptables -L                   # 查看防火墙规则
+tcpdump -i eth0 port 80       # 抓包分析
+```
+
+---
+
+### 进程管理
+
+```bash
+ps aux              # 查看所有进程
+top                 # 实时监控进程
+htop                # 增强版 top
+kill PID            # 终止进程
+kill -9 PID         # 强制终止
+pkill name          # 按名称终止进程
+pgrep name          # 按名称查找进程
+```
+
+**后台作业：**
+```bash
+command &           # 后台运行
+jobs                # 查看后台作业
+fg %1               # 带到前台
+bg %1               # 带到后台
+Ctrl+Z              # 挂起当前进程
+nohup command &     # 忽略挂起运行
+```
+
+---
+
+### 用户与权限
+
+```bash
+useradd username    # 创建用户
+userdel username    # 删除用户
+passwd username     # 修改密码
+usermod -aG group user  # 添加用户到组
+groupadd groupname  # 创建组
+groupdel groupname  # 删除组
+su - username       # 切换用户
+sudo command        # 以 root 权限执行
+```
+
+**权限管理：**
+```bash
+chmod 755 file      # rwxr-xr-x
+chmod 644 file      # rw-r--r--
+chmod +x file       # 添加执行权限
+chown user:group file  # 修改所有者
+chgrp group file    # 修改组
+umask 022           # 设置默认权限
+```
+
+---
+
+### 磁盘管理
+
+```bash
+df -h               # 磁盘空间
+du -sh dir/         # 目录大小
+mount               # 挂载文件系统
+umount /mnt         # 卸载文件系统
+fdisk -l            # 查看分区
+mkfs.ext4 /dev/sdb1 # 格式化分区
+```
+
+**磁盘清理：**
+```bash
+find /var/log -name "*.log" -delete    # 删除日志
+journalctl --vacuum-time=7d            # 清理系统日志
+apt-get clean                          # 清理包缓存
+yum clean all                          # 清理 yum 缓存
+```
+
+---
+
+### 软件包管理
+
+**Debian/Ubuntu:**
+```bash
+apt update                # 更新包列表
+apt upgrade               # 升级包
+apt install package       # 安装包
+apt remove package        # 卸载包
+apt search keyword        # 搜索包
+apt show package          # 显示包信息
+dpkg -i package.deb       # 安装 deb 包
+```
+
+**RHEL/CentOS:**
+```bash
+yum update                # 更新包
+yum install package       # 安装包
+yum remove package        # 卸载包
+yum search keyword        # 搜索包
+yum info package          # 显示包信息
+rpm -ivh package.rpm      # 安装 rpm 包
+```
+
+---
+
+### 常用快捷键
+
+```bash
+Ctrl+A      # 移动到行首
+Ctrl+E      # 移动到行尾
+Ctrl+U      # 删除到行首
+Ctrl+K      # 删除到行尾
+Ctrl+W      # 删除前一个单词
+Ctrl+R      # 搜索命令历史
+Ctrl+C      # 终止当前命令
+Ctrl+Z      # 挂起当前命令
+Ctrl+D      # 退出终端/EOF
+Ctrl+L      # 清屏
+Tab         # 自动补全
+!!          # 执行上一条命令
+!$          # 上一条命令的最后一个参数
+```
+
+---
+
+### 变量操作
+
+```bash
+var="value"           # 定义变量
+echo $var             # 使用变量
+${var}                # 推荐用法
+${#var}               # 字符串长度
+${var:0:5}            # 截取字符串
+${var/old/new}        # 替换第一个匹配
+${var//old/new}       # 替换所有匹配
+${var#pattern}        # 删除开头匹配
+${var%pattern}        # 删除结尾匹配
+${var^^}              # 转大写
+${var,,}              # 转小写
+```
+
+**特殊变量：**
+```bash
+$0        # 脚本名称
+$1-$9     # 位置参数
+$#        # 参数个数
+$@        # 所有参数
+$*        # 所有参数（作为字符串）
+$?        # 上一个命令的退出码
+$$        # 当前进程 ID
+$!        # 最后一个后台进程 ID
+$_        # 上一个命令的最后一个参数
+```
+
+---
+
+### 重定向与管道
+
+```bash
+command > file        # 覆盖输出到文件
+command >> file       # 追加输出到文件
+command 2> file       # 错误输出到文件
+command &> file       # 所有输出到文件
+command < file        # 从文件读取输入
+command1 | command2   # 管道传递
+command1 | tee file   # 同时输出到屏幕和文件
+```
+
+**Here Document:**
+```bash
+cat <<EOF
+这是多行文本
+可以包含变量：$var
+EOF
+```
+
+---
+
+### 调试技巧
+
+```bash
+bash -x script.sh       # 显示执行的命令
+bash -n script.sh       # 检查语法错误
+bash -v script.sh       # 显示读取的命令
+set -x                  # 开启调试模式
+set +x                  # 关闭调试模式
+set -e                  # 出错立即退出
+set -u                  # 使用未定义变量时报错
 ```
 
 ---
