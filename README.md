@@ -1,10 +1,10 @@
 # 📚 Shell 编程笔记与实战案例
 
-> 从零基础到实战的完整 Shell 脚本学习资源 | 55 个脚本 + 9 个目录 README + 完整文档体系
+> 从零基础到实战的完整 Shell 脚本学习资源 | 100+ 个脚本 + 10 个目录 + 完整文档体系
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Shell Scripts](https://img.shields.io/badge/scripts-55-green.svg)](CATALOG.md)
-[![Directories](https://img.shields.io/badge/directories-9-blue.svg)](CATALOG.md)
+[![Shell Scripts](https://img.shields.io/badge/scripts-100+-green.svg)](CATALOG.md)
+[![Directories](https://img.shields.io/badge/directories-10-blue.svg)](CATALOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/hjs2015/shell-notes/main.svg)](../../commits/main)
 [![Issues](https://img.shields.io/github/issues/hjs2015/shell-notes.svg)](../../issues)
 
@@ -36,21 +36,22 @@
 
 ```
 shell-notes/
-├── 01_basic/           # 基础输出 (2 个脚本) ⭐
-├── 02_input/           # 交互式输入 (5 个脚本) ⭐⭐
-├── 03_condition/       # 条件判断 (4 个脚本) ⭐⭐
-├── 04_loop/            # 循环结构 (20 个脚本) ⭐⭐⭐
-├── 05_case/            # 选择结构 (12 个脚本) ⭐⭐⭐
-├── 06_text/            # 文本处理 (3 个 AWK 脚本) ⭐⭐⭐⭐
-├── 07_system/          # 系统管理 (1 个脚本) ⭐⭐⭐⭐
-├── 08_practice/        # 综合练习 (3 个脚本) ⭐⭐⭐⭐⭐
-├── 09_devops/          # DevOps 实战 (5 个脚本) ⭐⭐⭐⭐⭐
+├── 01_basic/           # Shell 基础 (8 个脚本) ⭐
+├── 02_variable/        # 变量和运算 (8 个脚本) ⭐⭐
+├── 03_condition/       # 条件测试 (7 个脚本) ⭐⭐
+├── 04_loop/            # 循环结构 (6 个脚本) ⭐⭐⭐
+├── 05_case/            # 选择结构 (1 个脚本) ⭐⭐⭐
+├── 06_text/            # 文本处理 (15 个脚本) ⭐⭐⭐⭐
+├── 07_system/          # 系统管理 (18 个脚本) ⭐⭐⭐⭐
+├── 08_concurrency/     # 并发控制 (6 个脚本) ⭐⭐⭐⭐
+├── 09_devops/          # DevOps 实战 (21 个脚本) ⭐⭐⭐⭐⭐
+├── 10_function/        # 函数进阶 (4 个脚本) ⭐⭐⭐
 ├── README.md           # 本文件
 ├── CATALOG.md          # 脚本详细清单
 ├── LEARNING_GUIDE.md   # 学习指南
-├── CHEATSHEET.md       # 快速参考
-├── FAQ.md              # 常见问题
-├── CONTRIBUTING.md     # 贡献指南
+├── CHEATSHEET.md       # 快速参考 (626 行)
+├── FAQ.md              # 常见问题 (445 行)
+├── CONTRIBUTING.md     # 贡献指南 (337 行，含安全规范)
 ├── STATS.md            # 统计报告
 ├── scripts_index.md    # 分类索引
 ├── LICENSE             # MIT 许可证
