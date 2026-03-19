@@ -210,14 +210,23 @@ ls
 
 ## 📖 文档导航
 
+### 核心文档（根目录）
 | 文档 | 说明 |
 |------|------|
-| [LEARNING_PATH.md](LEARNING_PATH.md) | 📚 详细学习路径和计划 |
-| [CATALOG.md](CATALOG.md) | 📋 完整脚本清单 |
-| [CHEATSHEET.md](CHEATSHEET.md) | 🔖 快速参考手册 |
-| [FAQ.md](FAQ.md) | ❓ 常见问题解答 |
+| [README.md](README.md) | 🏠 项目介绍和快速开始 |
+| [LEARNING_PATH.md](LEARNING_PATH.md) | 🗺️ 90 天学习路径 |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | 🤝 贡献指南 |
-| [REORGANIZATION_PLAN.md](REORGANIZATION_PLAN.md) | 🏗️ 目录重组说明 |
+| [SHELL_GUIDE.md](SHELL_GUIDE.md) | 📚 完整学习指南 |
+
+### 扩展文档（docs/）
+| 类别 | 文档 |
+|------|------|
+| 📋 脚本清单 | [docs/catalog/CATALOG.md](docs/catalog/CATALOG.md) |
+| 🔖 快速参考 | [docs/reference/CHEATSHEET.md](docs/reference/CHEATSHEET.md) |
+| ❓ 常见问题 | [docs/support/FAQ.md](docs/support/FAQ.md) |
+| 📚 学习指南 | [docs/guides/LEARNING_GUIDE.md](docs/guides/LEARNING_GUIDE.md) |
+
+👉 **访问 [docs/README.md](docs/README.md) 查看完整文档索引**
 
 ---
 
@@ -282,4 +291,4 @@ ls
 
 **祝你学习顺利！** 🚀
 
-[开始学习](LEARNING_PATH.md) | [查看脚本清单](CATALOG.md) | [快速参考](CHEATSHEET.md)
+[开始学习](LEARNING_PATH.md) | [查看指南](SHELL_GUIDE.md) | [贡献指南](CONTRIBUTING.md)
