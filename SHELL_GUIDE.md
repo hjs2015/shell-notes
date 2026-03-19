@@ -1195,14 +1195,4 @@ netstat -tlnp     # 网络端口
 
 ---
 
-## 📝 版本信息
-
-**版本：** 1.0  
-**作者：** hjs2015  
-**GitHub：** https://github.com/hjs2015/shell-notes  
-**许可证：** MIT License  
-
----
-
-**最后更新：** 参见 GitHub 提交历史  
 **本文档基于仓库实际内容生成，与 103 个实战脚本完全对应**
