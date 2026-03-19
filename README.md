@@ -116,6 +116,28 @@ appendices/
 
 ---
 
+## 📖 文档导航
+
+### 核心文档（根目录）
+| 文档 | 说明 |
+|------|------|
+| [README.md](README.md) | 🏠 项目介绍和快速开始 |
+| [LEARNING_PATH.md](LEARNING_PATH.md) | 🗺️ 90 天学习路径 |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 🤝 贡献指南 |
+
+### 完整文档库（docs/）
+| 类别 | 文档 |
+|------|------|
+| 📋 脚本清单 | [docs/catalog/CATALOG.md](docs/catalog/CATALOG.md) |
+| 📖 快速参考 | [docs/reference/CHEATSHEET.md](docs/reference/CHEATSHEET.md) |
+| 📚 学习指南 | [docs/guides/LEARNING_GUIDE.md](docs/guides/LEARNING_GUIDE.md) |
+| ❓ 常见问题 | [docs/support/FAQ.md](docs/support/FAQ.md) |
+| 🗄️ 历史文档 | [docs/archive/](docs/archive/) |
+
+👉 **访问 [docs/README.md](docs/README.md) 查看完整文档索引**
+
+---
+
 ## 🚀 快速开始
 
 ### 1. 克隆仓库
