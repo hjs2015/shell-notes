@@ -14,3 +14,10 @@ Thumbs.db
 # 测试数据
 test_*.txt
 *.data
+
+# 内部文档（不提交）
+*_analysis.md
+*_report.md
+*_draft.md
+TODO.md
+NOTES.md
