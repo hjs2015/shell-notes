@@ -1740,12 +1740,13 @@ awk -F, 'NR==1 {print "Header: "$0} NR>1 {print "Data: "$0}' data.csv
 ```bash
 #!/bin/env bash
 #*************************************
-# Author: huangjinsheng@dianmi365.com
+# Author: hjs2015
 # Email: 1656126280@qq.com
 # Version: 1.0
 # Created Time: 2022-07-20 14:32:53
-# description: 备份转存 gitlab 上的备份到远程，清理本地备份 script
-# Copyright© 2016-2022 深圳市点米二号科技有限公司 All Rights Reserved
+# Description: 备份转存 gitlab 上的备份到远程，清理本地备份
+# License: MIT
+# GitHub: https://github.com/hjs2015/shell-notes
 #*************************************
 
 source /etc/profile
@@ -1828,12 +1829,13 @@ cal_days_in_month $1 $2
 ```bash
 #!/bin/env bash
 #*************************************
-# Author: huangjinsheng@dianmi365.com
+# Author: hjs2015
 # Email: 1656126280@qq.com
 # Version: 1.0
 # Created Time: 2025-02-19 17:02:45
-# description: 脚本可以处理多个域名，并对每个域名执行相同的解析和更新操作
-# Copyright© 2016-2025 深圳市点米二号科技有限公司 All Rights Reserved
+# Description: 自动解析域名并更新/etc/hosts 文件
+# License: MIT
+# GitHub: https://github.com/hjs2015/shell-notes
 #*************************************
 
 source /etc/profile
