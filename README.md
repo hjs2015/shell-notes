@@ -90,7 +90,7 @@ ls
 
 ## 📚 文档导航
 
-本仓库包含 **8 个核心文档**，分类清晰，快速查找：
+本仓库包含 **5 个核心文档**，分类清晰，快速查找：
 
 | 类别 | 文档 | 说明 | 适合人群 |
 |------|------|------|----------|
@@ -102,7 +102,11 @@ ls
 | **❓ 常见问题** | [docs/support/FAQ.md](docs/support/FAQ.md) | 20+ 个问题解答 | 🛠️ 遇到问题 |
 | **🤝 贡献指南** | [CONTRIBUTING.md](CONTRIBUTING.md) | 代码规范、提交流程 | 👨‍💻 贡献者 |
 
-**👉 完整文档索引**: [docs/README.md](docs/README.md)
+**使用建议**：
+- 🔰 **新手**：README.md → LEARNING_PATH.md → 开始学习
+- 📚 **深入学习**：docs/guides/LEARNING_GUIDE.md + SHELL_GUIDE.md
+- ⚡ **写脚本时**：docs/reference/CHEATSHEET.md 快速查语法
+- ❓ **遇到问题**：docs/support/FAQ.md
 
 ---
 
