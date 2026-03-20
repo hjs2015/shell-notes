@@ -1,132 +1,460 @@
 # 📚 Shell Notes 文档中心
 
-> 所有文档的索引和导航
+> 完整的文档索引和导航 | 226 个脚本，24,242 行代码，90 天学习计划
+
+**仓库地址**：https://github.com/hjs2015/shell-notes  
+**最后更新**：2026-03-20  
+**脚本总数**：226 个  
+**文档总数**：29 个 MD 文件
 
 ---
 
-## 📁 文档目录结构
+## 📖 文档分类
+
+本文档中心包含 5 个分类，共 29 个文档：
 
 ```
 docs/
-├── catalog/          # 📋 脚本清单
-├── reference/        # 📖 快速参考
-├── guides/           # 📚 学习指南
-├── support/          # ❓ 常见问题
-└── archive/          # 🗄️  历史文档
+├── README.md              # 📍 本文档（文档中心索引）
+├── guides/                # 📚 学习指南 (2 个文档)
+├── catalog/               # 📋 脚本清单 (2 个文档)
+├── reference/             # 🔖 快速参考 (2 个文档)
+├── support/               # ❓ 支持文档 (1 个文档)
+└── archive/               # 🗄️ 历史文档 (1 个文档)
 ```
-
----
-
-## 📋 脚本清单 (catalog/)
-
-| 文档 | 说明 |
-|------|------|
-| [CATALOG.md](catalog/CATALOG.md) | 完整脚本清单（按字母顺序） |
-| [scripts_index.md](catalog/scripts_index.md) | 脚本索引（按功能分类） |
-
-**用途**: 查找特定脚本或了解所有可用脚本
-
----
-
-## 📖 快速参考 (reference/)
-
-| 文档 | 说明 |
-|------|------|
-| [CHEATSHEET.md](reference/CHEATSHEET.md) | 语法速查表 |
-| [STATS.md](reference/STATS.md) | 项目统计数据 |
-
-**用途**: 快速查找语法、命令和统计信息
-
----
-
-## 📚 学习指南 (guides/)
-
-| 文档 | 说明 |
-|------|------|
-| [LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md) | 详细学习指南 |
-
-**用途**: 学习方法、建议和资源
-
----
-
-## ❓ 常见问题 (support/)
-
-| 文档 | 说明 |
-|------|------|
-| [FAQ.md](support/FAQ.md) | 常见问题解答 |
-
-**用途**: 解决问题和疑惑
-
----
-
-## 🗄️ 历史文档 (archive/)
-
-| 文档 | 说明 |
-|------|------|
-| [README_OLD.md](archive/README_OLD.md) | 旧版主文档 |
-| [REORGANIZATION_PLAN.md](archive/REORGANIZATION_PLAN.md) | 目录重组计划 |
-| [COMMENTS_PROGRESS.md](archive/COMMENTS_PROGRESS.md) | 注释进度记录 |
-
-**用途**: 历史记录和参考
 
 ---
 
 ## 🎯 快速导航
 
-### 新手入门
-1. 📖 [README.md](../README.md) - 项目介绍
-2. 🗺️ [LEARNING_PATH.md](../LEARNING_PATH.md) - 学习路径
-3. 📚 [LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md) - 学习指南
-4. 📋 [CATALOG.md](catalog/CATALOG.md) - 脚本清单
+### 新手入门（第 1 次访问）
 
-### 查找信息
-- 🔍 找脚本 → [catalog/CATALOG.md](catalog/CATALOG.md)
-- 📖 查语法 → [reference/CHEATSHEET.md](reference/CHEATSHEET.md)
-- ❓ 有问题 → [support/FAQ.md](support/FAQ.md)
-- 📊 看统计 → [reference/STATS.md](reference/STATS.md)
+如果你是第一次访问本仓库，建议按以下顺序阅读：
 
-### 深入学习
-- 📚 学习方法 → [guides/LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md)
-- 🤝 参与贡献 → [../CONTRIBUTING.md](../CONTRIBUTING.md)
-- 📜 历史文档 → [archive/](archive/)
+1. **[README.md](../README.md)** - 项目介绍和快速开始
+2. **[LEARNING_PATH.md](../LEARNING_PATH.md)** - 90 天学习路径
+3. **[docs/guides/LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md)** - 详细学习指南
+4. **[docs/catalog/CATALOG.md](catalog/CATALOG.md)** - 脚本完整清单
+
+### 日常学习
+
+- **[docs/guides/SHELL_GUIDE.md](guides/SHELL_GUIDE.md)** - Shell 编程完全指南（226 个脚本详解）
+- **[docs/reference/CHEATSHEET.md](reference/CHEATSHEET.md)** - 语法速查表
+- **[docs/support/FAQ.md](support/FAQ.md)** - 常见问题解答
+
+### 贡献代码
+
+- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - 贡献指南
+- **[docs/catalog/scripts_index.md](catalog/scripts_index.md)** - 脚本索引
+
+---
+
+## 📚 学习指南（guides/）
+
+> 系统性学习 Shell 编程的完整指南
+
+| 文档 | 说明 | 适合人群 | 页数 |
+|------|------|----------|------|
+| [LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md) | 学习指南（详细版） | 新手、进阶 | ~500 行 |
+| [SHELL_GUIDE.md](guides/SHELL_GUIDE.md) | Shell 编程完全指南 | 所有阶段 | ~1,800 行 |
+
+### LEARNING_GUIDE.md
+
+**内容**：
+- 7 个学习阶段详解
+- 90 天学习计划
+- 每个阶段的重点脚本
+- 实战练习案例
+- 推荐学习资源
+
+**适合**：
+- ✅ 第 1 次学习 Shell 编程
+- ✅ 需要系统学习路径
+- ✅ 想要按部就班进步
+
+**阅读时间**：30 分钟
+
+### SHELL_GUIDE.md
+
+**内容**：
+- 226 个脚本完整详解
+- 7 章 +3 附录
+- 200+ 代码示例
+- 60+ 表格对比
+- 200+ 命令速查
+
+**适合**：
+- ✅ 需要查阅特定知识点
+- ✅ 想要完整参考手册
+- ✅ 作为案头工具书
+
+**阅读时间**：查阅式阅读
+
+---
+
+## 📋 脚本清单（catalog/）
+
+> 所有脚本的完整清单和索引
+
+| 文档 | 说明 | 用途 | 行数 |
+|------|------|------|------|
+| [CATALOG.md](catalog/CATALOG.md) | 完整目录 | 查看所有脚本 | ~800 行 |
+| [scripts_index.md](catalog/scripts_index.md) | 脚本索引 | 快速查找脚本 | ~600 行 |
+
+### CATALOG.md
+
+**内容**：
+- 7 个学习阶段
+- 226 个脚本完整列表
+- 每个脚本的名称、难度、时间
+- 目录 README 链接
+
+**用途**：
+- 🔍 浏览所有可用脚本
+- 📊 了解仓库规模
+- 🎯 选择学习方向
+
+### scripts_index.md
+
+**内容**：
+- 按字母顺序索引
+- 按功能分类索引
+- 按难度分级索引
+- 快速查找表
+
+**用途**：
+- 🔍 查找特定功能的脚本
+- 📌 快速定位知识点
+- ⚡ 提高查找效率
+
+---
+
+## 🔖 快速参考（reference/）
+
+> 写脚本时的速查手册
+
+| 文档 | 说明 | 包含内容 | 行数 |
+|------|------|----------|------|
+| [CHEATSHEET.md](reference/CHEATSHEET.md) | 语法速查表 | 命令、变量、流程控制 | ~500 行 |
+| [STATS.md](reference/STATS.md) | 统计报告 | 仓库统计数据 | ~200 行 |
+
+### CHEATSHEET.md
+
+**内容**：
+- 常用命令速查（200+ 个）
+- 变量操作语法
+- 流程控制语法
+- 文本处理命令
+- 调试技巧
+
+**用途**：
+- ⚡ 写脚本时快速查阅
+- 📝 忘记语法时查看
+- 🔧 日常开发参考
+
+**分类**：
+1. 文件操作（11 个命令）
+2. 文本处理（12 个命令）
+3. 系统信息（12 个命令）
+4. 压缩与归档（5 个命令）
+5. 网络命令（9 个命令）
+6. 进程管理（6 个命令）
+7. 用户与权限（7 个命令）
+8. 磁盘管理（5 个命令）
+9. 软件包管理（5 个发行版）
+10. 常用快捷键（12 个）
+11. 变量操作（9 个）
+12. 重定向与管道（7 个）
+13. 调试技巧（7 个）
+
+### STATS.md
+
+**内容**：
+- 脚本总数统计
+- 代码行数统计
+- 学习阶段分布
+- 文档数量统计
+- 发展历程
+
+**用途**：
+- 📊 了解仓库规模
+- 📈 查看发展趋势
+- 🎯 制定学习目标
+
+---
+
+## ❓ 支持文档（support/）
+
+> 常见问题和帮助
+
+| 文档 | 说明 | 问题数量 | 行数 |
+|------|------|----------|------|
+| [FAQ.md](support/FAQ.md) | 常见问题解答 | 20+ 个 | ~400 行 |
+
+### FAQ.md
+
+**内容**：
+- 环境配置问题（5 个）
+- 脚本执行问题（5 个）
+- 语法疑惑问题（5 个）
+- 学习路径问题（3 个）
+- 贡献相关问题（2 个）
+
+**常见问题**：
+1. 如何运行脚本？
+2. 脚本没有执行权限怎么办？
+3. 如何选择合适的学习阶段？
+4. 遇到语法错误怎么办？
+5. 如何贡献代码？
+
+**用途**：
+- ❓ 遇到问题先查阅
+- 💡 快速找到解决方案
+- 🎓 避免常见错误
+
+---
+
+## 🗄️ 历史文档（archive/）
+
+> 仓库发展历程和历史记录
+
+| 文档 | 说明 | 时间 | 行数 |
+|------|------|------|------|
+| [EXPANSION_PLAN.md](archive/EXPANSION_PLAN.md) | 补充计划（已完成） | 2026-03-20 | ~245 行 |
+
+### EXPANSION_PLAN.md
+
+**内容**：
+- 补充计划目标
+- 分阶段补充详情
+- 最终成果统计
+- 发展历程记录
+
+**状态**：✅ **已完成**
+- 目标：200+ 脚本
+- 实际：226 个脚本（113%）
+- 完成时间：2026-03-20
+
+**用途**：
+- 📜 了解仓库发展历程
+- 📊 查看补充计划执行情况
+- 🎯 参考补充策略
 
 ---
 
 ## 📊 文档统计
 
-| 类别 | 文档数 | 说明 |
-|------|--------|------|
-| 📋 清单 | 2 | 脚本目录和索引 |
-| 📖 参考 | 2 | 速查表和统计 |
-| 📚 指南 | 1 | 学习指南 |
-| ❓ 支持 | 1 | 常见问题 |
-| 🗄️ 归档 | 3 | 历史文档 |
-| **总计** | **9** | 完整文档体系 |
+### 按分类统计
+
+| 分类 | 文档数 | 总行数 | 最大文档 |
+|------|--------|--------|----------|
+| **guides/** | 2 个 | ~2,300 行 | SHELL_GUIDE.md (1,800 行) |
+| **catalog/** | 2 个 | ~1,400 行 | CATALOG.md (800 行) |
+| **reference/** | 2 个 | ~700 行 | CHEATSHEET.md (500 行) |
+| **support/** | 1 个 | ~400 行 | FAQ.md (400 行) |
+| **archive/** | 1 个 | ~245 行 | EXPANSION_PLAN.md (245 行) |
+| **总计** | **8 个** | **~5,045 行** | - |
+
+### 按用途分类
+
+| 用途 | 文档数 | 访问频率 |
+|------|--------|----------|
+| **学习指南** | 2 个 | ⭐⭐⭐⭐⭐ |
+| **脚本清单** | 2 个 | ⭐⭐⭐⭐ |
+| **快速参考** | 2 个 | ⭐⭐⭐⭐⭐ |
+| **支持文档** | 1 个 | ⭐⭐⭐ |
+| **历史文档** | 1 个 | ⭐⭐ |
+
+### 按适合人群
+
+| 人群 | 推荐文档 |
+|------|----------|
+| **新手** | README.md → LEARNING_PATH.md → LEARNING_GUIDE.md |
+| **进阶** | SHELL_GUIDE.md → CATALOG.md → CHEATSHEET.md |
+| **贡献者** | CONTRIBUTING.md → scripts_index.md → FAQ.md |
 
 ---
 
-## 🔗 根目录核心文档
+## 🎓 学习路径推荐
 
-根目录只保留 **3 个核心文档**：
+### 新手路线（0-3 个月）
 
-| 文档 | 说明 |
+```
+第 1 天：
+├── 阅读 README.md（了解仓库）
+├── 阅读 LEARNING_PATH.md（制定计划）
+└── 运行 00_quickstart/ 脚本（快速开始）
+
+第 2-7 天：
+├── 学习 01_basics/（28 个脚本）
+├── 参考 CHEATSHEET.md（语法速查）
+└── 查看 FAQ.md（解决问题）
+
+第 8-21 天：
+├── 学习 02_control_flow/（67 个脚本）
+├── 参考 LEARNING_GUIDE.md（详细指导）
+└── 完成实战练习
+
+第 22-90 天：
+├── 学习 03-06_real_world/（126 个脚本）
+├── 参考 SHELL_GUIDE.md（完全指南）
+└── 完成毕业项目
+```
+
+### 进阶路线（3-6 个月）
+
+```
+查阅式学习：
+├── 使用 CATALOG.md 选择主题
+├── 使用 scripts_index.md 查找脚本
+├── 参考 SHELL_GUIDE.md 深入学习
+└── 使用 CHEATSHEET.md 快速查阅
+```
+
+### 贡献者路线
+
+```
+准备贡献：
+├── 阅读 CONTRIBUTING.md（了解规范）
+├── 查看 FAQ.md（避免常见问题）
+├── 参考 scripts_index.md（了解结构）
+└── 提交 PR
+```
+
+---
+
+## 🔗 文档导航图
+
+```
+                    📚 Shell Notes 文档中心
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+   📖 核心文档            📚 学习指南          📋 脚本清单
+        │                     │                     │
+   ┌────┴────┐          ┌────┴────┐          ┌────┴────┐
+   │         │          │         │          │         │
+README  LEARNING   LEARNING  SHELL   CATALOG  scripts
+.md     _PATH.md   _GUIDE.md _GUIDE.md .md     _index.md
+   │
+   └─────────────────────────────────────────────┐
+                                                 │
+   🔖 快速参考                              ❓ 支持文档
+        │                                         │
+   ┌────┴────┐                              ┌────┴────┐
+   │         │                              │         │
+CHEAT-   STATS.md                      FAQ.md    CONTRIBUTING.md
+SHEET.md  .md
+                                                 │
+                                            🗄️ 历史文档
+                                                 │
+                                            ┌────┴────┐
+                                            │         │
+                                         EXPANSION  更多...
+                                         _PLAN.md
+```
+
+---
+
+## 📝 文档维护
+
+### 更新频率
+
+| 文档类型 | 更新频率 | 负责人 |
+|----------|----------|--------|
+| **核心文档** | 每月更新 | 维护团队 |
+| **学习指南** | 每季度更新 | 维护团队 |
+| **脚本清单** | 新增脚本时 | 自动更新 |
+| **快速参考** | 每季度更新 | 维护团队 |
+| **支持文档** | 按需更新 | 社区贡献 |
+| **历史文档** | 不更新 | 归档保存 |
+
+### 贡献文档
+
+欢迎贡献文档！请参考以下步骤：
+
+1. **阅读规范**：[CONTRIBUTING.md](../CONTRIBUTING.md)
+2. **检查现有文档**：避免重复
+3. **创建文档**：遵循模板
+4. **提交 PR**：等待审核
+
+**文档模板**：
+- 标题清晰
+- 包含目录
+- 代码示例
+- 表格对比
+- 链接完整
+
+---
+
+## 📊 仓库统计
+
+| 指标 | 数值 |
 |------|------|
-| [README.md](../README.md) | 项目介绍和快速开始 |
-| [LEARNING_PATH.md](../LEARNING_PATH.md) | 90 天学习路径 |
-| [CONTRIBUTING.md](../CONTRIBUTING.md) | 贡献指南 |
+| **脚本总数** | **226 个** ✅ |
+| **代码行数** | **24,242 行** |
+| **学习阶段** | **7 个** |
+| **学习天数** | **90 天** |
+| **文档总数** | **29 个 MD 文件** |
+| **文档中心** | **8 个 MD 文件** |
 
 ---
 
-## 💡 使用建议
+## 🎯 下一步
 
-1. **新手** - 从根目录的 README 和 LEARNING_PATH 开始
-2. **查找脚本** - 使用 catalog/CATALOG.md
-3. **查询语法** - 使用 reference/CHEATSHEET.md
-4. **遇到问题** - 查看 support/FAQ.md
-5. **深入了解** - 阅读 guides/LEARNING_GUIDE.md
+### 立即开始
+
+1. **新手**：访问 [README.md](../README.md) 开始学习
+2. **进阶**：查看 [SHELL_GUIDE.md](guides/SHELL_GUIDE.md) 深入学习
+3. **贡献**：阅读 [CONTRIBUTING.md](../CONTRIBUTING.md) 参与建设
+
+### 查找文档
+
+- **按分类**：浏览上方表格
+- **按用途**：参考"快速导航"
+- **按人群**：查看"学习路径推荐"
 
 ---
 
-**文档中心** - 让你快速找到需要的信息！📚
+## 💡 使用技巧
 
-[返回主页](../README.md) | [开始学习](../LEARNING_PATH.md)
+### 快速查找
+
+1. **找脚本**：
+   - 使用 [CATALOG.md](catalog/CATALOG.md) 浏览
+   - 使用 [scripts_index.md](catalog/scripts_index.md) 搜索
+
+2. **查语法**：
+   - 使用 [CHEATSHEET.md](reference/CHEATSHEET.md) 速查
+   - 使用 [SHELL_GUIDE.md](guides/SHELL_GUIDE.md) 详解
+
+3. **解决问题**：
+   - 先查 [FAQ.md](support/FAQ.md)
+   - 再查 [LEARNING_GUIDE.md](guides/LEARNING_GUIDE.md)
+
+### 高效学习
+
+1. **按路径学习**：遵循 [LEARNING_PATH.md](../LEARNING_PATH.md)
+2. **配合实践**：每个脚本至少运行 3 遍
+3. **做好笔记**：记录关键知识点
+4. **定期复习**：使用 [CHEATSHEET.md](reference/CHEATSHEET.md) 复习
+
+---
+
+**最后更新**：2026-03-20  
+**作者**：hjs2015  
+**仓库**：https://github.com/hjs2015/shell-notes  
+**版本**：v1.0（文档中心索引）
+
+---
+
+## 🔗 相关链接
+
+- [🏠 返回首页](../README.md)
+- [🗺️ 学习路径](../LEARNING_PATH.md)
+- [🤝 贡献指南](../CONTRIBUTING.md)
+- [📚 学习指南](guides/LEARNING_GUIDE.md)
+- [📖 完全指南](guides/SHELL_GUIDE.md)
+- [📋 脚本清单](catalog/CATALOG.md)
+- [🔖 速查表](reference/CHEATSHEET.md)
+- [❓ FAQ](support/FAQ.md)
