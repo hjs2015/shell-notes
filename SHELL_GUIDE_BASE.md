@@ -1,11 +1,12 @@
 # 📖 Shell 编程快速参考
 
-> 常用命令、语法和技巧速查表
+> **226 个脚本实战提炼** | 常用命令、语法和技巧速查表
 
 ---
 
 ## 📋 目录
 
+- [脚本标准结构](#脚本标准结构) 🆕
 - [基础语法](#基础语法)
 - [变量操作](#变量操作)
 - [运算符](#运算符)
@@ -16,7 +17,69 @@
 - [文本处理](#文本处理)
 - [系统命令](#系统命令)
 - [调试技巧](#调试技巧)
-- [目录文档](#目录文档) 🆕
+- [实战模式](#实战模式) 🆕
+
+---
+
+## 📜 脚本标准结构 🆕
+
+### 完整模板
+
+```bash
+#!/bin/bash
+# =============================================================================
+# 脚本名称：script_name.sh
+# 功能描述：一句话说明脚本功能
+# 难度等级：⭐⭐⭐ 中级
+# 知识点：
+#   - 知识点 1
+#   - 知识点 2
+# 使用方法：
+#   chmod +x script_name.sh
+#   ./script_name.sh
+# =============================================================================
+
+# 颜色定义
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'  # No Color
+
+# 辅助函数
+print_color() {
+    echo -e "${!1}${2}${NC}"
+}
+
+print_separator() {
+    echo "========================================"
+}
+
+# 主逻辑
+print_separator
+print_color CYAN "脚本名称"
+print_separator
+
+# 业务代码...
+
+print_color GREEN "完成！"
+```
+
+### 头部注释规范
+
+```bash
+# =============================================================================
+# 脚本名称：backup_files.sh
+# 功能描述：自动备份指定目录到备份位置
+# 难度等级：⭐⭐⭐⭐ 高级
+# 知识点：
+#   - 变量定义与使用
+#   - 条件判断
+#   - 文件操作
+# 使用方法：
+#   chmod +x backup_files.sh
+#   ./backup_files.sh
+# =============================================================================
+```
 
 ---
 
@@ -27,7 +90,7 @@
 ```bash
 #!/bin/bash          # 使用 bash
 #!/bin/sh            # 使用 sh
-#!/usr/bin/env bash  # 使用环境变量中的 bash
+#!/usr/bin/env bash  # 使用环境变量中的 bash（推荐）
 ```
 
 ### 执行脚本
@@ -613,23 +676,213 @@ echo -e "\033[33m黄色\033[0m"
 
 ---
 
-## 📚 目录文档 🆕
+## 🎯 实战模式 🆕
 
-每个目录都有独立的 README.md 文档，包含详细说明：
+### 1. 颜色输出模式
 
-| 目录 | README | 内容 |
-|------|--------|------|
-| 01_basic | `01_basic/README.md` | 基础输出（echo、变量） |
-| 02_input | `02_input/README.md` | 交互式输入（read、验证） |
-| 03_condition | `03_condition/README.md` | 条件判断（if、测试） |
-| 04_loop | `04_loop/README.md` | 循环结构（for、while） |
-| 05_case | `05_case/README.md` | 选择结构（case、菜单） |
-| 06_text | `06_text/README.md` | 文本处理（AWK、grep） |
-| 07_system | `07_system/README.md` | 系统管理（监控、信息） |
-| 08_practice | `08_practice/README.md` | 综合练习（游戏、应用） |
-| 09_devops | `09_devops/README.md` | DevOps 实战（运维自动化） |
+```bash
+#!/bin/bash
+# 颜色定义
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'  # No Color
 
-**建议**: 学习新目录前，先阅读该目录的 README.md
+# 辅助函数
+print_color() {
+    echo -e "${!1}${2}${NC}"
+}
+
+print_separator() {
+    echo "========================================"
+}
+
+# 使用示例
+print_separator
+print_color CYAN "标题"
+print_separator
+print_color GREEN "成功消息"
+print_color RED "错误消息"
+print_color YELLOW "警告消息"
+```
+
+### 2. 错误处理模式
+
+```bash
+#!/bin/bash
+set -e  # 遇到错误立即退出
+set -u  # 使用未定义变量时报错
+set -o pipefail  # 管道中任何命令失败则整个管道失败
+
+# 错误处理函数
+error_exit() {
+    echo -e "\033[31m错误：$1\033[0m" >&2
+    exit 1
+}
+
+# 使用示例
+command || error_exit "命令执行失败"
+[ -f file.txt ] || error_exit "文件不存在"
+```
+
+### 3. 参数验证模式
+
+```bash
+#!/bin/bash
+
+# 检查参数个数
+if [ $# -lt 1 ]; then
+    echo "用法：$0 <参数>"
+    exit 1
+fi
+
+# 检查文件是否存在
+if [ ! -f "$1" ]; then
+    echo "错误：文件 '$1' 不存在"
+    exit 1
+fi
+
+# 检查是否为目录
+if [ ! -d "$1" ]; then
+    echo "错误：'$1' 不是目录"
+    exit 1
+fi
+```
+
+### 4. 交互式输入模式
+
+```bash
+#!/bin/bash
+
+# 基本输入
+read -p "请输入用户名：" username
+echo "你好，$username"
+
+# 带默认值
+read -p "请输入端口 [8080]: " port
+port=${port:-8080}  # 如果为空，使用默认值
+
+# 隐藏输入（密码）
+read -sp "请输入密码：" password
+echo
+
+# 限时输入
+read -t 10 -p "10 秒内输入：" input
+```
+
+### 5. 网络检查模式
+
+```bash
+#!/bin/bash
+
+# Ping 检查
+ping_check() {
+    if ping -c 1 $1 &> /dev/null; then
+        echo "$1 可达"
+        return 0
+    else
+        echo "$1 不可达"
+        return 1
+    fi
+}
+
+# 端口检查
+port_check() {
+    if nc -z $1 $2 &> /dev/null; then
+        echo "$1:$2 端口开放"
+        return 0
+    else
+        echo "$1:$2 端口关闭"
+        return 1
+    fi
+}
+
+# URL 检查
+url_check() {
+    if curl -s --head "$1" | head -n 1 | grep -q "200"; then
+        echo "$1 可访问"
+        return 0
+    else
+        echo "$1 不可访问"
+        return 1
+    fi
+}
+```
+
+### 6. 备份模式
+
+```bash
+#!/bin/bash
+
+# 变量定义
+SOURCE="/path/to/source"
+DEST="/path/to/backup"
+DATE=$(date +%Y%m%d_%H%M%S)
+BACKUP_NAME="backup_${DATE}.tar.gz"
+
+# 创建备份目录
+mkdir -p $DEST
+
+# 执行备份
+tar -czf $DEST/$BACKUP_NAME $SOURCE
+
+# 验证备份
+if [ -f $DEST/$BACKUP_NAME ]; then
+    echo "备份成功：$DEST/$BACKUP_NAME"
+else
+    echo "备份失败"
+    exit 1
+fi
+```
+
+### 7. 日志记录模式
+
+```bash
+#!/bin/bash
+
+# 日志文件
+LOG_FILE="/var/log/script.log"
+
+# 日志函数
+log_info() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [INFO] $1" | tee -a $LOG_FILE
+}
+
+log_error() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [ERROR] $1" | tee -a $LOG_FILE >&2
+}
+
+log_warn() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [WARN] $1" | tee -a $LOG_FILE
+}
+
+# 使用示例
+log_info "脚本开始执行"
+log_info "处理中..."
+log_warn "这是一个警告"
+log_error "发生错误"
+log_info "脚本执行完成"
+```
+
+### 8. 性能监控模式
+
+```bash
+#!/bin/bash
+
+echo "=== CPU 使用率 ==="
+top -bn1 | head -3
+
+echo -e "\n=== 内存使用 ==="
+free -h
+
+echo -e "\n=== 磁盘使用 ==="
+df -h /
+
+echo -e "\n=== 进程 Top5 ==="
+ps aux --sort=-%mem | head -6
+```
 
 ---
 
@@ -638,11 +891,12 @@ echo -e "\033[33m黄色\033[0m"
 - [Bash 官方手册](https://www.gnu.org/software/bash/manual/)
 - [Shell 脚本编程指南](https://bashguide.readthedocs.io/)
 - [Linux Command](https://linuxcommand.org/)
-- [本仓库脚本示例](../CATALOG.md)
-- [目录 README 文档](../01_basic/README.md)
+- [本仓库 226 个脚本示例](https://github.com/hjs2015/shell-notes)
 
 ---
 
-**最后更新**: 2026-03-18  
-**最新提交**: a7910c8 - docs: 为所有目录添加 README 说明文档
+**最后更新**: 2026-03-21  
+**基于**: 226 个实战脚本提炼  
+**仓库**: https://github.com/hjs2015/shell-notes
+
 [返回顶部](#-shell-编程快速参考)
