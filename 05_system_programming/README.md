@@ -1,116 +1,72 @@
-# ⚙️ 阶段 6：系统编程 (System Programming)
+# 🖥️ 系统编程
 
-> **学习第 43-58 天** | 难度：⭐⭐⭐⭐ | **35 个脚本**
-
----
-
-## 📖 简介
-
-掌握 Shell 系统级编程技能，包括环境变量、作业控制、信号处理等。
-
-**目标**：
-- ✅ 理解 Shell 初始化过程
-- ✅ 掌握作业控制
-- ✅ 学会信号处理
-- ✅ 实现并发控制
-- ✅ 熟练使用快捷操作
-
-**预计时间**：16 天，每天 1-2 小时
+**难度等级**：⭐⭐⭐⭐  
+**学习时间**：第 43-58 天  
+**脚本数量**：10 个
 
 ---
 
-## 📁 脚本清单
+## 📚 本章概述
 
-### 01_shell_init/ - Shell 初始化（10 个）
+系统编程是 Shell 脚本的高级应用，涉及进程管理、用户权限、文件系统、网络编程和定时任务等系统级操作。掌握这些技能可以进行系统自动化运维。
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_shell_variables.sh](01_shell_init/01_shell_variables.sh) | Shell 变量 | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_shell_options.sh](01_shell_init/02_shell_options.sh) | Shell 选项 | ⭐⭐⭐⭐ | 25 分钟 |
-| [03_builtin_commands.sh](01_shell_init/03_builtin_commands.sh) | 内置命令 | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_environment.sh](01_shell_init/04_environment.sh) | 环境变量 | ⭐⭐⭐⭐ | 30 分钟 |
-| [05_profile.sh](01_shell_init/05_profile.sh) | profile 配置 | ⭐⭐⭐⭐ | 30 分钟 |
-| [06_bashrc.sh](01_shell_init/06_bashrc.sh) | bashrc 配置 | ⭐⭐⭐⭐ | 30 分钟 |
-| [07_shell_startup.sh](01_shell_init/07_shell_startup.sh) | 启动流程 | ⭐⭐⭐⭐⭐ | 35 分钟 |
-| [08_shell_config.sh](01_shell_init/08_shell_config.sh) | 配置管理 | ⭐⭐⭐⭐ | 30 分钟 |
-| [09_shell_alias.sh](01_shell_init/09_shell_alias.sh) | 别名设置 | ⭐⭐⭐ | 25 分钟 |
-| [10_shell_prompt.sh](01_shell_init/10_shell_prompt.sh) | 提示符定制 | ⭐⭐⭐⭐ | 30 分钟 |
+---
 
-### 02_job_control/ - 作业控制（7 个）
+## 📋 脚本清单
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_bg_fg.sh](02_job_control/01_bg_fg.sh) | bg/fg | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_jobs_list.sh](02_job_control/02_jobs_list.sh) | jobs 列表 | ⭐⭐⭐⭐ | 25 分钟 |
-| [03_disown.sh](02_job_control/03_disown.sh) | disown | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_nohup.sh](02_job_control/04_nohup.sh) | nohup | ⭐⭐⭐⭐ | 25 分钟 |
-| [05_pid_manage.sh](02_job_control/05_pid_manage.sh) | PID 管理 | ⭐⭐⭐⭐ | 30 分钟 |
-| [06_wait.sh](02_job_control/06_wait.sh) | wait | ⭐⭐⭐⭐ | 25 分钟 |
-| [07_job_advanced.sh](02_job_control/07_job_advanced.sh) | 高级作业控制 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+### 基础模块
 
-### 03_signals/ - 信号处理（5 个）
+| 目录 | 脚本数 | 难度 | 知识点 |
+|------|--------|------|--------|
+| 01_shell_init/ | 多个 | ⭐⭐ | Shell 初始化、环境变量 |
+| 02_job_control/ | 多个 | ⭐⭐⭐ | 作业控制、后台任务 |
+| 03_signals/ | 多个 | ⭐⭐⭐ | 信号处理、trap |
+| 04_concurrency/ | 多个 | ⭐⭐⭐⭐ | 并发控制、锁 |
+| 05_shortcuts/ | 多个 | ⭐⭐ | 快捷键、别名 |
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_signal_list.sh](03_signals/01_signal_list.sh) | 信号列表 | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_signal_catch.sh](03_signals/02_signal_catch.sh) | 捕获信号 | ⭐⭐⭐⭐⭐ | 30 分钟 |
-| [03_signal_ignore.sh](03_signals/03_signal_ignore.sh) | 忽略信号 | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_signal_custom.sh](03_signals/04_signal_custom.sh) | 自定义处理 | ⭐⭐⭐⭐⭐ | 35 分钟 |
-| [05_signal_cleanup.sh](03_signals/05_signal_cleanup.sh) | 清理处理 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+### 系统管理
 
-### 04_concurrency/ - 并发控制（6 个）
-
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_parallel_exec.sh](04_concurrency/01_parallel_exec.sh) | 并行执行 | ⭐⭐⭐⭐⭐ | 35 分钟 |
-| [02_wait_all.sh](04_concurrency/02_wait_all.sh) | 等待所有 | ⭐⭐⭐⭐ | 30 分钟 |
-| [03_mutex_lock.sh](04_concurrency/03_mutex_lock.sh) | 互斥锁 | ⭐⭐⭐⭐⭐ | 40 分钟 |
-| [04_semaphore.sh](04_concurrency/04_semaphore.sh) | 信号量 | ⭐⭐⭐⭐⭐ | 40 分钟 |
-| [05_producer_consumer.sh](04_concurrency/05_producer_consumer.sh) | 生产者消费者 | ⭐⭐⭐⭐⭐ | 45 分钟 |
-| [06_concurrent_advanced.sh](04_concurrency/06_concurrent_advanced.sh) | 高级并发 | ⭐⭐⭐⭐⭐ | 45 分钟 |
-
-### 05_shortcuts/ - 快捷操作（7 个）
-
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_quick_commands.sh](05_shortcuts/01_quick_commands.sh) | 快捷命令 | ⭐⭐⭐ | 20 分钟 |
-| [02_alias_function.sh](05_shortcuts/02_alias_function.sh) | 别名函数 | ⭐⭐⭐ | 25 分钟 |
-| [03_history_expand.sh](05_shortcuts/03_history_expand.sh) | 历史扩展 | ⭐⭐⭐ | 25 分钟 |
-| [04_glob_patterns.sh](05_shortcuts/04_glob_patterns.sh) | 通配符 | ⭐⭐⭐ | 25 分钟 |
-| [05_brace_expand.sh](05_shortcuts/05_brace_expand.sh) | 大括号展开 | ⭐⭐⭐ | 25 分钟 |
-| [06_tilde_expand.sh](05_shortcuts/06_tilde_expand.sh) | 波浪号展开 | ⭐⭐⭐ | 20 分钟 |
-| [07_keyboard_shortcuts.sh](05_shortcuts/07_keyboard_shortcuts.sh) | 键盘快捷键 | ⭐⭐⭐ | 25 分钟 |
+| 脚本 | 名称 | 难度 | 知识点 |
+|------|------|------|--------|
+| 06_process_management/01_process_list.sh | 进程管理 | ⭐⭐ | ps/top/pgrep/kill |
+| 07_user_permission/01_user_management.sh | 用户权限 | ⭐⭐⭐ | 用户/组/权限管理 |
+| 08_filesystem/01_filesystem_basics.sh | 文件系统 | ⭐⭐ | df/du/find |
+| 09_network/01_network_basics.sh | 网络编程 | ⭐⭐ | ip/ping/ss/curl |
+| 10_cron_jobs/01_cron_basics.sh | 定时任务 | ⭐⭐⭐ | crontab 配置 |
 
 ---
 
 ## 🎯 学习目标
 
-完成本阶段后，你将能够：
-
-- ✅ 配置 Shell 环境
-- ✅ 管理后台任务
-- ✅ 捕获和处理信号
-- ✅ 并行执行任务
-- ✅ 使用快捷操作提高效率
+- ✅ 理解进程管理和控制
+- ✅ 掌握用户和权限管理
+- ✅ 熟练使用文件系统工具
+- ✅ 进行基本网络编程
+- ✅ 配置和管理定时任务
 
 ---
 
-## 📝 学习建议
+## 💡 实战建议
 
-1. **理解原理**：信号和作业控制需要理解底层机制
-2. **小心并发**：并发编程容易出错，多测试
-3. **实用为主**：快捷操作能显著提高日常效率
-4. **安全第一**：信号处理要注意资源清理
-
----
-
-## 🔗 下一步
-
-完成本阶段后，继续学习：
-- 🏆 [阶段 7：实战项目](../06_real_world/) - 综合应用所有技能
+1. **进程管理**：学会查看、监控、终止进程
+2. **权限管理**：理解 chmod/chown 用法
+3. **磁盘管理**：定期检查磁盘空间
+4. **网络诊断**：掌握基本网络排查命令
+5. **定时任务**：自动化日常运维工作
 
 ---
 
-**更新时间**：2026-03-20  
-**脚本数**：35 个  
-**最后修订**：hjs2015
+## ⚠️ 注意事项
+
+- 系统级操作需要 root 权限
+- 修改权限前做好备份
+- 定时任务注意环境变量
+- 网络操作注意防火墙规则
+
+---
+
+## 🔗 相关资源
+
+- [Linux 进程管理](https://www.kernel.org/doc/html/latest/scheduler/sched-design-CFS.html)
+- [crontab 语法参考](https://crontab.guru/)
+- [Linux 文件系统层次标准](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html)

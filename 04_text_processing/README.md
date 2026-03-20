@@ -1,92 +1,63 @@
-# ✂️ 阶段 5：文本处理 (Text Processing)
+# 📝 文本处理工具
 
-> **学习第 29-42 天** | 难度：⭐⭐⭐⭐ | **23 个脚本**
-
----
-
-## 📖 简介
-
-掌握 Shell 文本处理三剑客：grep、sed、awk。
-
-**目标**：
-- ✅ 熟练使用 grep 搜索文本
-- ✅ 掌握 sed 流编辑
-- ✅ 理解 awk 文本分析
-
-**预计时间**：14 天，每天 1-2 小时
+**难度等级**：⭐⭐⭐⭐  
+**学习时间**：第 29-42 天  
+**脚本数量**：11 个
 
 ---
 
-## 📁 脚本清单
+## 📚 本章概述
 
-### 01_grep/ - grep 文本搜索（8 个）
+文本处理是 Shell 脚本的核心能力之一。本章介绍常用的文本处理工具，包括 grep、sed、awk 以及基础工具 cut、sort、uniq、tr、wc、head/tail、xargs 等。
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_grep_basic.sh](01_grep/01_grep_basic.sh) | grep 基础 | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_grep_regex.sh](01_grep/02_grep_regex.sh) | 正则表达式 | ⭐⭐⭐⭐ | 30 分钟 |
-| [03_grep_options.sh](01_grep/03_grep_options.sh) | 常用选项 | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_grep_context.sh](01_grep/04_grep_context.sh) | 上下文 | ⭐⭐⭐⭐ | 25 分钟 |
-| [05_grep_count.sh](01_grep/05_grep_count.sh) | 计数 | ⭐⭐⭐⭐ | 20 分钟 |
-| [06_grep_highlight.sh](01_grep/06_grep_highlight.sh) | 高亮显示 | ⭐⭐⭐⭐ | 25 分钟 |
-| [07_grep_multi.sh](01_grep/07_grep_multi.sh) | 多文件搜索 | ⭐⭐⭐⭐ | 30 分钟 |
-| [08_grep_advanced.sh](01_grep/08_grep_advanced.sh) | 高级用法 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+---
 
-### 02_sed/ - sed 流编辑器（7 个）
+## 📋 脚本清单
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_sed_basic.sh](02_sed/01_sed_basic.sh) | sed 基础 | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_sed_replace.sh](02_sed/02_sed_replace.sh) | 替换 | ⭐⭐⭐⭐ | 30 分钟 |
-| [03_sed_delete.sh](02_sed/03_sed_delete.sh) | 删除 | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_sed_insert.sh](02_sed/04_sed_insert.sh) | 插入 | ⭐⭐⭐⭐ | 25 分钟 |
-| [05_sed_print.sh](02_sed/05_sed_print.sh) | 打印 | ⭐⭐⭐⭐ | 25 分钟 |
-| [06_sed_file.sh](02_sed/06_sed_file.sh) | 文件操作 | ⭐⭐⭐⭐⭐ | 30 分钟 |
-| [07_sed_advanced.sh](02_sed/07_sed_advanced.sh) | 高级用法 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+### grep/sed/awk（核心三剑客）
 
-### 03_awk/ - awk 文本分析（8 个）
+| 脚本 | 名称 | 难度 | 知识点 |
+|------|------|------|--------|
+| 01_grep/*.sh | grep 系列 | ⭐⭐⭐ | 文本搜索、正则匹配 |
+| 02_sed/*.sh | sed 系列 | ⭐⭐⭐⭐ | 流编辑、批量替换 |
+| 03_awk/*.sh | awk 系列 | ⭐⭐⭐⭐⭐ | 文本分析、报表生成 |
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_awk_basic.sh](03_awk/01_awk_basic.sh) | awk 基础 | ⭐⭐⭐⭐ | 25 分钟 |
-| [02_awk_fields.sh](03_awk/02_awk_fields.sh) | 字段操作 | ⭐⭐⭐⭐ | 30 分钟 |
-| [03_awk_print.sh](03_awk/03_awk_print.sh) | 打印格式 | ⭐⭐⭐⭐ | 25 分钟 |
-| [04_awk_math.sh](04_awk_math.sh) | 数学运算 | ⭐⭐⭐⭐ | 30 分钟 |
-| [05_awk_condition.sh](03_awk/05_awk_condition.sh) | 条件判断 | ⭐⭐⭐⭐⭐ | 30 分钟 |
-| [06_awk_loop.sh](03_awk/06_awk_loop.sh) | 循环 | ⭐⭐⭐⭐⭐ | 30 分钟 |
-| [07_awk_function.sh](03_awk/07_awk_function.sh) | 函数 | ⭐⭐⭐⭐⭐ | 35 分钟 |
-| [08_awk_advanced.sh](03_awk/08_awk_advanced.sh) | 高级用法 | ⭐⭐⭐⭐⭐ | 40 分钟 |
+### 基础工具
+
+| 脚本 | 名称 | 难度 | 知识点 |
+|------|------|------|--------|
+| 04_cut/01_cut_basics.sh | cut 基础 | ⭐⭐ | 按列提取字段 |
+| 04_cut/02_cut_advanced.sh | cut 进阶 | ⭐⭐⭐ | 复杂场景应用 |
+| 05_sort/01_sort_basics.sh | sort 基础 | ⭐⭐ | 文本排序 |
+| 06_uniq/01_uniq_basics.sh | uniq 基础 | ⭐⭐ | 去重统计 |
+| 07_tr/01_tr_basics.sh | tr 基础 | ⭐⭐ | 字符转换 |
+| 08_wc/01_wc_basics.sh | wc 基础 | ⭐ | 统计行数/字数 |
+| 09_head_tail/01_head_tail_basics.sh | head/tail | ⭐ | 查看文件头尾 |
+| 11_xargs/01_xargs_basics.sh | xargs 基础 | ⭐⭐⭐ | 构建命令参数 |
 
 ---
 
 ## 🎯 学习目标
 
-完成本阶段后，你将能够：
-
-- ✅ 搜索和过滤文本（grep）
-- ✅ 批量替换文本内容（sed）
-- ✅ 生成格式化报告（awk）
-- ✅ 处理日志文件
-- ✅ 提取和分析数据
+- ✅ 掌握 grep 进行文本搜索
+- ✅ 使用 sed 进行流编辑
+- ✅ 使用 awk 进行复杂文本分析
+- ✅ 熟练使用 cut、sort、uniq 等基础工具
+- ✅ 组合多个工具处理复杂文本
 
 ---
 
-## 📝 学习建议
+## 💡 实战建议
 
-1. **先学 grep**：最简单，最常用
-2. **再学 sed**：适合批量替换
-3. **最后学 awk**：功能最强大
-4. **多练习**：文本处理需要大量实践
-
----
-
-## 🔗 下一步
-
-完成本阶段后，继续学习：
-- ⚙️ [阶段 6：系统编程](../05_system_programming/) - Shell 配置和系统调用
+1. **先学基础工具**：cut、sort、uniq、wc、head/tail
+2. **再学三剑客**：grep → sed → awk
+3. **多练习组合**：管道组合多个工具
+4. **实战场景**：日志分析、数据提取、报表生成
 
 ---
 
-**更新时间**：2026-03-20  
-**脚本数**：23 个  
-**最后修订**：hjs2015
+## 🔗 相关资源
+
+- [grep 正则表达式指南](https://www.gnu.org/software/grep/manual/grep.html)
+- [sed 流编辑器手册](https://www.gnu.org/software/sed/manual/sed.html)
+- [awk 编程语言指南](https://www.gnu.org/software/gawk/manual/gawk.html)
