@@ -392,29 +392,6 @@ ls
 
 ---
 
-## 📚 文档导航
-
-仓库包含以下核心文档，帮助你高效学习：
-
-| 文档 | 位置 | 说明 | 适合人群 |
-|------|------|------|----------|
-| **📖 完全指南** | [docs/guides/SHELL_GUIDE.md](docs/guides/SHELL_GUIDE.md) | 226 个脚本详解，53KB，9000+ 行 | 所有阶段 |
-| **📚 学习指南** | [docs/guides/LEARNING_GUIDE.md](docs/guides/LEARNING_GUIDE.md) | 90 天学习计划，18KB | 新手、进阶 |
-| **📋 脚本清单** | [docs/catalog/CATALOG.md](docs/catalog/CATALOG.md) | 完整目录，11KB | 查找脚本 |
-| **🔍 脚本索引** | [docs/catalog/scripts_index.md](docs/catalog/scripts_index.md) | 快速查找，8.2KB | 快速定位 |
-| **🔖 语法速查** | [docs/reference/CHEATSHEET.md](docs/reference/CHEATSHEET.md) | 命令速查表，12KB | 日常开发 |
-| **📊 统计报告** | [docs/reference/STATS.md](docs/reference/STATS.md) | 仓库统计，2.7KB | 了解规模 |
-| **❓ 常见问题** | [docs/support/FAQ.md](docs/support/FAQ.md) | 问题解答，9KB | 遇到问题 |
-| **🗄️ 历史记录** | [docs/archive/EXPANSION_PLAN.md](docs/archive/EXPANSION_PLAN.md) | 补充计划，6.2KB | 了解历程 |
-
-**快速入口**：
-- 🎯 **新手入门**：先看 [LEARNING_PATH.md](LEARNING_PATH.md) → 再看 [docs/guides/LEARNING_GUIDE.md](docs/guides/LEARNING_GUIDE.md)
-- 📖 **查找脚本**：使用 [docs/catalog/CATALOG.md](docs/catalog/CATALOG.md) 或 [docs/catalog/scripts_index.md](docs/catalog/scripts_index.md)
-- 🔧 **日常开发**：参考 [docs/reference/CHEATSHEET.md](docs/reference/CHEATSHEET.md)
-- ❓ **遇到问题**：查看 [docs/support/FAQ.md](docs/support/FAQ.md)
-
----
-
 ## 🤝 参与贡献
 
 欢迎贡献代码、文档或建议！请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解如何参与。
