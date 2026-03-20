@@ -23,7 +23,7 @@
 |------|------|------|------|
 | [01_hello_world.sh](01_hello_world.sh) | Hello World | ⭐ | 10 分钟 |
 | [02_special_variables.sh](02_special_variables.sh) | 特殊变量 | ⭐ | 30 分钟 |
-| [03_user_greeting.sh](03_user_greeting.sh) | 用户问候 | ⭐ | 15 分钟 |
+| [03_wildcards_and_echo.sh](03_wildcards_and_echo.sh) | 通配符 | ⭐ | 15 分钟 |
 | [04_shell_environment_check.sh](04_shell_environment_check.sh) | 环境检测 | ⭐ | 20 分钟 |
 | [05_script_execution_methods.sh](05_script_execution_methods.sh) | 执行方式 | ⭐ | 25 分钟 |
 

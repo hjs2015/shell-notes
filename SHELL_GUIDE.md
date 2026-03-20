@@ -110,24 +110,30 @@ bash 00_quickstart/02_special_variables.sh arg1 arg2 arg3
 
 ---
 
-### 1.3 输入输出基础
+### 1.3 通配符和 Echo
 
-**脚本路径：** [`00_quickstart/03_echo_read.sh`](00_quickstart/03_echo_read.sh)
+**脚本路径：** [`00_quickstart/03_wildcards_and_echo.sh`](00_quickstart/03_wildcards_and_echo.sh)
 
 **知识点：**
-- `echo` - 输出文本
-- `read` - 读取用户输入
-- `read -p` - 带提示语
-- `read -s` - 隐藏输入（密码）
+- `*` - 匹配任意字符
+- `?` - 匹配单个字符
+- `[abc]` - 匹配指定字符
+- `[0-9]` - 匹配数字范围
+- `echo` 命令的各种用法
 
 **示例：**
 ```bash
 #!/bin/bash
-echo "欢迎使用 Shell 脚本！"
-read -p "请输入姓名：" name
-read -sp "请输入密码：" password
-echo ""
-echo "你好，$name！"
+# 通配符示例
+echo "所有 .sh 文件：" *.sh
+echo "单个字符：" file?
+echo "数字范围：" file[0-9]
+
+# echo 命令
+echo "普通输出"
+echo -n "不换行 "
+echo "继续输出"
+echo -e "转义：\t制表符"
 ```
 
 ---
