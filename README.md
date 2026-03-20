@@ -69,9 +69,9 @@ chmod +x 00_quickstart/01_hello_world.sh
 | 文档 | 说明 | 适合人群 |
 |------|------|----------|
 | [📖 SHELL_GUIDE.md](SHELL_GUIDE.md) | 完整学习指南（226 个脚本详解） | 所有阶段 |
-| [📋 CHEATSHEET.md](CHEATSHEET.md) | 常用命令速查（特殊变量/运算符） | 写脚本时查阅 |
+| [📋 SHELL_GUIDE_BASE.md](SHELL_GUIDE_BASE.md) | 基础速查表（特殊变量/运算符） | 写脚本时查阅 |
 
-**新手路线**：README.md → 开始学习 → 查阅 SHELL_GUIDE.md → 速查 CHEATSHEET.md
+**新手路线**：README.md → 开始学习 → 查阅 SHELL_GUIDE.md → 速查 SHELL_GUIDE_BASE.md
 
 ---
 
@@ -88,7 +88,7 @@ shell-notes/
 ├── 06_real_world/          # 阶段 7: 实战项目 (49 个脚本) ⭐⭐⭐⭐⭐
 ├── README.md               # 🏠 项目介绍（本文档）
 ├── SHELL_GUIDE.md          # 📖 完整学习指南
-└── CHEATSHEET.md           # 📋 常用命令速查
+└── SHELL_GUIDE_BASE.md     # 📋 基础速查表
 ```
 
 ---
