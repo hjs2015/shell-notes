@@ -69,11 +69,9 @@ chmod +x 00_quickstart/01_hello_world.sh
 | 文档 | 说明 | 适合人群 |
 |------|------|----------|
 | [📖 SHELL_GUIDE.md](SHELL_GUIDE.md) | 完整学习指南（226 个脚本详解） | 所有阶段 |
-| [📋 SCRIPTS.md](SCRIPTS.md) | 脚本清单索引（快速查找） | 查找脚本 |
-| [❓ FAQ.md](FAQ.md) | 常见问题解答（20+ 问题） | 遇到问题 |
-| [🤝 CONTRIBUTING.md](CONTRIBUTING.md) | 贡献指南（代码规范、提交流程） | 贡献者 |
+| [📋 CHEATSHEET.md](CHEATSHEET.md) | 常用命令速查（特殊变量/运算符） | 写脚本时查阅 |
 
-**新手路线**：README.md → 开始学习 → 查阅 SHELL_GUIDE.md → 遇到问题看 FAQ.md
+**新手路线**：README.md → 开始学习 → 查阅 SHELL_GUIDE.md → 速查 CHEATSHEET.md
 
 ---
 
@@ -90,9 +88,7 @@ shell-notes/
 ├── 06_real_world/          # 阶段 7: 实战项目 (49 个脚本) ⭐⭐⭐⭐⭐
 ├── README.md               # 🏠 项目介绍（本文档）
 ├── SHELL_GUIDE.md          # 📖 完整学习指南
-├── SCRIPTS.md              # 📋 脚本清单索引
-├── FAQ.md                  # ❓ 常见问题
-└── CONTRIBUTING.md         # 🤝 贡献指南
+└── CHEATSHEET.md           # 📋 常用命令速查
 ```
 
 ---
@@ -106,12 +102,6 @@ shell-notes/
 | **学习阶段** | **7 个** |
 | **学习天数** | **90 天** |
 | **实战项目** | **49 个** |
-
----
-
-## 🤝 参与贡献
-
-欢迎贡献代码、文档或建议！请查看 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ---
 
