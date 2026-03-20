@@ -143,7 +143,7 @@ grep -n "RANDOM" 04_loop/08_guess_number_game.sh
 | 主题 | 文件示例 | 难度 | 说明 |
 |------|----------|------|------|
 | Hello World | `01_basic/01_hello_world.sh` | ⭐ | 第一个脚本 |
-| 特殊变量 | `01_basic/02_special_variables.sh` | ⭐⭐ | $0, $1, $$, $?, $RANDOM, $#, $@, $* |
+| 特殊变量 | `01_basic/02_special_variables.sh` | ⭐⭐ | \`$0\`, \`$1\`, \`$$\`, \`$?\`, \`$RANDOM\`, \`$#\`, \`$@\`, \`$*\` |
 | 用户输入 | `02_input/01_name_phone_age.sh` | ⭐⭐ | read -p, -s, -n, -t |
 | 文件检查 | `02_input/03_file_exist_check.sh` | ⭐⭐ | [ -f ], [ -d ], [ -e ], [ -r ], [ -w ], [ -x ] |
 

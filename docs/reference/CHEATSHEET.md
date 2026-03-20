@@ -377,7 +377,7 @@ my_function() {
     echo "第一个参数：$1"
     echo "第二个参数：$2"
     echo "所有参数：$@"
-    echo "参数个数：$#"
+    echo "参数个数：\`$#\`"
 }
 
 my_function hello world

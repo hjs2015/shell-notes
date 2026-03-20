@@ -102,7 +102,7 @@ echo "$files"
 
 ```bash
 # 脚本：test.sh
-echo "参数个数：$#"
+echo "参数个数：\`$#\`"
 echo "\$@: $@"
 echo "\$*: $*"
 
