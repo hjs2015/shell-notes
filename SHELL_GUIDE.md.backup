@@ -190,11 +190,11 @@ fi
 
 ### 2.1 变量（7 个脚本）
 
-**目录：** [`01_basics/`](01_basics/)
+**目录：** [`01_basics/01_variables/`](01_basics/01_variables/)
 
 #### 2.1.1 变量定义与使用
 
-**脚本：** [`01_basics/01_hello_world.sh`](01_basics/01_hello_world.sh)
+**脚本：** [`01_basics/01_variables/01_hello_world.sh`](01_basics/01_variables/01_hello_world.sh)
 
 ```bash
 #!/bin/bash
@@ -257,11 +257,11 @@ echo ${str% World}        # Hello
 
 ### 2.2 运算符（10 个脚本）
 
-**目录：** [`01_basics/`](01_basics/)
+**目录：** [`01_basics/02_operators/`](01_basics/02_operators/)
 
 #### 2.2.1 算术运算
 
-**脚本：** [`01_basics/07_arithmetic.sh`](01_basics/07_arithmetic.sh)
+**脚本：** [`01_basics/02_operators/07_arithmetic.sh`](01_basics/02_operators/07_arithmetic.sh)
 
 ```bash
 #!/bin/bash
@@ -285,7 +285,7 @@ echo $a            # 11
 
 #### 2.2.2 比较运算
 
-**脚本：** [`01_basics/08_comparison.sh`](01_basics/08_comparison.sh)
+**脚本：** [`01_basics/02_operators/08_comparison.sh`](01_basics/02_operators/08_comparison.sh)
 
 ```bash
 #!/bin/bash
@@ -305,7 +305,7 @@ b=20
 
 #### 2.2.3 逻辑运算
 
-**脚本：** [`01_basics/09_logical.sh`](01_basics/09_logical.sh)
+**脚本：** [`01_basics/02_operators/09_logical.sh`](01_basics/02_operators/09_logical.sh)
 
 ```bash
 #!/bin/bash
@@ -326,7 +326,7 @@ b=20
 
 ### 2.3 输入输出（3 个脚本）
 
-**目录：** [`01_basics/`](01_basics/)
+**目录：** [`01_basics/03_io/`](01_basics/03_io/)
 
 #### 2.3.1 read 命令进阶
 
@@ -440,7 +440,7 @@ EOF
 
 ### 3.1 条件判断（10 个脚本）
 
-**目录：** [`02_control_flow/`](02_control_flow/)
+**目录：** [`02_control_flow/01_condition/`](02_control_flow/01_condition/)
 
 #### 3.1.1 if 基础
 

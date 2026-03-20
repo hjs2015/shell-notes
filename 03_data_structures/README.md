@@ -1,87 +1,88 @@
-# 📦 阶段 4：数据结构 (Data Structures)
+# 📚 阶段 4：数据结构 (Data Structures)
 
-> **学习第 22-28 天** | 难度：⭐⭐⭐ | **19 个脚本**
+> **学习第 22-28 天** | 难度：⭐⭐⭐ | **19 个脚本** | **完全扁平化** ✅
 
 ---
 
 ## 📖 简介
 
-掌握 Shell 中的数据结构：索引数组、关联数组和字符串高级操作。
+掌握 Shell 中的数据结构，包括数组、关联数组和字符串高级操作。
 
 **目标**：
-- ✅ 掌握索引数组操作
+- ✅ 掌握索引数组的使用
 - ✅ 理解关联数组（字典）
-- ✅ 熟练字符串高级处理
+- ✅ 熟练字符串高级操作
+- ✅ 学会数据处理技巧
 
 **预计时间**：7 天，每天 1-2 小时
 
 ---
 
-## 📁 脚本清单
+## 📁 脚本清单（重组后）
 
-### 01_indexed_arrays/ - 索引数组（7 个）
+### 索引数组（01-07）
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_array_create.sh](01_indexed_arrays/01_array_create.sh) | 创建数组 | ⭐⭐⭐ | 20 分钟 |
-| [02_array_access.sh](01_indexed_arrays/02_array_access.sh) | 访问数组 | ⭐⭐⭐ | 20 分钟 |
-| [03_array_modify.sh](01_indexed_arrays/03_array_modify.sh) | 修改数组 | ⭐⭐⭐ | 25 分钟 |
-| [04_array_slice.sh](01_indexed_arrays/04_array_slice.sh) | 数组切片 | ⭐⭐⭐⭐ | 25 分钟 |
-| [05_array_merge.sh](01_indexed_arrays/05_array_merge.sh) | 数组合并 | ⭐⭐⭐⭐ | 25 分钟 |
-| [06_array_sort.sh](01_indexed_arrays/06_array_sort.sh) | 数组排序 | ⭐⭐⭐⭐ | 30 分钟 |
-| [07_array_search.sh](01_indexed_arrays/07_array_search.sh) | 数组搜索 | ⭐⭐⭐⭐ | 30 分钟 |
+| 脚本 | 名称 | 难度 | 时间 | 说明 |
+|------|------|------|------|------|
+| [01_for_array.sh](01_for_array.sh) | for 遍历数组 | ⭐⭐ | 20 分钟 | 数组遍历 |
+| [02_arrays.sh](02_arrays.sh) | 数组基础 | ⭐⭐ | 20 分钟 | 定义/访问 |
+| [03_array_slice.sh](03_array_slice.sh) | 数组切片 | ⭐⭐⭐ | 25 分钟 | 切片操作 |
+| [04_array_merge.sh](04_array_merge.sh) | 数组合并 | ⭐⭐⭐ | 25 分钟 | 合并数组 |
+| [05_array_sort.sh](05_array_sort.sh) | 数组排序 | ⭐⭐⭐ | 30 分钟 | 排序算法 |
+| [06_array_unique.sh](06_array_unique.sh) | 数组去重 | ⭐⭐⭐ | 25 分钟 | 去重操作 |
+| [07_array_search.sh](07_array_search.sh) | 数组搜索 | ⭐⭐⭐ | 25 分钟 | 查找元素 |
 
-### 02_associative_arrays/ - 关联数组（6 个）
+### 关联数组（08-13）
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_dict_create.sh](02_associative_arrays/01_dict_create.sh) | 创建字典 | ⭐⭐⭐ | 20 分钟 |
-| [02_dict_access.sh](02_associative_arrays/02_dict_access.sh) | 访问字典 | ⭐⭐⭐ | 20 分钟 |
-| [03_dict_modify.sh](02_associative_arrays/03_dict_modify.sh) | 修改字典 | ⭐⭐⭐ | 25 分钟 |
-| [04_dict_delete.sh](02_associative_arrays/04_dict_delete.sh) | 删除键值 | ⭐⭐⭐ | 20 分钟 |
-| [05_dict_traverse.sh](02_associative_arrays/05_dict_traverse.sh) | 遍历字典 | ⭐⭐⭐ | 25 分钟 |
-| [06_dict_advanced.sh](02_associative_arrays/06_dict_advanced.sh) | 高级操作 | ⭐⭐⭐⭐ | 30 分钟 |
+| 脚本 | 名称 | 难度 | 时间 | 说明 |
+|------|------|------|------|------|
+| [08_associative_arrays.sh](08_associative_arrays.sh) | 关联数组基础 | ⭐⭐⭐ | 25 分钟 | 基本概念 |
+| [09_dict_create.sh](09_dict_create.sh) | 创建字典 | ⭐⭐ | 20 分钟 | 初始化 |
+| [10_dict_access.sh](10_dict_access.sh) | 访问字典 | ⭐⭐ | 20 分钟 | 读取值 |
+| [11_dict_update.sh](11_dict_update.sh) | 更新字典 | ⭐⭐ | 20 分钟 | 修改值 |
+| [12_dict_delete.sh](12_dict_delete.sh) | 删除字典 | ⭐⭐ | 15 分钟 | 删除键值 |
+| [13_dict_iterate.sh](13_dict_iterate.sh) | 遍历字典 | ⭐⭐⭐ | 25 分钟 | 遍历键值 |
 
-### 03_strings/ - 字符串操作（6 个）
+### 字符串高级（14-19）
 
-| 脚本 | 名称 | 难度 | 时间 |
-|------|------|------|------|
-| [01_string_concat.sh](03_strings/01_string_concat.sh) | 字符串拼接 | ⭐⭐⭐ | 20 分钟 |
-| [02_string_split.sh](03_strings/02_string_split.sh) | 字符串分割 | ⭐⭐⭐⭐ | 25 分钟 |
-| [03_string_replace.sh](03_strings/03_string_replace.sh) | 字符串替换 | ⭐⭐⭐ | 20 分钟 |
-| [04_string_trim.sh](03_strings/04_string_trim.sh) | 字符串修剪 | ⭐⭐⭐ | 20 分钟 |
-| [05_string_reverse.sh](03_strings/05_string_reverse.sh) | 字符串反转 | ⭐⭐⭐ | 20 分钟 |
-| [06_string_advanced.sh](03_strings/06_string_advanced.sh) | 高级操作 | ⭐⭐⭐⭐ | 30 分钟 |
-
----
-
-## 🎯 学习目标
-
-完成本阶段后，你将能够：
-
-- ✅ 使用数组存储和遍历数据
-- ✅ 使用关联数组创建键值映射
-- ✅ 进行高级字符串操作
-- ✅ 处理复杂数据结构
+| 脚本 | 名称 | 难度 | 时间 | 说明 |
+|------|------|------|------|------|
+| [14_string_concat.sh](14_string_concat.sh) | 字符串拼接 | ⭐⭐ | 15 分钟 | 连接操作 |
+| [15_string_split.sh](15_string_split.sh) | 字符串分割 | ⭐⭐⭐ | 25 分钟 | 分割操作 |
+| [16_variable_advanced.sh](16_variable_advanced.sh) | 变量高级 | ⭐⭐⭐ | 25 分钟 | 高级用法 |
+| [17_string_replace.sh](17_string_replace.sh) | 字符串替换 | ⭐⭐⭐ | 25 分钟 | 替换操作 |
+| [18_string_strip.sh](18_string_strip.sh) | 字符串清理 | ⭐⭐ | 20 分钟 | 去除字符 |
+| [19_string_reverse.sh](19_string_reverse.sh) | 字符串反转 | ⭐⭐⭐ | 25 分钟 | 反转操作 |
 
 ---
 
-## 📝 学习建议
+## 🎯 学习建议
 
-1. **理解索引**：数组索引从 0 开始
-2. **关联数组**：需要 Bash 4.0+
-3. **字符串操作**：多练习参数扩展
-4. **实战应用**：用数组处理批量数据
+### 第 22-23 天：索引数组
+- 01-07 数组脚本
+- 重点：遍历、切片、排序
+
+### 第 24-25 天：关联数组
+- 08-13 字典脚本
+- 重点：创建、访问、遍历
+
+### 第 26-28 天：字符串高级
+- 14-19 字符串脚本
+- 重点：分割、替换、清理
 
 ---
 
-## 🔗 下一步
+## 📝 重组说明
 
-完成本阶段后，继续学习：
-- ✂️ [阶段 5：文本处理](../04_text_processing/) - grep/sed/awk
+**重组前**：3 个子目录（01_indexed_arrays/02_associative_arrays/03_strings）  
+**重组后**：完全扁平化，19 个脚本统一编号（01-19）
+
+**优势**：
+- ✅ 结构统一，查找快速
+- ✅ 编号连续，便于引用
+- ✅ 分类清晰（数组/字典/字符串）
 
 ---
 
-**更新时间**：2026-03-20  
-**脚本数**：19 个  
-**最后修订**：hjs2015
+*更新时间：2026-03-21*  
+**状态**：✅ 重组完成
