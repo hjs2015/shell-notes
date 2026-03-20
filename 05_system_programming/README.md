@@ -1,169 +1,116 @@
-# ⚙️ 系统编程 (System Programming)
+# ⚙️ 阶段 6：系统编程 (System Programming)
 
-> **学习第 43-58 天** | 难度：⭐⭐⭐⭐ | 10 个脚本
+> **学习第 43-58 天** | 难度：⭐⭐⭐⭐ | **35 个脚本**
 
 ---
 
 ## 📖 简介
 
-系统编程让你能够**管理 Shell 环境和系统资源**。
+掌握 Shell 系统级编程技能，包括环境变量、作业控制、信号处理等。
 
 **目标**：
-- ✅ 掌握 Shell 初始化文件
+- ✅ 理解 Shell 初始化过程
 - ✅ 掌握作业控制
-- ✅ 掌握并发控制
-- ✅ 掌握快捷键和别名
+- ✅ 学会信号处理
+- ✅ 实现并发控制
+- ✅ 熟练使用快捷操作
 
-**预计时间**：2 周
+**预计时间**：16 天，每天 1-2 小时
 
 ---
 
 ## 📁 脚本清单
 
-```
-05_system_programming/
-├── 01_shell_init/      # Shell 初始化 (5 个)
-├── 02_job_control/     # 作业控制 (2 个)
-├── 04_concurrency/     # 并发控制 (1 个)
-└── 05_shortcuts/       # 快捷键 (2 个文档)
-```
+### 01_shell_init/ - Shell 初始化（10 个）
+
+| 脚本 | 名称 | 难度 | 时间 |
+|------|------|------|------|
+| [01_shell_variables.sh](01_shell_init/01_shell_variables.sh) | Shell 变量 | ⭐⭐⭐⭐ | 25 分钟 |
+| [02_shell_options.sh](01_shell_init/02_shell_options.sh) | Shell 选项 | ⭐⭐⭐⭐ | 25 分钟 |
+| [03_builtin_commands.sh](01_shell_init/03_builtin_commands.sh) | 内置命令 | ⭐⭐⭐⭐ | 25 分钟 |
+| [04_environment.sh](01_shell_init/04_environment.sh) | 环境变量 | ⭐⭐⭐⭐ | 30 分钟 |
+| [05_profile.sh](01_shell_init/05_profile.sh) | profile 配置 | ⭐⭐⭐⭐ | 30 分钟 |
+| [06_bashrc.sh](01_shell_init/06_bashrc.sh) | bashrc 配置 | ⭐⭐⭐⭐ | 30 分钟 |
+| [07_shell_startup.sh](01_shell_init/07_shell_startup.sh) | 启动流程 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+| [08_shell_config.sh](01_shell_init/08_shell_config.sh) | 配置管理 | ⭐⭐⭐⭐ | 30 分钟 |
+| [09_shell_alias.sh](01_shell_init/09_shell_alias.sh) | 别名设置 | ⭐⭐⭐ | 25 分钟 |
+| [10_shell_prompt.sh](01_shell_init/10_shell_prompt.sh) | 提示符定制 | ⭐⭐⭐⭐ | 30 分钟 |
+
+### 02_job_control/ - 作业控制（7 个）
+
+| 脚本 | 名称 | 难度 | 时间 |
+|------|------|------|------|
+| [01_bg_fg.sh](02_job_control/01_bg_fg.sh) | bg/fg | ⭐⭐⭐⭐ | 25 分钟 |
+| [02_jobs_list.sh](02_job_control/02_jobs_list.sh) | jobs 列表 | ⭐⭐⭐⭐ | 25 分钟 |
+| [03_disown.sh](02_job_control/03_disown.sh) | disown | ⭐⭐⭐⭐ | 25 分钟 |
+| [04_nohup.sh](02_job_control/04_nohup.sh) | nohup | ⭐⭐⭐⭐ | 25 分钟 |
+| [05_pid_manage.sh](02_job_control/05_pid_manage.sh) | PID 管理 | ⭐⭐⭐⭐ | 30 分钟 |
+| [06_wait.sh](02_job_control/06_wait.sh) | wait | ⭐⭐⭐⭐ | 25 分钟 |
+| [07_job_advanced.sh](02_job_control/07_job_advanced.sh) | 高级作业控制 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+
+### 03_signals/ - 信号处理（5 个）
+
+| 脚本 | 名称 | 难度 | 时间 |
+|------|------|------|------|
+| [01_signal_list.sh](03_signals/01_signal_list.sh) | 信号列表 | ⭐⭐⭐⭐ | 25 分钟 |
+| [02_signal_catch.sh](03_signals/02_signal_catch.sh) | 捕获信号 | ⭐⭐⭐⭐⭐ | 30 分钟 |
+| [03_signal_ignore.sh](03_signals/03_signal_ignore.sh) | 忽略信号 | ⭐⭐⭐⭐ | 25 分钟 |
+| [04_signal_custom.sh](03_signals/04_signal_custom.sh) | 自定义处理 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+| [05_signal_cleanup.sh](03_signals/05_signal_cleanup.sh) | 清理处理 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+
+### 04_concurrency/ - 并发控制（6 个）
+
+| 脚本 | 名称 | 难度 | 时间 |
+|------|------|------|------|
+| [01_parallel_exec.sh](04_concurrency/01_parallel_exec.sh) | 并行执行 | ⭐⭐⭐⭐⭐ | 35 分钟 |
+| [02_wait_all.sh](04_concurrency/02_wait_all.sh) | 等待所有 | ⭐⭐⭐⭐ | 30 分钟 |
+| [03_mutex_lock.sh](04_concurrency/03_mutex_lock.sh) | 互斥锁 | ⭐⭐⭐⭐⭐ | 40 分钟 |
+| [04_semaphore.sh](04_concurrency/04_semaphore.sh) | 信号量 | ⭐⭐⭐⭐⭐ | 40 分钟 |
+| [05_producer_consumer.sh](04_concurrency/05_producer_consumer.sh) | 生产者消费者 | ⭐⭐⭐⭐⭐ | 45 分钟 |
+| [06_concurrent_advanced.sh](04_concurrency/06_concurrent_advanced.sh) | 高级并发 | ⭐⭐⭐⭐⭐ | 45 分钟 |
+
+### 05_shortcuts/ - 快捷操作（7 个）
+
+| 脚本 | 名称 | 难度 | 时间 |
+|------|------|------|------|
+| [01_quick_commands.sh](05_shortcuts/01_quick_commands.sh) | 快捷命令 | ⭐⭐⭐ | 20 分钟 |
+| [02_alias_function.sh](05_shortcuts/02_alias_function.sh) | 别名函数 | ⭐⭐⭐ | 25 分钟 |
+| [03_history_expand.sh](05_shortcuts/03_history_expand.sh) | 历史扩展 | ⭐⭐⭐ | 25 分钟 |
+| [04_glob_patterns.sh](05_shortcuts/04_glob_patterns.sh) | 通配符 | ⭐⭐⭐ | 25 分钟 |
+| [05_brace_expand.sh](05_shortcuts/05_brace_expand.sh) | 大括号展开 | ⭐⭐⭐ | 25 分钟 |
+| [06_tilde_expand.sh](05_shortcuts/06_tilde_expand.sh) | 波浪号展开 | ⭐⭐⭐ | 20 分钟 |
+| [07_keyboard_shortcuts.sh](05_shortcuts/07_keyboard_shortcuts.sh) | 键盘快捷键 | ⭐⭐⭐ | 25 分钟 |
 
 ---
 
 ## 🎯 学习目标
 
-### Shell 初始化
-- ✅ 登录 Shell vs 非登录 Shell
-- ✅ .bash_profile, .bashrc, .profile
-- ✅ 环境变量配置
-- ✅ Shell 启动流程
+完成本阶段后，你将能够：
 
-### 作业控制
-- ✅ 前台/后台作业
-- ✅ job, fg, bg 命令
-- ✅ 信号处理
-
-### 并发控制
-- ✅ 命名管道
-- ✅ 并发执行
-- ✅ 进程同步
-
-### 快捷键
-- ✅ 常用键盘快捷键
-- ✅ 命令行编辑
-- ✅ 历史命令
+- ✅ 配置 Shell 环境
+- ✅ 管理后台任务
+- ✅ 捕获和处理信号
+- ✅ 并行执行任务
+- ✅ 使用快捷操作提高效率
 
 ---
 
-## 📝 学习路径
+## 📝 学习建议
 
-### 第 43-46 天：Shell 初始化
-
-**脚本**：
-- `01_shell_init/01_return_code_and_logic.sh` - 返回值
-- `01_shell_init/02_boolean_and_special_vars.sh` - 特殊变量
-- `01_shell_init/10_shell_initialization.sh` - Shell 初始化
-
-**知识点**：
-```bash
-# 查看 Shell 类型
-echo $0
-
-# 登录 Shell 文件
-~/.bash_profile   # 登录时执行
-~/.bashrc         # 每次打开终端执行
-~/.profile        # 通用登录文件
-
-# 环境变量
-export PATH=$PATH:/usr/local/bin
-export EDITOR=vim
-```
+1. **理解原理**：信号和作业控制需要理解底层机制
+2. **小心并发**：并发编程容易出错，多测试
+3. **实用为主**：快捷操作能显著提高日常效率
+4. **安全第一**：信号处理要注意资源清理
 
 ---
 
-### 第 47-50 天：作业控制
+## 🔗 下一步
 
-**脚本**：
-- `02_job_control/03_job_control.sh` - 作业控制基础
-- `02_job_control/13_job_control.sh` - 作业控制高级
-
-**知识点**：
-```bash
-# 后台运行
-sleep 100 &
-
-# 查看作业
-jobs
-
-# 前台运行
-fg %1
-
-# 后台运行
-bg %1
-
-# 信号
-kill -9 PID
-killall process_name
-```
+完成本阶段后，继续学习：
+- 🏆 [阶段 7：实战项目](../06_real_world/) - 综合应用所有技能
 
 ---
 
-### 第 51-54 天：并发控制
-
-**脚本**：
-- `04_concurrency/08_concurrency_control.sh` - 并发控制
-
-**知识点**：
-```bash
-# 命名管道
-mkfifo /tmp/mypipe
-
-# 并发执行
-command1 &
-command2 &
-wait
-
-# 进程同步
-flock -x lockfile command
-```
-
----
-
-### 第 55-58 天：快捷键
-
-**文档**：
-- `05_shortcuts/11_command_history.sh` - 命令历史
-- `05_shortcuts/12_alias_function.sh` - 别名和函数
-- `05_shortcuts/15_keyboard_shortcuts.md` - 键盘快捷键
-
-**常用快捷键**：
-```bash
-Ctrl + A    # 行首
-Ctrl + E    # 行尾
-Ctrl + U    # 删除到行首
-Ctrl + K    # 删除到行尾
-Ctrl + R    # 搜索历史
-Ctrl + C    # 中断进程
-Ctrl + Z    # 挂起进程
-Tab         # 自动补全
-```
-
----
-
-## ✅ 学习检查
-
-- [ ] 解释 .bashrc 和 .bash_profile 的区别
-- [ ] 配置环境变量
-- [ ] 管理前台/后台作业
-- [ ] 使用命名管道
-- [ ] 使用常用快捷键
-
----
-
-## 🎓 下一步
-
-👉 **[06_real_world/](../06_real_world/)** - 实战项目（第 59-90 天）
-
----
-
-**祝你学习顺利！** 🚀
+**更新时间**：2026-03-20  
+**脚本数**：35 个  
+**最后修订**：hjs2015

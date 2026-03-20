@@ -1,9 +1,9 @@
 # 📚 Shell 编程笔记与实战案例
 
-> 从零基础到实战的完整 Shell 脚本学习资源 | **100 个脚本** + **7 个学习阶段** + **完整学习路径**
+> 从零基础到实战的完整 Shell 脚本学习资源 | **226 个脚本** + **7 个学习阶段** + **完整学习路径**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Shell Scripts](https://img.shields.io/badge/scripts-100-green.svg)](LEARNING_PATH.md)
+[![Shell Scripts](https://img.shields.io/badge/scripts-226-green.svg)](LEARNING_PATH.md)
 [![Stages](https://img.shields.io/badge/stages-7-orange.svg)](LEARNING_PATH.md)
 [![Last Commit](https://img.shields.io/github/last-commit/hjs2015/shell-notes/main.svg)](../../commits/main)
 [![Issues](https://img.shields.io/github/issues/hjs2015/shell-notes.svg)](../../issues)
@@ -12,7 +12,7 @@
 
 ## 🎯 简介
 
-本仓库包含 **100 个经典脚本案例**，按照 **7 个学习阶段** 科学组织，涵盖从基础语法到实战项目的完整学习路径。所有案例都来自实际运维场景，适合：
+本仓库包含 **226 个经典脚本案例**，按照 **7 个学习阶段** 科学组织，涵盖从基础语法到实战项目的完整学习路径。所有案例都来自实际运维场景，适合：
 
 - ✅ Shell 编程初学者
 - ✅ 需要提升脚本能力的开发者
@@ -27,7 +27,7 @@
 - 💼 **实战导向** - 所有案例来自真实运维场景
 - 📊 **难度分级** - ⭐ 入门 到 ⭐⭐⭐⭐⭐ 专家
 - 🔧 **开箱即用** - 克隆即可运行，无需配置
-- 🚀 **完整项目** - 24 个实战项目
+- 🚀 **完整项目** - 49 个实战项目
 - 📚 **学习路径** - 详细的学习计划和检查点
 
 ---
@@ -36,13 +36,14 @@
 
 | 阶段 | 名称 | 时间 | 难度 | 目录 | 脚本数 |
 |:---:|:---:|:---:|:---:|:---|:---:|
-| 1 | 快速开始 | 第 1 天 | ⭐ | `00_quickstart/` | 3 |
-| 2 | 基础篇 | 第 2-7 天 | ⭐⭐ | `01_basics/` | 12 |
-| 3 | 流程控制 | 第 8-21 天 | ⭐⭐⭐ | `02_control_flow/` | 44 |
-| 4 | 数据结构 | 第 22-28 天 | ⭐⭐⭐ | `03_data_structures/` | 4 |
-| 5 | 文本处理 | 第 29-42 天 | ⭐⭐⭐⭐ | `04_text_processing/` | 6 |
-| 6 | 系统编程 | 第 43-58 天 | ⭐⭐⭐⭐ | `05_system_programming/` | 10 |
-| 7 | 实战项目 | 第 59-90 天 | ⭐⭐⭐⭐⭐ | `06_real_world/` | 24 |
+| 1 | 快速开始 | 第 1 天 | ⭐ | `00_quickstart/` | **5** |
+| 2 | 基础篇 | 第 2-7 天 | ⭐⭐ | `01_basics/` | **28** |
+| 3 | 流程控制 | 第 8-21 天 | ⭐⭐⭐ | `02_control_flow/` | **67** |
+| 4 | 数据结构 | 第 22-28 天 | ⭐⭐⭐ | `03_data_structures/` | **19** |
+| 5 | 文本处理 | 第 29-42 天 | ⭐⭐⭐⭐ | `04_text_processing/` | **23** |
+| 6 | 系统编程 | 第 43-58 天 | ⭐⭐⭐⭐ | `05_system_programming/` | **35** |
+| 7 | 实战项目 | 第 59-90 天 | ⭐⭐⭐⭐⭐ | `06_real_world/` | **49** |
+| **总计** | **90 天** | **12 周** | **-** | **7 个目录** | **226** ✅ |
 
 **📖 详细学习路径请查看**: [LEARNING_PATH.md](LEARNING_PATH.md)
 
@@ -52,7 +53,7 @@
 
 ### 🚀 阶段 1: 快速开始 (第 1 天)
 ```
-00_quickstart/          (3 个脚本) ⭐
+00_quickstart/          (5 个脚本) ⭐
 ├── 01_hello_world.sh
 ├── 02_special_variables.sh
 └── 05_wildcards_and_echo.sh
@@ -60,7 +61,7 @@
 
 ### 📚 阶段 2: 基础篇 (第 2-7 天)
 ```
-01_basics/              (12 个脚本) ⭐⭐
+01_basics/              (28 个脚本) ⭐⭐
 ├── 01_variables/       # 变量定义 (5 个)
 ├── 02_operators/       # 运算符 (4 个)
 └── 03_io/              # 输入输出 (3 个)
@@ -68,7 +69,7 @@
 
 ### 🔄 阶段 3: 流程控制 (第 8-21 天)
 ```
-02_control_flow/        (44 个脚本) ⭐⭐⭐
+02_control_flow/        (67 个脚本) ⭐⭐⭐
 ├── 01_condition/       # 条件判断 (7 个)
 ├── 02_loops/           # 循环结构 (22 个)
 ├── 03_case/            # 选择结构 (12 个)
@@ -77,7 +78,7 @@
 
 ### 🗂️ 阶段 4: 数据结构 (第 22-28 天)
 ```
-03_data_structures/     (4 个脚本) ⭐⭐⭐
+03_data_structures/     (19 个脚本) ⭐⭐⭐
 ├── 01_indexed_arrays/  # 索引数组 (2 个)
 ├── 02_associative_arrays/ # 关联数组 (1 个)
 └── 03_strings/         # 字符串操作 (1 个)
@@ -85,7 +86,7 @@
 
 ### 📝 阶段 5: 文本处理 (第 29-42 天)
 ```
-04_text_processing/     (6 个脚本) ⭐⭐⭐⭐
+04_text_processing/     (23 个脚本) ⭐⭐⭐⭐
 ├── 01_grep/            # grep 搜索 (1 个)
 ├── 02_sed/             # sed 编辑 (1 个)
 └── 03_awk/             # awk 分析 (4 个)
@@ -93,7 +94,7 @@
 
 ### ⚙️ 阶段 6: 系统编程 (第 43-58 天)
 ```
-05_system_programming/  (10 个脚本) ⭐⭐⭐⭐
+05_system_programming/  (35 个脚本) ⭐⭐⭐⭐
 ├── 01_shell_init/      # Shell 初始化 (4 个)
 ├── 02_job_control/     # 作业控制 (2 个)
 ├── 04_concurrency/     # 并发控制 (2 个)
@@ -102,7 +103,7 @@
 
 ### 🚀 阶段 7: 实战项目 (第 59-90 天)
 ```
-06_real_world/          (24 个脚本) ⭐⭐⭐⭐⭐
+06_real_world/          (49 个脚本) ⭐⭐⭐⭐⭐
 ├── 07_security_tools/  # 安全工具 (3 个)
 └── 08_devops_tools/    # DevOps 工具 (21 个)
 ```
