@@ -1,17 +1,17 @@
 # 🐚 Shell 编程笔记与实战案例
 
-> **260 个脚本** | **7 个学习阶段** | **90 天学习计划** | **29,779 行代码**
+> **268 个脚本** | **7 个学习阶段** | **90 天学习计划** | **32,209 行代码**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Scripts](https://img.shields.io/badge/scripts-260-green.svg)](#学习路径)
-[![Lines](https://img.shields.io/badge/lines-29779-orange.svg)](#统计)
+[![Scripts](https://img.shields.io/badge/scripts-268-green.svg)](#学习路径)
+[![Lines](https://img.shields.io/badge/lines-32209-orange.svg)](#统计)
 [![Stages](https://img.shields.io/badge/stages-7-red.svg)](#学习路径)
 
 ---
 
 ## 🎯 简介
 
-**260 个 Shell 脚本实战案例**，从基础语法到运维实战，循序渐进掌握 Shell 编程。
+**268 个 Shell 脚本实战案例**，从基础语法到运维实战，循序渐进掌握 Shell 编程。
 
 **适合人群**：
 - 🐧 Linux 系统管理员
@@ -37,8 +37,8 @@
 | 4 | 数据结构 | 第 22-28 天 | ⭐⭐⭐ | 19 | 字符串、数组、管道 |
 | 5 | 文本处理 | 第 29-42 天 | ⭐⭐⭐⭐ | 41 | grep/sed/awk/cut/sort/uniq/tr/wc/head/tail/paste/join/xargs |
 | 6 | 系统编程 | 第 43-58 天 | ⭐⭐⭐⭐ | 44 | 进程、信号、文件锁、文件系统、网络 |
-| 7 | 实战项目 | 第 59-90 天 | ⭐⭐⭐⭐⭐ | 56 | 监控、备份、部署、安全、日志、CI/CD、故障排查、函数库 |
-| **总计** | **90 天** | **12 周** | **-** | **260** ✅ | **完整体系** |
+| 7 | 实战项目 | 第 59-90 天 | ⭐⭐⭐⭐⭐ | 64 | 监控、备份、部署、安全、日志、CI/CD、故障排查、函数库、Docker、用户管理、网络工具 |
+| **总计** | **90 天** | **12 周** | **-** | **268** ✅ | **完整体系** |
 
 ---
 
@@ -80,9 +80,9 @@ shell-notes/
 ├── 01_basics/              # 阶段 2: 基础篇 (28 个脚本) ⭐⭐
 ├── 02_control_flow/        # 阶段 3: 流程控制 (67 个脚本) ⭐⭐⭐
 ├── 03_data_structures/     # 阶段 4: 数据结构 (19 个脚本) ⭐⭐⭐
-├── 04_text_processing/     # 阶段 5: 文本处理 (23 个脚本) ⭐⭐⭐⭐
-├── 05_system_programming/  # 阶段 6: 系统编程 (35 个脚本) ⭐⭐⭐⭐
-├── 06_real_world/          # 阶段 7: 实战项目 (49 个脚本) ⭐⭐⭐⭐⭐
+├── 04_text_processing/     # 阶段 5: 文本处理 (41 个脚本) ⭐⭐⭐⭐
+├── 05_system_programming/  # 阶段 6: 系统编程 (44 个脚本) ⭐⭐⭐⭐
+├── 06_real_world/          # 阶段 7: 实战项目 (64 个脚本) ⭐⭐⭐⭐⭐ 🎉
 ├── README.md               # 🏠 项目介绍
 ├── SHELL_GUIDE.md          # 📖 完整学习指南
 └── SHELL_GUIDE_BASE.md     # 📋 基础速查表
@@ -94,8 +94,8 @@ shell-notes/
 
 | 指标 | 数量 |
 |------|------|
-| **总脚本数** | **226 个** ✅ |
-| **代码行数** | **24,242 行** |
+| **总脚本数** | **268 个** ✅ |
+| **代码行数** | **32,209 行** |
 | **学习阶段** | **7 个** |
 | **学习天数** | **90 天** |
 | **实战项目** | **56 个** |
