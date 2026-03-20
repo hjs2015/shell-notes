@@ -1,185 +1,227 @@
-# 🚀 实战项目 (Real World Projects)
+# 🏆 阶段 7：实战项目
 
-> **学习第 59-90 天** | 难度：⭐⭐⭐⭐⭐ | 24 个脚本
+> 综合应用所有技能完成实战项目 | 难度 ⭐⭐⭐⭐⭐ | 预计 32 天完成
 
----
-
-## 📖 简介
-
-实战项目**综合运用所学知识**，解决实际问题。
-
-**目标**：
-- ✅ 开发系统管理工具
-- ✅ 自动化日常任务
-- ✅ 编写生产级脚本
-
-**预计时间**：4 周
+**脚本总数**：**49 个**  
+**难度等级**：⭐⭐⭐⭐⭐（专家级）  
+**预计时间**：第 59-90 天（32 天）
 
 ---
 
-## 📁 项目清单
+## 📁 子目录清单
 
-```
-06_real_world/
-├── 07_security_tools/    # 安全工具 (3 个)
-└── 08_devops_tools/      # DevOps 工具 (21 个)
-```
-
----
-
-## 🎯 项目分类
-
-### 安全工具 (3 个)
-- 密码验证器
-- 用户注册系统
-- 用户登录系统
-
-### DevOps 工具 (21 个)
-- 系统信息检查
-- 批量用户管理
-- 服务监控
-- 日志清理
-- 自动化备份
-- 服务器巡检
-- 项目检查
-- 安全审计
-- 网络诊断
-- 性能监控
-- 日常巡检
-- 自动部署
-- 安全加固
-- 日志分析
-- 容器管理
-- 数据库备份
-- SSL 监控
-- 资源清理
-- 带宽监控
-- 文件同步
-- 安全基线检查
+| 子目录 | 脚本数 | 难度 | 知识点 |
+|:---|:---:|:---:|:---|
+| [`01_system_monitor/`](01_system_monitor/) | **5** | ⭐⭐⭐⭐ | 系统监控 |
+| [`02_backup_automation/`](02_backup_automation/) | **5** | ⭐⭐⭐⭐ | 备份自动化 |
+| [`03_log_analyzer/`](03_log_analyzer/) | **5** | ⭐⭐⭐⭐ | 日志分析 |
+| [`04_user_manager/`](04_user_manager/) | **7** | ⭐⭐⭐⭐ | 用户管理 |
+| [`05_deploy_script/`](05_deploy_script/) | **5** | ⭐⭐⭐⭐ | 部署脚本 |
+| [`06_network_tools/`](06_network_tools/) | **7** | ⭐⭐⭐⭐ | 网络工具 |
+| [`07_security_tools/`](07_security_tools/) | **8** | ⭐⭐⭐⭐⭐ | 安全工具 |
+| [`08_devops_tools/`](08_devops_tools/) | **21** | ⭐⭐⭐⭐⭐ | DevOps 工具 |
+| **总计** | **49** | ⭐⭐⭐⭐⭐ | **综合实战** |
 
 ---
 
-## 📝 学习路径
+## 📋 脚本清单
 
-### 第 59-65 天：安全工具
+### 01_system_monitor/ - 系统监控（5 个）
 
-**项目**：
-1. **密码验证器** - 验证密码强度
-2. **用户注册** - 收集并验证用户信息
-3. **用户登录** - 实现登录验证
+- 01_cpu_monitor.sh - CPU 使用率监控
+- 02_memory_monitor.sh - 内存使用监控
+- 03_disk_io_monitor.sh - 磁盘 IO 监控
+- 04_network_speed.sh - 网络速度测试
+- 05_process_top.sh - 进程 Top 监控
+
+### 02_backup_automation/ - 备份自动化（5 个）
+
+- 01_incremental_backup.sh - 增量备份
+- 02_remote_backup.sh - 远程备份
+- 03_backup_verify.sh - 备份验证
+- 04_backup_rotation.sh - 备份轮转
+- 05_backup_compression.sh - 备份压缩
+
+### 03_log_analyzer/ - 日志分析（5 个）
+
+- 01_log_rotate.sh - 日志轮转
+- 02_error_extract.sh - 错误提取
+- 03_access_analyze.sh - 访问分析
+- 04_log_search.sh - 日志搜索
+- 05_log_report.sh - 日志报告
+
+### 04_user_manager/ - 用户管理（7 个）
+
+- 01_batch_create_users.sh - 批量创建用户
+- 02_user_import.sh - 用户导入
+- 03_user_export.sh - 用户导出
+- 04_password_reset.sh - 密码重置
+- 05_user_disable.sh - 用户禁用
+- 06_user_report.sh - 用户报告
+- 07_group_manage.sh - 组管理
+
+### 05_deploy_script/ - 部署脚本（5 个）
+
+- 01_auto_deploy.sh - 自动部署
+- 02_rollback.sh - 回滚
+- 03_health_check.sh - 健康检查
+- 04_blue_green.sh - 蓝绿部署
+- 05_canary_deploy.sh - 金丝雀部署
+
+### 06_network_tools/ - 网络工具（7 个）
+
+- 01_ping_monitor.sh - Ping 监控
+- 02_dns_check.sh - DNS 检查
+- 03_port_scan.sh - 端口扫描
+- 04_bandwidth_test.sh - 带宽测试
+- 05_route_trace.sh - 路由追踪
+- 06_firewall_check.sh - 防火墙检查
+- 07_ssl_check.sh - SSL 检查
+
+### 07_security_tools/ - 安全工具（8 个）
+
+- 01_port_scanner.sh - 端口扫描器
+- 02_log_auditor.sh - 日志审计
+- 03_password_generator.sh - 密码生成
+- 04_ssl_checker.sh - SSL 检查
+- 05_vulnerability_scan.sh - 漏洞扫描
+- 06_file_integrity.sh - 文件完整性
+- 07_login_monitor.sh - 登录监控
+- 08_security_report.sh - 安全报告
+
+### 08_devops_tools/ - DevOps 工具（21 个）
+
+- 01_docker_deploy.sh - Docker 部署
+- 02_k8s_deploy.sh - K8s 部署
+- 03_jenkins_job.sh - Jenkins 任务
+- 04_gitlab_ci.sh - GitLab CI
+- 05_ansible_playbook.sh - Ansible 剧本
+- 06_terraform_apply.sh - Terraform 应用
+- 07_prometheus_check.sh - Prometheus 检查
+- 08_grafana_alert.sh - Grafana 告警
+- 09_elk_deploy.sh - ELK 部署
+- 10_nacos_config.sh - Nacos 配置
+- 11_consul_service.sh - Consul 服务
+- 12_vault_secret.sh - Vault 密钥
+- 13_argocd_sync.sh - ArgoCD 同步
+- 14_helm_install.sh - Helm 安装
+- 15_istio_inject.sh - Istio 注入
+- 16_linkerd_check.sh - Linkerd 检查
+- 17_fluentd_forward.sh - Fluentd 转发
+- 18_jaeger_trace.sh - Jaeger 追踪
+- 19_skywalking_agent.sh - SkyWalking 代理
+- 20_zipkin_collect.sh - Zipkin 收集
+- 21_opentracing_api.sh - OpenTracing API
+
+---
+
+## 🎯 学习目标
+
+完成本阶段后，你将能够：
+
+- ✅ 编写生产级系统监控脚本
+- ✅ 实现自动化备份和恢复系统
+- ✅ 开发日志分析和报告工具
+- ✅ 批量管理用户和权限
+- ✅ 构建 CI/CD 部署流水线
+- ✅ 开发网络诊断和监控工具
+- ✅ 实现安全扫描和审计工具
+- ✅ 掌握 DevOps 自动化技能
+
+---
+
+## 💡 实战项目
+
+### 项目 1：系统监控平台
+
+**目标**：构建完整的系统监控和告警系统
 
 **技能**：
-- 输入验证
-- 字符串处理
-- 文件操作
-- 错误处理
+- CPU/内存/磁盘/网络监控
+- 阈值告警
+- 数据可视化
+- 历史记录
+
+**输出**：监控仪表板 + 告警通知
 
 ---
 
-### 第 66-80 天：DevOps 工具
+### 项目 2：自动化备份系统
 
-**系统管理**：
-- `01_system_info_check.sh` - 系统信息检查
-- `02_batch_user_manager.sh` - 批量用户管理
-- `03_service_monitor.sh` - 服务监控
+**目标**：实现全自动备份和恢复
 
-**自动化**：
-- `04_log_cleaner.sh` - 日志清理
-- `05_backup_automation.sh` - 自动化备份
-- `12_auto_deploy.sh` - 自动部署
+**技能**：
+- 增量备份
+- 远程同步
+- 备份验证
+- 轮转策略
 
-**监控**：
-- `10_performance_monitor.sh` - 性能监控
-- `11_daily_inspection.sh` - 日常巡检
-- `17_ssl_monitor.sh` - SSL 证书监控
-
-**网络**：
-- `09_network_diagnosis.sh` - 网络诊断
-- `19_bandwidth_monitor.sh` - 带宽监控
-
-**安全**：
-- `08_security_audit.sh` - 安全审计
-- `13_security_hardening.sh` - 安全加固
-- `21_security_baseline.sh` - 安全基线
+**输出**：备份脚本 + 恢复流程
 
 ---
 
-### 第 81-90 天：综合项目
+### 项目 3：日志分析平台
 
-**推荐项目**：
+**目标**：构建日志收集和分析系统
 
-1. **服务器健康检查系统**
-   ```bash
-   # 检查 CPU、内存、磁盘、网络
-   # 生成健康报告
-   # 发送告警
-   ```
+**技能**：
+- 日志轮转
+- 错误提取
+- 趋势分析
+- 报告生成
 
-2. **自动化备份系统**
-   ```bash
-   # 备份数据库、配置文件
-   # 压缩加密
-   # 上传到远程服务器
-   # 清理旧备份
-   ```
-
-3. **日志分析平台**
-   ```bash
-   # 收集日志
-   # 分析错误
-   # 生成报表
-   # 可视化展示
-   ```
+**输出**：分析工具 + 可视化报告
 
 ---
 
-## ✅ 学习检查
+### 项目 4：CI/CD 部署系统
 
-完成本阶段后，你应该能够：
+**目标**：实现自动化部署流水线
 
-- [ ] 独立开发 100 行以上的脚本
-- [ ] 处理用户输入和验证
-- [ ] 实现错误处理和日志记录
-- [ ] 编写可重用的函数
-- [ ] 使用配置文件
-- [ ] 部署生产环境
+**技能**：
+- 自动部署
+- 回滚机制
+- 健康检查
+- 蓝绿/金丝雀
 
----
-
-## 🎓 恭喜你！
-
-完成所有阶段后，你已经：
-
-✅ 掌握 Shell 编程核心技能  
-✅ 能够开发实际项目  
-✅ 具备自动化运维能力  
-✅ 可以编写生产级代码
+**输出**：部署脚本 + 流水线配置
 
 ---
 
-## 📚 进阶学习
+## 📚 前置知识
 
-- [ ] 学习 AWK 高级编程
-- [ ] 学习 Sed 高级技巧
-- [ ] 学习 Bash 高级特性
-- [ ] 学习其他脚本语言（Python/Perl）
-- [ ] 参与开源项目
-- [ ] 分享你的知识
+完成本阶段前，建议掌握：
 
----
-
-## 🎖️ 毕业证书
-
-你已经完成了 **90 天 Shell 编程学习之旅**！
-
-**总计**：
-- 103 个脚本
-- 20,000+ 行代码
-- 7 个学习阶段
-- 24 个实战项目
+- ✅ 阶段 1-2：Shell 基础
+- ✅ 阶段 3：流程控制和函数
+- ✅ 阶段 4：数组和字符串
+- ✅ 阶段 5：文本处理（grep/sed/awk）
+- ✅ 阶段 6：系统编程
 
 ---
 
-**继续前进，成为 Shell 编程专家！** 🚀
+## 🔧 使用建议
 
-[查看完整脚本](../CATALOG.md) | [返回主页](../README.md)
+1. **循序渐进**：按目录顺序学习
+2. **实践为主**：每个脚本都要运行
+3. **理解原理**：不要死记硬背
+4. **举一反三**：修改脚本适应自己的需求
+5. **记录笔记**：记录遇到的问题和解决方案
+
+---
+
+## 📖 下一步
+
+完成本阶段后，你可以：
+
+- 🎓 挑战更复杂的项目
+- 📚 学习其他编程语言（Python/Go）
+- 🏢 应用到实际工作中
+- 🤝 参与开源项目贡献
+- 📝 分享你的学习经验
+
+---
+
+**更新时间**：2026-03-20  
+**脚本数**：49 个  
+**最后修订**：hjs2015
