@@ -1,6 +1,6 @@
 # 🚀 快速开始 (Quick Start)
 
-> **学习第 1 天** | 难度：⭐ | 3 个脚本
+> **学习第 1 天** | 难度：⭐ | 5 个脚本
 
 ---
 
@@ -23,7 +23,9 @@
 |------|------|------|------|
 | [01_hello_world.sh](01_hello_world.sh) | Hello World | ⭐ | 10 分钟 |
 | [02_special_variables.sh](02_special_variables.sh) | 特殊变量 | ⭐ | 30 分钟 |
-| [05_wildcards_and_echo.sh](05_wildcards_and_echo.sh) | 通配符 | ⭐ | 20 分钟 |
+| [03_user_greeting.sh](03_user_greeting.sh) | 用户问候 | ⭐ | 15 分钟 |
+| [04_shell_environment_check.sh](04_shell_environment_check.sh) | 环境检测 | ⭐ | 20 分钟 |
+| [05_script_execution_methods.sh](05_script_execution_methods.sh) | 执行方式 | ⭐ | 25 分钟 |
 
 ---
 
@@ -35,6 +37,8 @@
 - ✅ 理解 `$0`, `$1`, `$@`, `$*` 等特殊变量
 - ✅ 使用通配符 (`*`, `?`, `[]`) 匹配文件
 - ✅ 使用 `echo` 和 `printf` 输出信息
+- ✅ 检测 Shell 环境和系统信息
+- ✅ 掌握脚本的各种执行方式及其区别
 
 ---
 
@@ -84,24 +88,89 @@ cat 02_special_variables.sh
 
 ---
 
-### 3. 通配符 (20 分钟)
+### 3. 用户问候 (15 分钟)
 
 ```bash
 # 查看脚本
-cat 05_wildcards_and_echo.sh
+cat 03_user_greeting.sh
 
 # 运行脚本
-./05_wildcards_and_echo.sh
+./03_user_greeting.sh
 
 # 输出：
-# *.sh 文件：01_hello_world.sh 02_special_variables.sh ...
-# ?.txt 文件：a.txt b.txt c.txt
+# 你好，root！欢迎学习 Shell 编程。
+# 今天是：2026-03-20 星期五
 ```
 
 **知识点**：
-- `*` - 匹配任意字符
-- `?` - 匹配单个字符
-- `[]` - 匹配字符范围
+- 环境变量 (`$USER`, `$HOME`)
+- 命令替换 (`$(date)`)
+- 条件判断
+
+---
+
+### 4. Shell 环境检测 (20 分钟) ⭐ 新增
+
+```bash
+# 查看脚本
+cat 04_shell_environment_check.sh
+
+# 运行脚本
+bash 04_shell_environment_check.sh
+
+# 输出：
+# ========================================
+# Shell 环境检测报告
+# ========================================
+# 操作系统：Linux Ubuntu 22.04
+# Shell 类型：bash
+# Shell 版本：5.1.16(1)-release
+# ...
+```
+
+**知识点**：
+- 系统信息检测 (`uname`, `hostname`)
+- Shell 版本识别
+- 环境变量检查
+- 函数封装与组织
+
+**命令行选项**：
+- `-h, --help` - 显示帮助
+- `-q, --quick` - 快速检查
+- `-t, --tips` - 故障排查建议
+
+---
+
+### 5. 脚本执行方式详解 (25 分钟) ⭐ 新增
+
+```bash
+# 查看脚本
+cat 05_script_execution_methods.sh
+
+# 运行脚本
+bash 05_script_execution_methods.sh
+
+# 输出：
+# ========================================
+# 脚本执行权限与运行方式详解
+# ========================================
+# 【演示 1】检查脚本执行权限
+# 【演示 2】不同执行方式对比
+# ...
+```
+
+**知识点**：
+- 执行权限检查 (`chmod +x`)
+- 5 种执行方式对比（bash/./source/sh/exec）
+- shebang 行规范
+- 常见错误与解决方案
+
+**演示内容**：
+- 权限检查
+- 执行方式对比
+- 路径运行方式
+- shebang 规范
+- 常见错误排查
 
 ---
 
@@ -113,6 +182,8 @@ cat 05_wildcards_and_echo.sh
 - [ ] 解释 `$0`, `$1`, `$#` 的含义
 - [ ] 使用 `*` 和 `?` 匹配文件
 - [ ] 使用 `echo` 和 `printf` 输出信息
+- [ ] 检测当前 Shell 环境和系统信息
+- [ ] 说明 bash、./、source 三种执行方式的区别
 
 ---
 
