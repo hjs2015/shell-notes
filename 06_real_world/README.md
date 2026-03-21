@@ -19,7 +19,7 @@
   - [日志分析](#日志分析)
   - [用户管理](#用户管理)
   - [部署脚本](#部署脚本)
-  - [Docker 和 CI/CD](#docker-和 cicd)
+  - [Docker 和 CI/CD](#docker-和-cicd)
 - [常见陷阱](#常见陷阱) ⭐ 新增
 - [常见问题 FAQ](#常见问题-faq) ⭐ 新增
 - [毕业项目](#毕业项目)
@@ -201,95 +201,45 @@ check_disk() {
     return 0
 }
 
-check_disk "/" 80
-```
-
-**综合监控脚本**：
-```bash
-#!/bin/bash
-# 系统健康检查
-echo "=== 系统健康检查 ==="
-echo "时间：$(date)"
-echo
-
-# CPU
-echo "【CPU】"
-top -bn1 | grep "Cpu(s)" | awk '{printf "使用率：%.1f%%\n", $2}'
-echo
-
-# 内存
-echo "【内存】"
-free -h | grep -E "^Mem"
-echo
-
-# 磁盘
-echo "【磁盘】"
-df -h | grep -E "^/dev"
-echo
-
-# 负载
-echo "【负载】"
-uptime
+# 检查根分区
+check_disk "/" 85
 ```
 
 ---
 
 ### 备份自动化
 
-**文件备份**：
+**完整备份脚本**：
 ```bash
 #!/bin/bash
-# 带时间戳的备份
-SOURCE_DIR="/data"
+# 备份脚本（带验证和轮转）
+
+SOURCE="/data"
 BACKUP_DIR="/backup"
 DATE=$(date +%Y%m%d_%H%M%S)
-BACKUP_FILE="$BACKUP_DIR/data_$DATE.tar.gz"
+BACKUP_FILE="$BACKUP_DIR/backup_$DATE.tar.gz"
 
 # 创建备份
-tar -czf "$BACKUP_FILE" "$SOURCE_DIR"
+tar -czf "$BACKUP_FILE" "$SOURCE"
 
 # 验证备份
-if [ $? -eq 0 ]; then
+if [ $? -eq 0 ] && [ -f "$BACKUP_FILE" ]; then
     echo "备份成功：$BACKUP_FILE"
-    # 计算大小
-    ls -lh "$BACKUP_FILE" | awk '{print "大小："$5}'
+    tar -tzf "$BACKUP_FILE" > /dev/null
+    echo "完整性验证通过"
 else
     echo "备份失败"
     exit 1
 fi
+
+# 删除 7 天前的备份
+find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
 ```
 
-**备份轮转**：
-```bash
-#!/bin/bash
-# 保留最近 7 天的备份
-BACKUP_DIR="/backup"
-DAYS_TO_KEEP=7
-
-# 删除旧备份
-find "$BACKUP_DIR" -name "*.tar.gz" -mtime +$DAYS_TO_KEEP -delete
-
-echo "已删除 $DAYS_TO_KEEP 天前的备份"
-```
-
-**数据库备份**：
-```bash
-#!/bin/bash
-# MySQL 备份
-DB_USER="root"
-DB_PASS="password"
-BACKUP_DIR="/backup/mysql"
-DATE=$(date +%Y%m%d)
-
-# 备份所有数据库
-mysqldump -u"$DB_USER" -p"$DB_PASS" --all-databases > "$BACKUP_DIR/all_$DATE.sql"
-
-# 压缩
-gzip "$BACKUP_DIR/all_$DATE.sql"
-
-# 删除 30 天前的备份
-find "$BACKUP_DIR" -name "*.sql.gz" -mtime +30 -delete
-```
+**3-2-1 原则**：
+- 3 份副本
+- 2 种介质
+- 1 份异地
 
 ---
 
@@ -398,61 +348,72 @@ grep sudo /etc/group
 ```bash
 #!/bin/bash
 # 自动化部署脚本
+set -e
+
 APP_NAME="myapp"
 APP_DIR="/opt/$APP_NAME"
 BACKUP_DIR="/backup/$APP_NAME"
-DATE=$(date +%Y%m%d_%H%M%S)
 
-# 停止服务
-systemctl stop "$APP_NAME"
+echo "=== 部署 $APP_NAME ==="
 
 # 备份当前版本
 if [ -d "$APP_DIR" ]; then
-    mv "$APP_DIR" "$BACKUP_DIR/$DATE"
+    mv "$APP_DIR" "$BACKUP_DIR/$(date +%Y%m%d_%H%M%S)"
 fi
 
 # 部署新版本
 mkdir -p "$APP_DIR"
-tar -xzf new_version.tar.gz -C "$APP_DIR"
+cp -r new_version/* "$APP_DIR/"
 
-# 启动服务
-systemctl start "$APP_NAME"
+# 重启服务
+systemctl restart "$APP_NAME"
 
-# 健康检查
-sleep 5
-if systemctl is-active --quiet "$APP_NAME"; then
-    echo "部署成功"
-else
-    echo "部署失败，回滚..."
-    systemctl stop "$APP_NAME"
-    rm -rf "$APP_DIR"
-    mv "$BACKUP_DIR/$DATE" "$APP_DIR"
-    systemctl start "$APP_NAME"
+echo "部署完成"
+```
+
+**回滚脚本**：
+```bash
+#!/bin/bash
+# 回滚到上一个版本
+BACKUP_DIR="/backup/myapp"
+APP_DIR="/opt/myapp"
+
+# 获取最新备份
+LATEST_BACKUP=$(ls -t "$BACKUP_DIR" | head -1)
+
+if [ -z "$LATEST_BACKUP" ]; then
+    echo "无可用备份"
     exit 1
 fi
+
+echo "回滚到：$LATEST_BACKUP"
+rm -rf "$APP_DIR"
+mv "$BACKUP_DIR/$LATEST_BACKUP" "$APP_DIR"
+systemctl restart myapp
 ```
 
 ---
 
 ### Docker 和 CI/CD
 
-**Docker 容器管理**：
+**Docker 清理**：
 ```bash
 #!/bin/bash
-# Docker 容器清理
+# 清理 Docker 资源
+
 echo "=== Docker 清理 ==="
 
-# 停止所有容器
-docker stop $(docker ps -aq)
-
-# 删除所有容器
-docker rm $(docker ps -aq)
-
-# 删除所有镜像
-docker rmi $(docker images -q)
+# 删除停止的容器
+docker container prune -f
+echo "已清理停止的容器"
 
 # 删除悬空镜像
 docker image prune -f
+echo "已清理悬空镜像"
+
+# 删除未使用的卷
+docker volume prune -f
+echo "已清理未使用的卷"
 
 echo "清理完成"
 ```
@@ -551,58 +512,65 @@ cp -r new_app /opt/app
 
 ---
 
-### 4. 日志分析未处理大文件
+### 4. 脚本无错误处理
 
 **错误**：
 ```bash
-cat /var/log/large.log | grep "error"  # ❌ 大文件会内存溢出
+#!/bin/bash
+cd /opt/app  # ❌ 如果目录不存在，继续执行
+npm install
+npm build
 ```
 
 **正确**：
 ```bash
-grep "error" /var/log/large.log  # ✅ grep 直接读取
-# 或
-tail -10000 /var/log/large.log | grep "error"  # ✅ 只看最近
+#!/bin/bash
+set -e  # ✅ 遇到错误立即退出
+set -u  # ✅ 使用未定义变量时报错
+
+cd /opt/app || exit 1
+npm install || exit 1
+npm build || exit 1
 ```
 
 ---
 
-### 5. Docker 未清理资源
+### 5. 硬编码路径和配置
 
 **错误**：
 ```bash
-docker run app  # ❌ 容器停止后残留
+#!/bin/bash
+LOG_DIR="/var/log/myapp"  # ❌ 硬编码
+DB_HOST="192.168.1.100"   # ❌ 硬编码
 ```
 
 **正确**：
 ```bash
-docker run --rm app  # ✅ 自动删除
-# 或定期清理
-docker container prune -f
+#!/bin/bash
+# ✅ 使用配置文件或环境变量
+source /etc/myapp/config.conf
+LOG_DIR="${LOG_DIR:-/var/log/myapp}"  # 默认值
+DB_HOST="${DB_HOST:-localhost}"
 ```
 
 ---
 
 ## ❓ 常见问题 FAQ ⭐ 新增
 
-### Q1: 如何选择备份策略？
+### Q1: 脚本提示 "Permission denied" 怎么办？
 
-**建议**：
+**原因**：脚本没有执行权限
+
+**解决**：
 ```bash
-# 完整备份（每周）
-tar -czf full_backup.tar.gz /data
-
-# 增量备份（每天）
-tar -czf增量_backup.tar.gz -N "last_backup_date" /data
-
-# 差异备份（每天）
-tar -czf diff_backup.tar.gz --newer-mtime "last_full_backup" /data
+chmod +x script.sh
+./script.sh
 ```
 
-**3-2-1 原则**：
-- 3 份副本
-- 2 种介质
-- 1 份异地
+**或者**：
+```bash
+bash script.sh  # 用 bash 直接运行
+```
 
 ---
 
@@ -681,6 +649,41 @@ trap 'echo "错误发生在 $LINENO"; exit 1' ERR
 # 4. 测试环境先验证
 bash -n script.sh  # 语法检查
 bash -x script.sh  # 调试运行
+```
+
+---
+
+### Q6: 路径含空格如何处理？
+
+**错误**：
+```bash
+cd /Users/myname/My Folder  # ❌ 空格导致路径截断
+```
+
+**正确**：
+```bash
+cd "/Users/myname/My Folder"  # ✅ 用引号包裹
+cd /Users/myname/My\ Folder   # ✅ 或用转义
+```
+
+---
+
+### Q7: 中文乱码怎么办？
+
+**解决**：
+```bash
+#!/bin/bash
+# 设置编码
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+
+# 或者在脚本开头
+# LANG=zh_CN.UTF-8
+```
+
+**检查终端编码**：
+```bash
+locale  # 查看当前编码设置
 ```
 
 ---
