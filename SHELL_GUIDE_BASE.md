@@ -1181,17 +1181,798 @@ done
 
 ---
 
+## 📚 附录 A：Pure Bash Bible 精选 🆕
+
+> **参考来源**: https://github.com/dylanaraps/pure-bash-bible  
+> **作者**: dylanaraps (neofetch 作者)  
+> **说明**: 以下是纯 Bash 内置功能实现，无需外部命令依赖，性能更优
+
+### A.1 字符串处理
+
+#### 去除首尾空白
+
+```bash
+trim_string() {
+    # Usage: trim_string "   example   string    "
+    : "${1#"${1%%[![:space:]]*}"}"
+    : "${_%"${_##*[![:space:]]}"}"
+    printf '%s\n' "$_"
+}
+
+# 示例
+$ trim_string "    Hello,  World    "
+Hello,  World
+```
+
+#### 压缩所有空白
+
+```bash
+trim_all() {
+    # Usage: trim_all "   example   string    "
+    set -f
+    set -- $*
+    printf '%s\n' "$*"
+    set +f
+}
+
+# 示例
+$ trim_all "    Hello,    World    "
+Hello, World
+```
+
+#### 正则匹配
+
+```bash
+regex() {
+    # Usage: regex "string" "regex"
+    [[ $1 =~ $2 ]] && printf '%s\n' "${BASH_REMATCH[1]}"
+}
+
+# 示例：验证十六进制颜色
+$ regex "#FFFFFF" '^(#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3}))$'
+#FFFFFF
+
+# 示例：验证邮箱
+$ regex "user@example.com" '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+user@example.com
+```
+
+#### 字符串分割
+
+```bash
+split() {
+   # Usage: split "string" "delimiter"
+   IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
+   printf '%s\n' "${arr[@]}"
+}
+
+# 示例
+$ split "apples,oranges,pears" ","
+apples
+oranges
+pears
+
+$ split "hello---world---my" "---"
+hello
+world
+my
+```
+
+#### URL 编解码
+
+```bash
+# URL 编码
+urlencode() {
+    local LC_ALL=C
+    for (( i = 0; i < ${#1}; i++ )); do
+        : "${1:i:1}"
+        case "$_" in
+            [a-zA-Z0-9.~_-])
+                printf '%s' "$_"
+            ;;
+            *)
+                printf '%%%02X' "'$_"
+            ;;
+        esac
+    done
+    printf '\n'
+}
+
+# URL 解码
+urldecode() {
+    : "${1//+/ }"
+    printf '%b\n' "${_//%/\\x}"
+}
+
+# 示例
+$ urlencode "https://github.com/dylanaraps/pure-bash-bible"
+https%3A%2F%2Fgithub.com%2Fdylanaraps%2Fpure-bash-bible
+
+$ urldecode "https%3A%2F%2Fgithub.com%2Fdylanaraps%2Fpure-bash-bible"
+https://github.com/dylanaraps/pure-bash-bible
+```
+
+### A.2 数组操作
+
+#### 反转数组
+
+```bash
+reverse_array() {
+    # Usage: reverse_array "array"
+    shopt -s extdebug
+    f()(printf '%s\n' "${BASH_ARGV[@]}"); f "$@"
+    shopt -u extdebug
+}
+
+# 示例
+$ reverse_array 1 2 3 4 5
+5
+4
+3
+2
+1
+
+$ arr=(red blue green)
+$ reverse_array "${arr[@]}"
+green
+blue
+red
+```
+
+#### 数组去重
+
+```bash
+remove_array_dups() {
+    # Usage: remove_array_dups "array"
+    declare -A tmp_array
+
+    for i in "$@"; do
+        [[ $i ]] && IFS=" " tmp_array["${i:- }"]=1
+    done
+
+    printf '%s\n' "${!tmp_array[@]}"
+}
+
+# 示例
+$ remove_array_dups 1 1 2 2 3 3 3 3 3 4 4 4 4 4 5 5 5 5 5 5
+1
+2
+3
+4
+5
+
+$ arr=(red red green blue blue)
+$ remove_array_dups "${arr[@]}"
+red
+green
+blue
+```
+
+#### 随机数组元素
+
+```bash
+random_array_element() {
+    # Usage: random_array_element "array"
+    local arr=("$@")
+    printf '%s\n' "${arr[RANDOM % $#]}"
+}
+
+# 示例
+$ array=(red green blue yellow brown)
+$ random_array_element "${array[@]}"
+yellow
+```
+
+#### 循环遍历数组
+
+```bash
+arr=(a b c d)
+
+cycle() {
+    printf '%s ' "${arr[${i:=0}]}"
+    ((i=i>=${#arr[@]}-1?0:++i))
+}
+
+# 每次调用打印下一个元素，到末尾后从头开始
+$ cycle; cycle; cycle; cycle; cycle
+a b c d a
+```
+
+### A.3 文件处理
+
+#### 读文件到字符串
+
+```bash
+# 替代 cat 命令
+file_data="$(<"file")"
+```
+
+#### 读文件到数组
+
+```bash
+# Bash 4+
+mapfile -t file_data < "file"
+
+# Bash <4 (保留空行)
+while read -r line; do
+    file_data+=("$line")
+done < "file"
+```
+
+#### 获取前 N 行
+
+```bash
+head() {
+    # Usage: head "n" "file"
+    mapfile -tn "$1" line < "$2"
+    printf '%s\n' "${line[@]}"
+}
+
+# 示例
+$ head 2 ~/.bashrc
+# Prompt
+PS1='➜ '
+```
+
+#### 获取后 N 行
+
+```bash
+tail() {
+    # Usage: tail "n" "file"
+    mapfile -tn 0 line < "$2"
+    printf '%s\n' "${line[@]: -$1}"
+}
+
+# 示例
+$ tail 2 ~/.bashrc
+# Enable tmux.
+# [[ -z "$TMUX"  ]] && exec tmux
+```
+
+#### 统计行数
+
+```bash
+# Bash 4+
+lines() {
+    mapfile -tn 0 lines < "$1"
+    printf '%s\n' "${#lines[@]}"
+}
+
+# Bash 3 (内存更优)
+lines_loop() {
+    count=0
+    while IFS= read -r _; do
+        ((count++))
+    done < "$1"
+    printf '%s\n' "$count"
+}
+
+# 示例
+$ lines ~/.bashrc
+48
+```
+
+#### 创建空文件
+
+```bash
+# 替代 touch 命令
+>file
+:>file
+echo -n >file
+printf '' >file
+```
+
+#### 提取标记间内容
+
+```bash
+extract() {
+    # Usage: extract file "opening marker" "closing marker"
+    while IFS=$'\n' read -r line; do
+        [[ $extract && $line != "$3" ]] &&
+            printf '%s\n' "$line"
+
+        [[ $line == "$2" ]] && extract=1
+        [[ $line == "$3" ]] && extract=
+    done < "$1"
+}
+
+# 示例：提取 Markdown 代码块
+$ extract ~/projects/pure-bash/README.md '```sh' '```'
+```
+
+### A.4 文件路径
+
+#### 获取目录名
+
+```bash
+dirname() {
+    # Usage: dirname "path"
+    local tmp=${1:-.}
+
+    [[ $tmp != *[!/]* ]] && {
+        printf '/\n'
+        return
+    }
+
+    tmp=${tmp%%"${tmp##*[!/]}"}
+
+    [[ $tmp != */* ]] && {
+        printf '.\n'
+        return
+    }
+
+    tmp=${tmp%/*}
+    tmp=${tmp%%"${tmp##*[!/]}"}
+
+    printf '%s\n' "${tmp:-/}"
+}
+
+# 示例
+$ dirname ~/Pictures/Wallpapers/1.jpg
+/home/black/Pictures/Wallpapers
+
+$ dirname ~/Pictures/Downloads/
+/home/black/Pictures
+```
+
+#### 获取文件名
+
+```bash
+basename() {
+    # Usage: basename "path" ["suffix"]
+    local tmp
+
+    tmp=${1%"${1##*[!/]}"}
+    tmp=${tmp##*/}
+    tmp=${tmp%"${2/"$tmp"}"}
+
+    printf '%s\n' "${tmp:-/}"
+}
+
+# 示例
+$ basename ~/Pictures/Wallpapers/1.jpg
+1.jpg
+
+$ basename ~/Pictures/Wallpapers/1.jpg .jpg
+1
+
+$ basename ~/Pictures/Downloads/
+Downloads
+```
+
+### A.5 变量高级用法
+
+#### 间接引用
+
+```bash
+# 方法 1：使用 ! 操作符
+hello_world="value"
+var="world"
+ref="hello_$var"
+printf '%s\n' "${!ref}"  # value
+
+# 方法 2：使用 nameref (bash 4.3+)
+hello_world="value"
+var="world"
+declare -n ref=hello_$var
+printf '%s\n' "$ref"  # value
+```
+
+#### 动态命名变量
+
+```bash
+var="world"
+declare "hello_$var=value"
+printf '%s\n' "$hello_world"  # value
+```
+
+### A.6 颜色与格式
+
+#### ANSI 转义码
+
+```bash
+# 文本颜色
+echo -e "\e[38;5;196m 红色文字 \e[0m"      # 256 色
+echo -e "\e[38;2;255;0;0m RGB 红色 \e[0m"  # RGB 真彩色
+
+# 文本属性
+echo -e "\e[1m 粗体 \e[0m"      # 粗体
+echo -e "\e[3m 斜体 \e[0m"      # 斜体
+echo -e "\e[4m 下划线 \e[0m"    # 下划线
+echo -e "\e[5m 闪烁 \e[0m"      # 闪烁
+echo -e "\e[7m 反色 \e[0m"      # 反色
+echo -e "\e[9m 删除线 \e[0m"    # 删除线
+
+# 光标移动
+echo -e "\e[10;20H"             # 移动到第 10 行第 20 列
+echo -e "\e[H"                  # 移动到首页 (0,0)
+echo -e "\e[2A"                 # 上移 2 行
+echo -e "\e[2B"                 # 下移 2 行
+echo -e "\e[2C"                 # 右移 2 列
+echo -e "\e[2D"                 # 左移 2 列
+
+# 擦除
+echo -e "\e[K"                  # 清除到行尾
+echo -e "\e[2J"                 # 清屏
+echo -e "\e[2J\e[H"             # 清屏并归位
+```
+
+### A.7 参数扩展速查
+
+| 操作符 | 说明 | 示例 |
+|--------|------|------|
+| `${!VAR}` | 间接访问 | `${!ref}` |
+| `${VAR#PATTERN}` | 删除最短开头匹配 | `${str#H*}` |
+| `${VAR##PATTERN}` | 删除最长开头匹配 | `${str##H*}` |
+| `${VAR%PATTERN}` | 删除最短结尾匹配 | `${str%W*}` |
+| `${VAR%%PATTERN}` | 删除最长结尾匹配 | `${str%%W*}` |
+| `${VAR/PATTERN/REPLACE}` | 替换第一个 | `${str/o/O}` |
+| `${VAR//PATTERN/REPLACE}` | 替换所有 | `${str//o/O}` |
+| `${#VAR}` | 字符串长度 | `${#str}` |
+| `${#ARR[@]}` | 数组长度 | `${#arr[@]}` |
+| `${VAR:OFFSET}` | 从 OFFSET 开始 | `${str:5}` |
+| `${VAR:OFFSET:LENGTH}` | 子字符串 | `${str:0:5}` |
+| `${VAR: -OFFSET}` | 最后 N 个字符 | `${str: -5}` |
+| `${VAR^}` | 首字母大写 | `${str^}` |
+| `${VAR^^}` | 全部大写 | `${str^^}` |
+| `${VAR,}` | 首字母小写 | `${str,}` |
+| `${VAR,,}` | 全部小写 | `${str,,}` |
+| `${VAR:-STRING}` | 空则用 STRING | `${var:-default}` |
+| `${VAR:=STRING}` | 空则设为 STRING | `${var:=default}` |
+| `${VAR:+STRING}` | 非空则用 STRING | `${var:+present}` |
+| `${VAR:?STRING}` | 空则报错 | `${var:?error}` |
+
+### A.8 大括号扩展
+
+```bash
+# 数字范围
+echo {1..100}              # 1 2 3 ... 100
+echo {01..100}             # 001 002 ... 100 (补零)
+echo {1..10..2}            # 1 3 5 7 9 (增量)
+
+# 字母范围
+echo {a..z}                # a b c ... z
+echo {A..Z}                # A B C ... Z
+
+# 嵌套
+echo {A..Z}{0..9}          # A0 A1 ... Z9
+
+# 字符串列表
+echo {apples,oranges,pears}
+rm -rf ~/Downloads/{Movies,Music,ISOS}
+```
+
+### A.9 算术与逻辑
+
+#### 简化语法
+
+```bash
+# 简单计算
+((var=1+2))
+
+# 自增自减
+((var++))
+((var--))
+((var+=1))
+((var-=1))
+
+# 使用变量
+((var=var2*arr[2]))
+```
+
+#### 三元运算
+
+```bash
+# var = var2 > var ? var2 : var
+((var=var2>var?var2:var))
+```
+
+### A.10 陷阱 (Traps)
+
+```bash
+# 退出时清理
+trap 'printf \e[2J\e[H\e[m' EXIT
+
+# 忽略中断 (Ctrl+C)
+trap '' INT
+
+# 窗口大小调整
+trap 'redraw_ui' SIGWINCH
+
+# 命令前执行
+trap 'echo "即将执行: $BASH_COMMAND"' DEBUG
+
+# 函数返回后
+trap 'echo "函数完成"' RETURN
+```
+
+### A.11 内部变量
+
+| 变量 | 说明 |
+|------|------|
+| `$BASH` | bash 二进制路径 |
+| `$BASH_VERSION` | bash 版本字符串 |
+| `${BASH_VERSINFO[@]}` | bash 版本数组 |
+| `$HOSTNAME` | 主机名 |
+| `$HOSTTYPE` | 系统架构 |
+| `$OSTYPE` | 操作系统类型 |
+| `$PWD` | 当前工作目录 |
+| `$SECONDS` | 脚本运行秒数 |
+| `$RANDOM` | 随机数 (0-32767) |
+| `$FUNCNAME` | 当前函数名 |
+| `$EDITOR` | 用户首选编辑器 |
+
+### A.12 终端信息
+
+#### 获取终端尺寸
+
+```bash
+get_term_size() {
+    shopt -s checkwinsize; (:;:)
+    printf '%s\n' "$LINES $COLUMNS"
+}
+
+# 示例
+$ get_term_size
+15 55
+```
+
+#### 获取光标位置
+
+```bash
+get_cursor_pos() {
+    IFS='[;' read -p $'\e[6n' -d R -rs _ y x _
+    printf '%s\n' "$x $y"
+}
+
+# 示例
+$ get_cursor_pos
+1 8
+```
+
+### A.13 颜色转换
+
+#### 十六进制转 RGB
+
+```bash
+hex_to_rgb() {
+    # Usage: hex_to_rgb "#FFFFFF"
+    : "${1/\#}"
+    ((r=16#${_:0:2},g=16#${_:2:2},b=16#${_:4:2}))
+    printf '%s\n' "$r $g $b"
+}
+
+# 示例
+$ hex_to_rgb "#FFFFFF"
+255 255 255
+```
+
+#### RGB 转十六进制
+
+```bash
+rgb_to_hex() {
+    # Usage: rgb_to_hex "r" "g" "b"
+    printf '#%02x%02x%02x\n' "$1" "$2" "$3"
+}
+
+# 示例
+$ rgb_to_hex "255" "255" "255"
+#FFFFFF
+```
+
+### A.14 代码高尔夫
+
+#### 短 for 循环
+
+```bash
+# 极简风格
+for((;i++<10;)){ echo "$i";}
+
+# 未文档化方法
+for i in {1..10};{ echo "$i";}
+```
+
+#### 无限循环
+
+```bash
+# 普通方法
+while :; do echo hi; done
+
+# 更短方法
+for((;;)){ echo hi;}
+```
+
+#### 短函数声明
+
+```bash
+# 普通方法
+f(){ echo hi;}
+
+# 使用子 shell
+f()(echo hi)
+
+# 使用算术
+f()(($1))
+
+# 使用测试/循环
+f()if true; then echo "$1"; fi
+f()for i in "$@"; do echo "$i"; done
+```
+
+#### 短 if 语法
+
+```bash
+# 单行
+[[ $var == hello ]] && echo hi || echo bye
+
+# 多行 (无 else)
+[[ $var == hello ]] && {
+    echo hi
+    # ...
+}
+```
+
+#### case 设置变量
+
+```bash
+# 使用 : 避免重复 variable=
+case "$OSTYPE" in
+    "darwin"*)
+        : "MacOS"
+    ;;
+    "linux"*)
+        : "Linux"
+    ;;
+    *)
+        printf '%s\n' "Unknown OS" >&2
+        exit 1
+    ;;
+esac
+
+os="$_"  # 最后设置变量
+```
+
+### A.15 其他技巧
+
+#### 替代 sleep
+
+```bash
+# Bash 4+
+read_sleep() {
+    read -rt "$1" <> <(:) || :
+}
+
+# 示例
+read_sleep 1
+read_sleep 0.1
+read_sleep 30
+```
+
+#### 检查命令是否存在
+
+```bash
+# 三种方法
+type -p executable_name &>/dev/null
+hash executable_name &>/dev/null
+command -v executable_name &>/dev/null
+
+# 示例
+if type -p convert &>/dev/null; then
+    echo "ImageMagick 已安装"
+else
+    echo "ImageMagick 未安装"
+    exit 1
+fi
+```
+
+#### 日期格式化 (Bash 4+)
+
+```bash
+date() {
+    # Usage: date "format"
+    printf "%($1)T\\n" "-1"
+}
+
+# 示例
+$ date "%a %d %b - %l:%M %p"
+Fri 15 Jun - 10:00 AM
+
+# 直接使用 printf
+printf '%(%Y-%m-%d %H:%M:%S)T\n' '-1'
+```
+
+#### UUID 生成
+
+```bash
+uuid() {
+    C="89ab"
+    for ((N=0;N<16;++N)); do
+        B="$((RANDOM%256))"
+        case "$N" in
+            6)  printf '4%x' "$((B%16))" ;;
+            8)  printf '%c%x' "${C:$RANDOM%${#C}:1}" "$((B%16))" ;;
+            3|5|7|9)
+                printf '%02x-' "$B"
+            ;;
+            *)
+                printf '%02x' "$B"
+            ;;
+        esac
+    done
+    printf '\n'
+}
+
+# 示例
+$ uuid
+d5b6c731-1310-4c24-9fe3-55d556d44374
+```
+
+#### 进度条
+
+```bash
+bar() {
+    # Usage: bar 1 10
+    #            ^----- Elapsed Percentage (0-100)
+    #               ^-- Total length in chars
+    ((elapsed=$1*$2/100))
+    printf -v prog  "%${elapsed}s"
+    printf -v total "%$(($2-elapsed))s"
+    printf '%s\r' "[${prog// /-}${total}]"
+}
+
+# 使用示例
+for ((i=0;i<=100;i++)); do
+    (:;:) && (:;:) && (:;:)  # 微睡眠
+    bar "$i" "10"
+done
+printf '\n'
+```
+
+#### 获取函数列表
+
+```bash
+get_functions() {
+    IFS=$'\n' read -d "" -ra functions < <(declare -F)
+    printf '%s\n' "${functions[@]//declare -f }"
+}
+```
+
+#### 绕过别名和函数
+
+```bash
+# 绕过别名
+\ls  # 使用原始命令而非别名
+
+# 绕过函数
+command ls  # 使用原始命令而非函数
+```
+
+#### 后台运行
+
+```bash
+bkr() {
+    (nohup "$@" &>/dev/null &)
+}
+
+# 示例
+bkr ./some_script.sh  # 后台运行，忽略输出
+```
+
+---
+
 ## 📚 更多资源
 
 - [Bash 官方手册](https://www.gnu.org/software/bash/manual/)
 - [Shell 脚本编程指南](https://bashguide.readthedocs.io/)
 - [Linux Command](https://linuxcommand.org/)
-- [本仓库 226 个脚本示例](https://github.com/hjs2015/shell-notes)
+- [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) ⭐ 27,000+
+- [本仓库 231 个脚本示例](https://github.com/hjs2015/shell-notes)
 
 ---
 
 **最后更新**: 2026-03-21  
-**基于**: 226 个实战脚本提炼  
-**仓库**: https://github.com/hjs2015/shell-notes
+**基于**: 231 个实战脚本提炼 + Pure Bash Bible 精选  
+**仓库**: https://github.com/hjs2015/shell-notes  
+**参考**: https://github.com/dylanaraps/pure-bash-bible
 
 [返回顶部](#-shell-编程快速参考)
