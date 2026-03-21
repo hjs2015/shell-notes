@@ -884,6 +884,301 @@ echo -e "\n=== 进程 Top5 ==="
 ps aux --sort=-%mem | head -6
 ```
 
+### 9. 系统检查模式
+
+```bash
+#!/bin/bash
+# 检查命令是否存在
+check_command() {
+    if ! command -v $1 &> /dev/null; then
+        echo "错误：$1 未安装"
+        exit 1
+    fi
+}
+
+# 检查磁盘空间
+check_disk() {
+    local usage=$(df $1 | tail -1 | awk '{print $5}' | sed 's/%//')
+    if [ $usage -gt 90 ]; then
+        echo "警告：$1 磁盘使用率超过 90%"
+        return 1
+    fi
+}
+
+# 检查服务状态
+check_service() {
+    if systemctl is-active --quiet $1; then
+        echo "$1 服务运行正常"
+    else
+        echo "$1 服务未运行"
+        return 1
+    fi
+}
+
+# 使用示例
+check_command docker
+check_command kubectl
+check_disk /
+check_service nginx
+```
+
+### 10. 批量处理模式
+
+```bash
+#!/bin/bash
+# 批量重命名文件
+for file in *.txt; do
+    mv "$file" "backup_${file}"
+done
+
+# 批量修改权限
+find ./scripts -name "*.sh" -exec chmod +x {} \;
+
+# 批量创建目录
+for i in {1..10}; do
+    mkdir -p "project_$i"
+done
+
+# 批量删除空目录
+find . -type d -empty -delete
+```
+
+### 11. 字符串处理模式
+
+```bash
+#!/bin/bash
+str="Hello-World-2026"
+
+# 截取
+echo ${str:0:5}      # Hello（前 5 个字符）
+echo ${str:6:5}      # World（从 6 开始 5 个字符）
+echo ${str: -4}      # 2026（最后 4 个字符）
+
+# 替换
+echo ${str/-/ }      # Hello World-2026（替换第一个）
+echo ${str//-/ }     # Hello World 2026（替换全部）
+
+# 删除
+echo ${str#*-}       # World-2026（删除最短前缀）
+echo ${str##*-}      # 2026（删除最长前缀）
+echo ${str%-*}       # Hello-World（删除最短后缀）
+echo ${str%%-*}      # Hello（删除最长后缀）
+
+# 大小写转换
+echo ${str^^}        # HELLO-WORLD-2026（转大写）
+echo ${str,,}        # hello-world-2026（转小写）
+
+# 长度
+echo ${#str}         # 16（字符串长度）
+```
+
+### 12. 数组操作模式
+
+```bash
+#!/bin/bash
+# 定义数组
+arr=(apple banana cherry)
+arr2=([0]="red" [1]="green" [2]="yellow")
+
+# 读取元素
+echo ${arr[0]}       # apple
+echo ${arr[@]}       # apple banana cherry（所有元素）
+echo ${#arr[@]}      # 3（数组长度）
+echo ${!arr[@]}      # 0 1 2（所有索引）
+
+# 添加元素
+arr+=(date)          # 末尾添加
+arr[10]="elderberry" # 指定位置添加
+
+# 删除元素
+unset arr[1]         # 删除索引 1 的元素
+
+# 遍历数组
+for fruit in "${arr[@]}"; do
+    echo "水果：$fruit"
+done
+
+# 数组切片
+echo ${arr[@]:1:2}   # banana cherry（从 1 开始 2 个）
+```
+
+### 13. 数学计算模式
+
+```bash
+#!/bin/bash
+# 整数运算
+a=10; b=3
+echo $((a + b))      # 13
+echo $((a - b))      # 7
+echo $((a * b))      # 30
+echo $((a / b))      # 3
+echo $((a % b))      # 1
+echo $((a ** b))     # 1000（幂运算）
+
+# 自增自减
+((a++))              # a = 11
+((b--))              # b = 2
+
+# 比较运算
+((a > b)) && echo "a 大于 b"
+
+# 使用 expr
+expr 10 + 5          # 15
+expr 10 \* 5         # 50（* 需要转义）
+
+# 使用 bc（支持小数）
+echo "scale=2; 10 / 3" | bc    # 3.33
+echo "sqrt(16)" | bc           # 4
+```
+
+### 14. 日期时间模式
+
+```bash
+#!/bin/bash
+# 当前时间
+date                   # 完整日期时间
+date +%Y-%m-%d         # 2026-03-21
+date +%H:%M:%S         # 10:30:45
+date +%s               # 时间戳
+
+# 格式化输出
+date +"%Y 年%m 月%d 日 %H 时%M 分%S 秒"
+
+# 计算时间
+yesterday=$(date -d "yesterday" +%Y-%m-%d)
+tomorrow=$(date -d "tomorrow" +%Y-%m-%d)
+last_week=$(date -d "1 week ago" +%Y-%m-%d)
+next_month=$(date -d "1 month" +%Y-%m-%d)
+
+# 时间戳转换
+timestamp=$(date +%s)
+date -d @$timestamp    # 从时间戳转换回日期
+
+# 计算时间差
+start=$(date +%s)
+# ... 执行操作 ...
+end=$(date +%s)
+echo "耗时：$((end - start)) 秒"
+```
+
+### 15. 配置文件读取模式
+
+```bash
+#!/bin/bash
+# 读取 INI 风格配置
+CONFIG_FILE="config.ini"
+
+get_config() {
+    local section=$1
+    local key=$2
+    awk -F= -v s="[$section]" -v k="$key" '
+        $0 ~ s {in_section=1; next}
+        /^\[/ {in_section=0}
+        in_section && $1 == k {print $2}
+    ' $CONFIG_FILE
+}
+
+# 使用示例
+db_host=$(get_config "database" "host")
+db_port=$(get_config "database" "port")
+
+# 读取环境变量文件
+if [ -f .env ]; then
+    set -a
+    source .env
+    set +a
+fi
+```
+
+### 16. 并发执行模式
+
+```bash
+#!/bin/bash
+# 后台执行
+for i in {1..5}; do
+    sleep 1 &
+    echo "启动任务 $i"
+done
+wait  # 等待所有后台任务完成
+echo "所有任务完成"
+
+# 限制并发数
+max_jobs=3
+for i in {1..10}; do
+    while [ $(jobs -r | wc -l) -ge $max_jobs ]; do
+        sleep 0.1
+    done
+    (
+        echo "任务 $i 开始"
+        sleep 2
+        echo "任务 $i 完成"
+    ) &
+done
+wait
+
+# 使用 xargs 并行
+cat urls.txt | xargs -P 4 -I {} curl -O {}
+```
+
+### 17. 捕获信号模式
+
+```bash
+#!/bin/bash
+# 清理函数
+cleanup() {
+    echo "正在清理..."
+    rm -f /tmp/temp_*
+    exit 0
+}
+
+# 捕获信号
+trap cleanup SIGINT SIGTERM  # Ctrl+C 或 kill
+
+# 忽略信号
+trap '' SIGTSTP  # 忽略 Ctrl+Z
+
+# 自定义处理
+handle_signal() {
+    echo "收到信号，保存状态..."
+    # 保存状态代码
+}
+trap handle_signal USR1
+
+# 主循环
+while true; do
+    echo "运行中..."
+    sleep 5
+done
+```
+
+### 18. 菜单交互模式
+
+```bash
+#!/bin/bash
+show_menu() {
+    echo "=========================="
+    echo "       主菜单"
+    echo "=========================="
+    echo "1. 启动服务"
+    echo "2. 停止服务"
+    echo "3. 查看状态"
+    echo "4. 退出"
+    echo "=========================="
+}
+
+while true; do
+    show_menu
+    read -p "请选择 [1-4]: " choice
+    case $choice in
+        1) echo "启动服务...";;
+        2) echo "停止服务...";;
+        3) echo "查看状态...";;
+        4) echo "退出"; exit 0;;
+        *) echo "无效选择";;
+    esac
+done
+```
+
 ---
 
 ## 📚 更多资源
